@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join</title>
+
+    <link
+      rel="shortcut icon"
+      href="../assets/img/logo/favicon/favicon.svg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="../css/template.css" />
+    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/media.css">
+</head>
+
+<body class="signUpBackground" onload="signUpInit()">
+    <div class="logoDiv">
+        <img src="../assets/img/login/joinLogoWhite.svg" class="logo" />
+    </div>
+    <div class="singUpForm">
+        <a href="../html/login.html">
+            <img src="../assets/img/login/arrow-left-line.svg" class="arrowLeft"/>
+        </a>
+        <h1 class="loginHeadline">Sign up</h1>
+        <form onsubmit="register(); return false;">
+            <div class="inputContainer">
+                <input id="name" type="text" placeholder="Name" class="inputField" required/>
+                <img src="../assets/img/login/person.svg" />
+            </div>
+            <div class="inputContainer">
+                <input id="email" type="email" placeholder="Email" class="inputField" required/>
+                <img src="../assets/img/login/mail.svg" />
+            </div>
+            <div class="inputContainer">
+                <input id="password" type="password" placeholder="Password" class="inputField" required/>
+                <img src="../assets/img/login/lock.svg" />
+            </div>
+            <div class="inputContainer">
+                <input id="confirmPassword" type="password" placeholder="Confirm Password" class="inputField" required/>
+                <img src="../assets/img/login/lock.svg" />
+            </div>
+
+            <div id="pwWarningContainer" class="requiredWarning">
+                <span id="passwordMismatchWarning" style="display:none; color:red;">Die Passwörter stimmen nicht überein.</span>
+            </div>
+
+            <div id="termsWarning" class="requiredWarning" style="display:none; color:red;">
+                <span>Bitte akzeptieren Sie die Nutzungsbedingungen.</span>
+            </div>
+
+            <label for="accept" class="checkbox-label center">
+                <input class="checkbox" type="checkbox" id="signUpCheckbox" name="accept"/>I accept the <a href="../template/loginDataProtection.html">Privacy Policy</a>
+            </label>
+            <button id="registerBtn" type="submit" class="blueBtn center mt-35">Sign up</button>
+        </form>
+    </div>
+    <div id="successfullyContainer" style="display: none;">
+        <div id="successfully">You Signed Up successfully</div>
+    </div>
+    <footer>
+        <a href="../template/loginDataProtection.html" class="color-white">Privacy Policy</a>
+        <a href="../template/loginImprint.html" class="color-white">Legal Notice</a>
+    </footer>
+
+    <script src="../js/template.js" defer></script>
+    <script src="../js/storage.js" defer></script>
+    <script src="../js/login.js" defer></script>
+    <script src="../js/board.js" defer></script>
+</body>
+</html>

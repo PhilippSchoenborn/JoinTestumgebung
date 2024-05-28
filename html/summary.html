@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join</title>
+    <link rel="stylesheet" href="../css/template.css" />
+    <link rel="stylesheet" href="../css/summary.css">
+    <link
+      rel="shortcut icon"
+      href="../assets/img/logo/favicon/favicon.svg"
+      type="image/x-icon"
+    />
+  </head>
+  <body onload="summaryInit()">
+    <header w3-include-html="../template/header.html"></header>
+    <main>
+      <aside w3-include-html="../template/asideMenu.html"></aside>
+      <div class="content">
+        <div id="greetingBox">
+          <p id="greet">Good morning,</p>
+          <p id="name"></p>
+      </div>
+        <div id="buttonBox">
+          <div id="buttonsTop">
+            <div class="zoomDiv">
+            <button onclick="buttonClick()" id="dates" class="datesClass">
+    
+              <div id="datesDivLeft">
+                <div id="datesDivLeftUp">
+                  <div>
+                    <img src="../assets/img/summary/icon_circle.png" alt="timericon">
+                  </div>
+                  <p id="taskNumber">1</p>
+                </div>
+                <p id="tasksUrgent">Tasks Urgent</p>
+              </div>
+              <div id="line"></div>
+              <div id="upcomingEvents">
+                <p id="date">October 16,2022</p>
+                <p id="event">Upcoming Deadline</p>
+              </div>
+    
+            </button>
+            </div>
+            <button onclick="buttonClick()" class="taskButton taskButtonRightUp">
+              <div id="tasksDivRight" class="divResp">
+                <div id="tasksDivRightUp">
+                  <div class="border"><img class="tasksIcon" src="../assets/img/summary/board.png" alt="boardIcon"></div>
+                  <p id="taskNumberBlack">5</p>
+                </div>
+                <p id="taskDescription"> Task in Board</p>
+              </div>
+            </button>
+          </div>
+          <div id="buttonsBottom">
+            <button onclick="buttonClick()" class="taskButtonLightBlue higher ">
+              <div id="tasksDivRight" class="taskDownResp">
+                <div id="tasksDivRightUp">
+                 <img class="tasksIcon" src="../assets/img/summary/urgent.png" alt="urgentIcon">
+                  <p id="taskNumberBlack">5</p>
+                </div>
+                <p id="taskDescription"> Task <br> To-do</p>
+              </div>
+            </button>
+            <button onclick="buttonClick()" class="taskButton higher zIndex">
+              <div id="tasksDivRight" class="taskDownResp">
+                <div id="tasksDivRightUp">
+                  <div class="border"><img class="tasksIcon" src="../assets/img/summary/in_Progress.png" alt="boardIcon"></div>
+                  <p id="taskNumberBlack">5</p>
+                </div>
+                <p id="taskDescription"> Task in<br> Progress</p>
+              </div>
+            </button>
+            <button onclick="buttonClick()" class="taskButton higher ">
+              <div id="tasksDivRight" class="taskDownResp">
+                <div id="tasksDivRightUp">
+                  <div class="border"> <img class="tasksIcon" src="../assets/img/summary/awaiting_feedback.png" alt="boardIcon"> </div>
+                  <p id="taskNumberBlack">5</p>
+                </div>
+                <p id="taskDescription"> Await<br> Feedback</p>
+              </div>
+            </button>
+            <button onclick="buttonClick()" class="taskButton higher ">
+              <div id="tasksDivRight" class="taskDownResp">
+                <div id="tasksDivRightUp">
+                  <div class="border"><img class="tasksIcon" src="../assets/img/summary/done.png" alt="boardIcon"></div>
+                  <p id="taskNumberBlack">1</p>
+                </div>
+                <p id="taskDescription"> Task<br> Done</p>
+              </div>
+            </button>
+          </div>
+    
+        </div>
+      </div>
+    </main>
+    <script src="../js/summary.js"></script>
+    <script src="../js/template.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/board.js"></script>
+    <script src="../js/storage.js"></script>
+  </body>
+</html>

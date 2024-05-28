@@ -1,0 +1,545 @@
+.content {
+    position: absolute;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    left: 232px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 72px;
+}
+
+.content h1 {
+    font-size: 48px;
+    font-weight: 400;
+}
+
+#greet {
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 57, 6px;
+}
+
+#name {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 76, 8px;
+    color: rgba(69, 137, 255, 1);
+}
+
+#greetingBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    gap: 22px;
+}
+
+#buttonBox {
+    width: 912px;
+    height: 442px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#buttonsTop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+#buttonsTop .taskButton:hover {
+    gap: 0px !important;
+}
+
+#dates {
+    width: 672px;
+    height: 191px;
+    background-color: rgba(69, 137, 255, 1);
+    border-radius: 30px;
+    color: white;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+    border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+    padding: 28px, 48px;
+    overflow: hidden !important;
+    transition:  .2s;
+    z-index: -999;
+}
+
+.zoomDiv {
+    overflow: hidden !important;
+    border-radius: 30px;
+    transition: .2s ;
+}
+
+.zoomDiv:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+    border-radius: 0px 30px 30px 30px;
+}
+
+#dates:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    background-color: white;
+    color: rgba(69, 137, 255, 1) !important;
+    padding: 0px !important;
+}
+
+.taskButton {
+    width: 208px;
+    height: 191px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 30px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+    border: none;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .2s linear;
+    padding: 40px;
+}
+
+.taskButtonRightUp:hover {
+    position: absolute;
+    width: 271px;
+    left: 640px;
+    top: 5px;
+    z-index: 999;
+}
+
+.taskButton:hover {
+    width: 271px;
+    transform: scale(1.06);
+    cursor: pointer;
+    background-color: rgba(0, 93, 255, 1);
+    color: white !important;
+    border-radius: 0px 30px 30px 30px;
+    transition: auto;
+}
+
+.taskButton:hover #taskDescription {
+    color: white;
+}
+
+.zIndex {
+    z-index: 0;
+    margin-left: 240px;
+}
+
+.taskButtonLightBlue {
+    background-color: rgba(210, 227, 255, 1);
+    width: 208px;
+    height: 191px;
+    border-radius: 30px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .2s linear;
+    position: absolute;
+    padding: 40px;
+    z-index: 2;
+}
+
+.taskButtonLightBlue:hover {
+    background-color: white !important;
+    color: rgba(0, 93, 255, 1) !important;
+    transform: scale(1.06);
+    cursor: pointer;
+    border-radius: 0px 30px 30px 30px;
+    left: 5px;
+    height: 200px !important;
+    width: 265px !important;
+    top: 5px;
+    z-index: 2;
+    position: absolute;
+}
+
+.taskButtonLightBlue #taskDescription {
+    color: rgba(0, 93, 255, 1) !important;
+}
+
+#datesDivLeftUp {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#taskNumber {
+    font-size: 48px;
+    line-height: 57, 6px;
+    font-weight: 700;
+}
+
+#datesDivLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+}
+
+#tasksUrgent {
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 27, 6px;
+}
+
+#line {
+    height: 145px;
+    border: solid 1.5px;
+    border-radius: 50px;
+}
+
+#upcomingEvents {
+    width: 274px;
+    height: 81px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 13px;
+}
+
+#date {
+    font-size: 33px;
+    font-weight: 700;
+    line-height: 39, 6px;
+}
+
+#event {
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 27, 6px;
+}
+
+#tasksDivRightUp {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#taskNumberBlack {
+    font-size: 48px;
+    line-height: 57, 6px;
+    font-weight: 700;
+}
+
+#taskDescription {
+    text-align: center;
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 27, 6px;
+    color: rgba(69, 137, 255, 1);
+}
+
+#boardTasks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+#buttonsBottom {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#tasksDivRight {
+    font-display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.higher {
+    width: 204px !important;
+    height: 219px !important;
+}
+
+.tasksIcon {
+    width: 76px !important;
+    height: 76px !important;
+}
+
+.border {
+    border: 3px solid white;
+    border-radius: 80px;
+    box-sizing: border-box;
+    width: 68px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1px;
+}
+
+@media (max-width: 1360px){
+    .content {
+        left: 0px;
+        top: 110px;
+        bottom: 84px;
+    }
+    
+    #greetingBox {
+        display: none;
+    }
+
+    #buttonsTop {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    #dates {
+        width: 430px;
+        height: 180px;
+        gap: 15px;
+        padding: 15px 24px;
+        transition: none;
+        border-radius: 30px;
+    }
+
+
+    #upcomingEvents {
+        width: auto;
+    }
+
+    #line {
+        height: 120px;
+    }
+
+    #dates:hover {
+        transform: none;
+        background-color: rgba(69, 137, 255, 1);
+        color: white !important;
+        padding:  15px 24px !important;
+        border-radius: 30px;
+    }
+
+    .datesClass {
+        border-radius: 30px;
+    }
+
+    #zoomDiv {
+        transition: none;
+
+    }
+    #zoomDiv:hover {
+        transform: none;
+        border-radius: 30px 30px 30px 30px;
+    }
+
+    .taskButton {
+        height:auto;
+        width: 430px !important;
+        padding: 15px 40px;
+        transition: none;
+    }
+
+    .taskbutton:hover {
+        transform: none;
+    }
+
+    .taskButtonRightUp {
+        background-color: rgba(210, 227, 255, 1);
+    }
+
+    .taskButtonRightUp:hover {
+        width: 430px !important;
+        border-radius: 30px;
+        position: unset;
+        background-color: rgba(210, 227, 255, 1) !important;
+        color: black !important;
+        gap: 20px !important;
+    }
+
+    .taskButtonRightUp:hover #taskDescription {
+        color: rgba(0, 93, 255, 1) !important;
+    }
+
+    #tasksDivRight {
+        display: flex;
+    }
+
+    #taskDescription {
+        width:fit-content;
+        text-wrap: nowrap !important;
+    }
+
+    #buttonsBottom {
+        width: 430px !important;
+        /* height:fit-content; */
+        justify-content: space-between;
+        align-items: center !important;
+        position: unset;
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+
+    .zIndex {
+        margin-left: 0px;
+    }
+
+    #buttonBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* height: fit-content; */
+        max-width: 450px;
+        gap: 24px;
+    }
+
+    .taskButtonLightBlue {
+        position: unset;
+        transition: none;
+        background-color: white;
+    }
+    
+    .taskButtonLightBlue:hover {
+        background-color: white;
+        border-radius: 30px;
+        transform: none;
+        position: inherit;
+        height: 160px !important;
+        width: 200px !important;
+        z-index: 1;
+    }
+
+    .taskButtonLightBlue:hover #taskNumberBlack {
+        color: black !important;
+    }
+
+    .taskButton:hover {
+        border-radius: 30px;
+        background-color: white;
+        color: rgba(0, 93, 255, 1);
+        transform: none;
+    }
+
+    .taskButton:hover #taskDescription {
+        color: rgba(0, 93, 255, 1);
+    }
+
+    .taskButton:hover #taskNumberBlack {
+        color: black;
+    }
+
+    .higher {
+        width: 200px!important;
+        height: 160px !important;
+        padding: 15px 40px;
+    }
+
+    .taskDownResp {
+        flex-direction: column !important;
+    }
+
+    .divResp {
+        display: flex !important;
+        flex-direction: row  !important;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .content {
+        top: 64px;
+        bottom: 65px;
+    }
+
+    #buttonBox {
+        height: inherit;
+        width: 310px;
+        gap: 20px !important;
+    }
+
+    #buttonsTop {
+        gap: 20px;
+    }
+
+    #dates {
+        width: 300px !important;
+        height: max-content;
+    }
+
+    #dates img {
+        width: 60px; 
+    }
+
+    #date {
+        font-size: 24px;
+    }
+
+    #event {
+        font-size: 18px;
+    }
+
+    #taskNumber {
+        font-size: 32px;
+    }
+    
+    #tasksUrgent {
+        font-size: 18px;
+    }
+
+    #line {
+        height: 90px;
+    }
+
+    #taskDescription {
+        font-size: 18px;
+    }
+
+    .taskButton img{
+        width: 60px !important;
+        height: 60px !important;
+    }
+
+    .border {
+        width: 60px;
+        height: 60px;
+    }
+
+    .taskButtonRightUp {
+        width: 300px !important;
+    }
+
+    #taskNumberBlack {
+        font-size: 32px;
+    }
+
+    .higher {
+        width: 140px !important;
+        height: max-content !important;
+    }
+
+    #buttonsBottom {
+        width: 300px !important;
+        gap: 0px !important;
+        align-items: space-between !important;
+        gap: 20px !important;
+    }
+
+    .taskButtonLightBlue img {
+        height: 60px !important;
+        width:  60px !important;
+    }
+}

@@ -1,0 +1,244 @@
+@media (max-width: 375px){
+
+    #formAddTask{
+        margin: 0;
+        padding: 0;
+        width: auto !important;
+    }
+
+    .groupInput{
+        width: 300px !important;
+    }
+
+    .addTaskInputStandard{
+        width: 300px !important;
+        font-size: 16px !important;
+    }
+
+    .textareaDescription{
+        width: 300px !important;
+    }
+
+    .groupPrioBtn{
+        width: 300px !important;
+    }
+
+    .prioBtnContainer{
+        width: 300px !important;
+    }
+
+    .prioBtn{
+        font-size: 12px !important;
+    }
+
+    #prioUrgentIcon{
+        width: 12px !important;
+    }
+
+    #prioMediumIcon{
+        width: 12px !important;
+    }
+
+    #prioLowIcon{
+        width: 12px !important;
+    }
+
+    .inputIconWrap{
+        width: 300px !important;
+    }
+
+    #inputContact{
+        font-size: 16px !important;
+    }
+
+    .textareaDescription{
+        font-size: 16px !important;
+    }
+
+    .btn-cancel{
+        font-size: 12px !important;
+    }
+
+    .addTaskBtnPostion{
+        position: unset !important;
+    }
+
+    .contactList{
+        width: 300px !important;
+        margin: 0;
+    }
+
+    .contentContact{
+        width: 300px !important;
+    }   
+    
+    .singUpForm{
+        margin-bottom: 50px;
+    }
+}
+    
+@media (max-width: 414px){
+
+    #formAddTask{
+        margin: 0;
+        padding: 0;
+        width: auto !important;
+    }
+
+    .formFloatingInputContainer{
+        margin-left: 5px;
+    }
+
+    .groupInput{
+        width: 355px !important;
+    }
+
+    .addTaskInputStandard{
+        width: 355px !important;
+    }
+
+    .textareaDescription{
+        width: 355px !important;
+    }
+
+    .groupPrioBtn{
+        width: 355px !important;
+    }
+
+    .prioBtnContainer{
+        width: 355px !important;
+    }
+
+    .prioBtn{
+        font-size: 12px !important;
+    }
+
+    #prioUrgentIcon{
+        width: 12px !important;
+    }
+
+    #prioMediumIcon{
+        width: 12px !important;
+    }
+
+    #prioLowIcon{
+        width: 12px !important;
+    }
+
+    .inputIconWrap{
+        width: 355px !important;
+    }
+
+    #inputContact{
+        font-size: 16px !important;
+    }
+
+    .textareaDescription{
+        font-size: 16px !important;
+    }
+
+    .btn-cancel{
+        font-size: 12px !important;
+    }
+
+    .addTaskBtnPostion{
+        position: unset !important;
+    }
+
+    .contactList{
+        width: 355px !important;
+        margin: 0;
+    }
+
+    .contentContact{
+        width: 355px !important;
+    }
+
+    .singUpForm{
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width: 475px){
+
+    #formAddTask{
+        margin: 0;
+        padding: 0;
+        width: auto !important;
+    }
+
+    .formFloatingInputContainer{
+        margin-left: 5px;
+    }
+
+    .groupInput{
+        width: 398px !important;
+    }
+
+    .addTaskInputStandard{
+        width: 398px !important;
+        font-size: 16px !important;
+    }
+
+    .textareaDescription{
+        width: 398px !important;
+    }
+
+    .groupPrioBtn{
+        width: 398px !important;
+    }
+
+    .prioBtnContainer{
+        width: 398px !important;
+    }
+
+    .prioBtn{
+        font-size: 12px !important;
+    }
+
+    #prioUrgentIcon{
+        width: 12px !important;
+    }
+
+    #prioMediumIcon{
+        width: 12px !important;
+    }
+
+    #prioLowIcon{
+        width: 12px !important;
+    }
+
+    .inputIconWrap{
+        width: 398px !important;
+    }
+
+    #inputContact{
+        font-size: 16px !important;
+    }
+
+    .textareaDescription{
+        font-size: 16px !important;
+    }
+
+    .btn-cancel{
+        font-size: 12px !important;
+    }
+
+    .addTaskBtnPostion{
+        position: fixed !important;
+    }
+
+    .contactList{
+        width: 398px !important;
+        margin: 0;
+    }
+
+    .contentContact{
+        width: 398px !important;
+    }
+
+    .singUpForm{
+        margin-bottom: 50px;
+    }
+}
+    

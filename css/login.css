@@ -1,0 +1,480 @@
+body {
+  height: 100vh;
+}
+
+.blueBtn {
+  border-radius: 8px;
+  padding: 0 16px;
+  background-color: #4589ff;
+  color: #fff;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: none;
+  font-weight: 400;
+  font-size: 23px;
+  cursor: pointer;
+}
+
+.whiteBtn {
+  border-radius: 8px;
+  padding: 0 16px;
+  background-color: #ffffff;
+  color: #647188;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid #647188;
+  font-weight: 400;
+  font-size: 23px;
+  cursor: pointer;
+}
+.whiteBtn:hover {
+  border: 2px solid #4589ff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  color: #4589ff;
+}
+
+.blueBtn:hover {
+  background-color: #005eff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.signUpContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: 400;
+  font-size: 23px;
+  position: absolute;
+  top: 67px;
+  right: 86px;
+}
+
+.signUpContainer span {
+  margin-right: 35px;
+}
+
+.logo {
+  position: absolute;
+  top: 80px;
+  left: 77px;
+  height: 100px;
+}
+.loginHeadline {
+  font-weight: 700;
+  font-size: 48px;
+  text-align: center;
+  text-decoration: underline;
+  text-decoration-color: #4589ff;
+  text-underline-offset: 16px;
+  text-decoration-thickness: 3px;
+  margin-bottom: 39px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  padding: 48px 115px;
+  gap: 39px;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  position: relative;
+}
+.singUpForm {
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  padding: 48px 88px;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  position: relative;
+}
+
+.formSignUp{
+  color: #d1d1d1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.logInBtnConatiner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+  padding: 0 27.5px;
+  margin-top: 39px;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #d1d1d1;
+  margin-bottom: 32px;
+  padding: 0 21px;
+  width: 422px;
+  height: 48px;
+}
+
+.inputField:focus {
+  outline: none;
+}
+
+.inputField {
+  border: none;
+  font-size: 19px;
+  font-weight: 400;
+  color: #d1d1d1;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 43px;
+  gap: 16px;
+  padding: 8px;
+}
+footer a {
+  font-weight: 400;
+  font-size: 16px;
+  color: #42526e;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #005dff;
+}
+
+.signUpBackground {
+  background-color: #4589ff;
+}
+
+.marker {
+  color: #005dff;
+}
+
+.checkboxContainer {
+  color: #42526e;
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.wrapCheckboxButton{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.arrowLeft {
+  height: 32px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 66.5px;
+  margin-left: 50.5px;
+  cursor: pointer;
+}
+
+.arrowLeft:hover {
+  opacity: 0.7;
+  border-radius: 50%;
+  background-color: rgba(69, 137, 255, 0.2);
+}
+
+.customCheckbox {
+  appearance: none;
+  content: url(../assets/img/login/checkbox/checkbox.svg);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  border: solid 2px #4589FF;
+  border-radius: 3px;
+}
+
+.customCheckbox:hover,
+.customCheckbox:checked {
+  content: url(../assets/img/login/checkbox/:checked.svg);
+  background-color: #edf2fa;
+}
+
+.mt-35 {
+  margin-top: 35px!important;
+}
+
+.color-white {
+  color: #fff;
+}
+
+.mbtm-48 {
+  margin-bottom: 48px;
+}
+
+#successfully{
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #4589ff;
+  border-radius: 20px;
+  width: 326px;
+  height: 74px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 23px;
+  color: #fff;
+  z-index: 101;
+}
+
+
+#successfullyContainer {
+  z-index: 100;
+  position: absolute;
+  height: 100vh;
+  width: 100%; 
+  box-sizing: border-box;
+  background-color: #ffffff6f;  
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide-in-bottom {
+	-webkit-animation: slide-in-bottom 0.8s linear both;
+	        animation: slide-in-bottom 0.8s linear both;
+}
+
+@-webkit-keyframes slide-in-bottom {
+  0% {
+    -webkit-transform: translateY(1000px);
+            transform: translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-bottom {
+  0% {
+    -webkit-transform: translateY(1000px);
+            transform: translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+#pwWarningContainer{
+  display: none;
+  flex-direction: column;
+  gap: 35px;
+}
+
+#signUpWarning{
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #4589ff;
+  border-radius: 20px;  
+  padding: 8px 32px;
+  width: 370px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  font-weight: 400;
+  font-size: 23px;
+  color: #fff;
+  z-index: 101;
+}
+
+
+@media (max-width: 800px) {
+  body {
+    height: 100vh !important;
+    margin: 0px !important;
+    padding: 0px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .logoDiv {
+    display: flex;
+    padding-top: 37px;
+    padding-left: 40px;
+    width: 90vw;
+
+  }
+
+  .logo {
+    position: inherit;
+  }
+
+  #contentForResponsive {
+    display: flex;
+    flex-direction: column-reverse !important;
+    align-items: center !important;
+    gap: 60px;
+  }
+
+  .signUpContainer {
+    position: inherit;
+  }
+
+  .loginForm {
+    padding: 32px 16px;
+    width: 396px;
+    height: 517px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .inputContainer {
+    width: 364px;
+    height: 48px;
+  }
+
+  .logInBtnConatiner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .blueBtn {
+    width: 182px;
+    height: 50px;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .whiteBtn {
+    width: 180px;
+    height: 48px;
+    gap: 10px;
+    padding: 0 0;
+  }
+
+  #signInButton {
+    width: fit-content !important;
+  }
+
+  .checkboxContainer {
+    padding-left: 12px;
+  }
+
+  .singUpForm {
+    padding: 32px 0px !important;
+    width: 494px !important;
+    display: flex;
+    align-items: center;
+  }
+}
+ 
+@media (max-width: 550px) {
+  .inputContainer {
+    width: 220px;
+    height: 48px;
+  }
+
+  .singUpForm {
+    width: 300px !important;
+    padding: 12px 0 !important;
+  }
+
+  .arrowLeft {
+    margin-top: 30px;
+    margin-left: 12px;
+  }
+
+  .loginForm {
+    padding: 8px 5px;
+    width: 280px;
+    height: 517px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .signUpContainer span {
+    margin-right: 8px;
+  }
+
+  .signUpContainer {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .logoDiv {
+    display: flex;
+    padding-top: 37px;
+    padding-left: 40px;
+    width: 80%;
+
+  }
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.checkbox {
+  appearance: none;
+  background-image: url(../assets/img/checkbox/checkbox-border-blue.png);
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.checkbox:hover {
+  background-color: #edf2fa;
+  border-radius: 12px;
+  width: 24px;
+  height: 24px;
+}
+
+.checkbox:checked {
+  background-image: url(../assets/img/checkbox/checkbox-checked-blue.png);
+}
+
+.checkbox-label a{
+  text-decoration: none;
+  color: #005DFF;
+}
+
+.center{
+ margin: 0 auto;
+ justify-content: center;
+}

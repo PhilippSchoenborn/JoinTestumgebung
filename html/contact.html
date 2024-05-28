@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join</title>
+    <link rel="stylesheet" href="../css/template.css" />
+    <link rel="stylesheet" href="../css/contact.css">
+    <link
+      rel="shortcut icon"
+      href="../assets/img/logo/favicon/favicon.svg"
+      type="image/x-icon"
+    />
+    <script src="../js/template.js"></script>
+  </head>
+  <body onload="contactInit(); renderContacts()">
+    <header w3-include-html="../template/header.html"></header>
+    <main>
+      <aside w3-include-html="../template/asideMenu.html"></aside>
+      
+
+      <div id="content" onclick="stopPropergation()">
+        <!-- <div id="contactDiv"> -->
+        <div id="contactButton">
+          <button onclick="showAddContact()" id="addContactButton">Add new contact <img id="buttonActiveImg"
+              src="/assets/img/buttonIcons/person-add-icon.svg"></button>
+        </div>
+        <div id="contact-list" class="contact-list">
+        </div>
+      </div>
+    
+      <div id="contacts">
+      </div>
+
+
+      <div onclick="closeEditResponsive(); event.stopPropagation()" id="contactsResponsive" class="d-none"></div>
+    
+      <div id="addNewContact" class="slide-right">
+        <div id="addNewContactFirstSection">
+          <img onclick="cancelAddContact()" id="addNewContactCloseButton" src="/assets/img/addNewContact/close.png" alt="close">
+          <div>
+            <img src="/assets/img/addNewContact/header_logo.png" alt="logo">
+            <h1>Add contact</h1>
+            <h3>Tasks are better with a team!</h3>
+          </div>
+        </div>
+        <div id="addNewContactSecondSection">
+          <div id="contactInput">
+            <img class="addContactProfilePicture" src="/assets/img/addNewContact/Frame79.png" alt="profilpicture">
+            <div id="inputDiv" onclick="writeContact(event.stopPropagation())">
+              <div id="inputBox1" class="inputBox inputBox1"><input id="fullName" required type="text" placeholder="Name">
+                <img src="/assets/img/addNewContact/person.png">
+              </div>
+              <div class="inputBox"><input id="emailAdress" type="email" required placeholder="Email"> <img
+                  src="/assets/img/addNewContact/mail.png"></div>
+              <div class="inputBox"><input id="phoneNumber" type="tel" required placeholder="Phone"> <img
+                  src="/assets/img/addNewContact/call.png"></div>
+              <div id="addNewContactAlert"></div>
+            </div>
+            <div id="btnDiv">
+              <button onclick="cancelAddContact()" id="cancelButtonContact">Cancel <img id="cancelIcon" src="../assets/img/addNewContact/cancel_black.png"
+                  alt=""> </button>
+              <button onclick="getNewContact()" id="createContactButton">Create contact <img src="../assets/img/addNewContact/check_whitepng.png"
+                  alt=""></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="editContact">
+        <div id="editContactFirstSection">
+          <img onclick="cancelEditContact()" id="addNewContactCloseButton" src="../assets/img/addNewContact/close.png" alt="close">
+          <div>
+            <img src="/assets/img/addNewContact/header_logo.png" alt="logo">
+            <h1>Edit contact</h1>
+          </div>
+        </div>
+        <div id="editSecondSectione" class="backgroundWhite">
+          <div id="contactInput" class="contactInput">
+            <div id="profilepicture">
+              <div id="whiteCircle">
+                <div id="initialsEditContact">
+                  <h1 id="initialsText"></h1>
+                </div>
+              </div>
+            </div>
+            <div id="inputDiv" onclick="writeContact(event.stopPropagation())">
+              <div id="inputBox1" class="inputBox inputBox1"><input id="editName" required type="text" placeholder="Name"> <img
+                  src="/assets/img/addNewContact/person.png" alt=""></div>
+              <div class="inputBox"><input type="text" id="editEmail" required placeholder="Email"> <img src="/assets/img/addNewContact/mail.png" alt=""></div>
+              <div class="inputBox"><input type="text" id="editPhone" required placeholder="Phone"> <img src="/assets/img/addNewContact/call.png" alt=""></div>
+            </div>
+            <div id="btnDiv">
+              <button id="cancelButtonContact" onclick="cancelEditContact()"> <img src="/assets/img/buttonIcons/cancel_black.png" alt="deletIcon"></button>
+              <button id="safeButton" class="createContactButton">Safe <img src="/assets/img/buttonIcons/check_white.png" alt=""></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="blurBackground" onclick="cancelAddContact(), cancelEditContact()" onclick="cancelEditContact()"
+        class="blurBackground d-none">
+      </div>
+      <div id="successfullyContainer">
+        <div id="successfully">Contact succesfully created</div>
+      </div>
+    </main>
+
+
+    <script src="../js/storage.js"></script>
+    <script src="../js/template.js"></script>
+    <script src="../js/contact.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/board.js"></script>
+
+  </body>
+</html>

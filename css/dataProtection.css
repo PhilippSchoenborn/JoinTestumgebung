@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+}
+
+.privacyPolicy {
+    padding-left: 300px;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    padding-top: 72px;
+    padding-right: 120px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 48px;
+    overflow: auto;
+    max-height: calc(100vh - 180px);
+    -webkit-scrollbar {
+        display: none;
+      }
+      scrollbar-width: none;
+      overflow-y: scroll;
+}
+
+.privacyPolicy h1 {
+    color: black;
+    width: -webkit-fill-available;
+    font-size: 61px;
+    font-weight: 700;
+    line-height: 73.2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center
+}
+
+.imprintBack {
+    width: 37px;
+    height: 37px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.imprintBack:hover {
+    opacity: 0.7;
+    border-radius: 50%;
+    background-color: rgba(69, 137, 255, 0.2);
+}
+
+.privacyPolicyText {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    width: -webkit-fill-available;
+
+}
+
+.textSection {
+    gap: 10px;
+}
+
+.privacyPolicyText p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    color: black;
+
+}
+
+.h3Blue {
+    font-size: 33px;
+    font-weight: 700;
+    line-height: 39.6px;
+    color: rgba(0, 93, 255, 1);
+}
+
+.backgroundColorLegal {
+    background-color: rgba(69, 137, 255, 1);
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    width: fit-content;
+    justify-content: start;
+    align-items: center;
+}
+
+.backgroundColorLegal:hover {
+    color: white !important;
+  }
+
+@media (max-width: 1360px) {
+    .privacyPolicy{
+    padding-left: 30px;
+    padding-right: 30px;
+    z-index: 1;
+    }
+}

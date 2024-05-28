@@ -1,0 +1,60 @@
+body{
+  overflow: hidden;
+ 
+}
+
+.createTaskBtnPostion {    
+    margin-bottom: 55px;
+    margin-right: 42px;    
+  }
+
+  .cancelTaskBtnPostion{    
+    margin-right: 241px;
+    margin-bottom: 55px;   
+  }
+
+  .addTaskBtnPostion{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+  }
+ 
+  
+
+  /* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
+/* * {
+  scrollbar-width: thin;
+  scrollbar-color: #A8A8A8 #FFFFFF;
+  
+} */
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 7px;
+  background-color: #FFFFFF;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #FFFFFF;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #FFFFFF;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #A8A8A8;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #A8A8A8;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #A8A8A8;
+}

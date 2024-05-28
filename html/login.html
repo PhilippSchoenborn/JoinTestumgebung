@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join</title>
+  <link rel="shortcut icon" href="../assets/img/logo/favicon/favicon.svg" type="image/x-icon" />
+  <link rel="stylesheet" href="../css/template.css" />
+  <link rel="stylesheet" href="../css/login.css" />
+  <link rel="stylesheet" href="../css/animation.css">
+</head>
+
+<body onload="loginInit()">
+  <div class="logoDiv">
+  <img src="../assets/img/login/joinLogo.png" class="logo" />
+  </div>
+<div id="contentForResponsive">
+  <div class="signUpContainer">
+    <span>Not a Join user?</span>
+    <a class="blueBtn" href="../html/signUp.html">Sign Up</a>
+  </div>
+  <div class="loginForm">
+    <h1 class="loginHeadline">Log in</h1>
+    <form onsubmit="login(); return false;">
+      <div class="inputContainer">
+        <input type="email" placeholder="Email" class="inputField" id="email">
+        <img src="../assets/img/login/mail.svg">
+      </div>
+
+      <div class="inputContainer">
+        <input type="password" placeholder="Password" class="inputField" id="password">
+        <img src="../assets/img/login/lock.svg">
+      </div>
+
+      <div id="loginError" class="requiredWarning">
+        <span id="errorMessagePassword" style="display:none; color:red;">Die e-mail oder das Passwort stimmen nicht überein.</span>
+    </div>
+
+      <label for="remember-me" class="checkbox-label">
+        <input class="checkbox" type="checkbox" id="loginCheckbox" name="remember-me"/>Remember me
+      </label>
+
+      <div class="logInBtnConatiner">
+        <button class="blueBtn" onclick="login()">Log In</button>
+        <a class="whiteBtn" id="guestLogin" href="../html/summary.html" onclick="loginGuestAndRedirect()">Guest log in</a>
+      </div>
+    </form>
+</div>
+
+  </div>
+  <footer>
+    <a href="../template/loginDataProtection.html">Privacy Police</a>
+    <a href="../template/loginImprint.html">Legal Notice</a>
+  </footer>
+  <div class="animationContainer">
+    <img id="logoImage" src="../assets/img/login/animation/animationLogoWhite.svg" alt="Logo" class="animationLogo">
+  </div>
+  <script src="../js/login.js" defer></script>
+  <script src="../js/storage.js" defer></script>
+  <script src="../js/template.js"></script>
+  <script src="../js/board.js"></script>
+
+</body>
+
+</html>

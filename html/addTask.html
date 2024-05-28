@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join</title>
+    <link rel="stylesheet" href="../css/template.css" />
+    <link rel="stylesheet" href="../css/summary.css" />
+    <link rel="stylesheet" href="../css/addTask.css" />
+    <link rel="stylesheet" href="../css/media.css">
+    <link
+      rel="shortcut icon"
+      href="../assets/img/logo/favicon/favicon.svg"
+      type="image/x-icon"
+    />
+    
+    
+    
+  </head>
+  <body onload="addTaskInit()" onclick="closeDropdown(); hideSubtaskIcons()">
+    <header w3-include-html="../template/header.html"></header>
+    <main class="addTaskMain">
+      <aside w3-include-html="../template/asideMenu.html"></aside>
+      <form
+        onsubmit="event.preventDefault();"
+        w3-include-html="../template/formAddTask.html"
+        id="formAddTask"
+      >
+      
+        
+      </form>
+      <button onmousedown="mousedownCancelTaskBtn()"
+      onmouseup="mouseupCancelTaskBtn()" onmouseover="mouseoverCancelTaskBtn()" onmouseout="mouseoutCancelTaskBtn()"
+          class="btn-cancel cancelTaskBtnPostion addTaskBtnPostion"
+          id="cancel-task-btn"
+        >
+          Cancel<img
+            id="cancel-task-btn-icon"
+            src="../assets/img/buttonIcons/cancel-default-icon.svg"
+            class="btn-icon"
+          />
+        </button>
+        
+    </main>
+
+
+    <script src="../js/template.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/board.js"></script>
+    <script src="../js/contact.js"></script>
+    <script src="../js/login.js"></script>
+
+
+  </body>
+</html>
