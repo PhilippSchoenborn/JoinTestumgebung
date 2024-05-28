@@ -1,54 +1,56 @@
-//Task Card Deatil 
+// Task Card Detail
 function taskCardDetailHtml(task) {
-
   return `  
-          <div class="task-card-detail-container">
-           ${taskCardDetailCategoryHtml(task)}
-            ${taskCardDetailTitleHtml(task)}
-            ${taskCardDetailDescriptionHtml(task)}
-            ${taskCardDetailDueDateHtml(task)}
-            ${taskCardDetailPrioHtml(task)}
-            ${taskCardDetailAssignedHtml(task)}
-            ${taskCardDetailSubtaskHtml(task)}
-            ${taskCardDetailBtnContainerHtml(task)}     
-          </div>
-    `;
+    <div class="task-card-detail-container">
+      ${taskCardDetailCategoryHtml(task)}
+      ${taskCardDetailTitleHtml(task)}
+      ${taskCardDetailDescriptionHtml(task)}
+      ${taskCardDetailDueDateHtml(task)}
+      ${taskCardDetailPrioHtml(task)}
+      ${taskCardDetailAssignedHtml(task)}
+      ${taskCardDetailSubtaskHtml(task)}
+      ${taskCardDetailBtnContainerHtml(task)}     
+    </div>
+  `;
 }
 
 function taskCardDetailAssignedHtml(task) {
+  const assigned = Array.isArray(task.assigned) ? task.assigned : [];
   return `
     <div class="task-card-detail-column-wrapper">
-    <span class="task-card-detail-label">Assigned to:</span>
-    <div class="task-card-detail-assigned">
-      ${taskCardDetailAssignedItemHtml(task)}
+      <span class="task-card-detail-label">Assigned to:</span>
+      <div class="task-card-detail-assigned">
+        ${taskCardDetailAssignedItemHtml(assigned)}
+      </div>
     </div>
-    </div>
-    `;
-
+  `;
 }
 
-function taskCardDetailAssignedItemHtml(task) {
-  let assignedProfile = task.assignedContacts.map(contact => {
-    return `      
-      <div class="task-card-detail-assigned-item">
-      <div class="profile-img" style="background-color: ${contact.profileColor};">${contact.initialien
-      }</div> 
-      <span class="task-card-detail-assigned-name" data-value="${contact.name}">${contact.name || ''}</span>
-      </div>`;
-  }).join('');
+function taskCardDetailAssignedItemHtml(assigned) {
+  if (!Array.isArray(assigned)) {
+    return '<div>No assigned people</div>';
+  }
+  return assigned.map(person => `<div>${person.name}</div>`).join('');
+}
 
-  return assignedProfile;
+function getTaskById(taskId) {
+  const task = tasks.find(task => task.id === taskId);
+  if (task) {
+    task.assigned = task.assigned || [];
+    return task;
+  }
+  return null; // oder ein leeres Objekt, falls keine Aufgabe gefunden wird
 }
 
 function taskCardDetailSubtaskHtml(task) {
   return `
-      <div class="task-card-detail-column-wrapper">
+    <div class="task-card-detail-column-wrapper">
       <span class="task-card-detail-label">Subtask:</span>
       <div id="task-card-detail-subtask">
         ${taskCardDeatailSubtaksItemHtml(task)}
       </div>
-      </div>
-      `;
+    </div>
+  `;
 }
 
 function taskCardDeatailSubtaksItemHtml(task) {
@@ -57,12 +59,11 @@ function taskCardDeatailSubtaksItemHtml(task) {
   for (let i = 0; i < task.subtasks.length; i++) {
     let subtaskItem = task.subtasks[i];
     let subtaskItemHtml = `
-        <label for="subtask-item-${i}" class="task-card-detail-subtask-item-label">
-          <input type="checkbox" name="subtask-item-${i}" ${subtaskItem.completed ? 'checked' : ''} 
-          onclick="toggleSubtask(${task.id}, ${i})" id="subtask-item-${i}">${subtaskItem.content}
-        </label>
-      `;
-
+      <label for="subtask-item-${i}" class="task-card-detail-subtask-item-label">
+        <input type="checkbox" name="subtask-item-${i}" ${subtaskItem.completed ? 'checked' : ''} 
+        onclick="toggleSubtask(${task.id}, ${i})" id="subtask-item-${i}">${subtaskItem.content}
+      </label>
+    `;
     subtaskItemsHtml += subtaskItemHtml;
   }
 
@@ -73,121 +74,120 @@ function taskCardDetailCategoryHtml(task) {
   const { categoryClass, categoryStyle } = taskCardCategoryBackgroundColor(task);
 
   return `
-    <div class="task-card-detail-category" >
-    <span class="${categoryClass}" ${categoryStyle}>${task.category}</span>
-    <img src="/assets/img/icons/form-add-task/close-blue-32.png" onclick="closeTaskCardDetail()">
+    <div class="task-card-detail-category">
+      <span class="${categoryClass}" ${categoryStyle}>${task.category}</span>
+      <img src="/assets/img/icons/form-add-task/close-blue-32.png" onclick="closeTaskCardDetail()">
     </div>
-    `;
+  `;
 }
 
 function taskCardDetailPrioHtml(task) {
   return `
     <div class="task-card-detail-wrapper">
-    <span class="task-card-detail-label">Priority:</span>
-    <span class="task-card-detail-value">${task.priority} <img src="${task.prioImage || ''}"></span>
+      <span class="task-card-detail-label">Priority:</span>
+      <span class="task-card-detail-value">${task.priority} <img src="${task.prioImage || ''}"></span>
     </div>
-    `;
+  `;
 }
 
 function taskCardDetailDueDateHtml(task) {
   return `
     <div class="task-card-detail-wrapper">
-    <span class="task-card-detail-label">Due Date:</span>
-    <span class="task-card-detail-value">${task.dueDate}</span>
+      <span class="task-card-detail-label">Due Date:</span>
+      <span class="task-card-detail-value">${task.dueDate}</span>
     </div>
-    `;
+  `;
 }
 
 function taskCardDetailDescriptionHtml(task) {
   return `
     <div class="task-card-detail-description">
-            <span>${task.description || ''}</span>
-          </div>
-    `;
+      <span>${task.description || ''}</span>
+    </div>
+  `;
 }
 
 function taskCardDetailTitleHtml(task) {
   return `
-          <div class="task-card-detail-title">
-              <span>${task.title}</span>         
-          </div>
-    `;
+    <div class="task-card-detail-title">
+      <span>${task.title}</span>
+    </div>
+  `;
 }
 
 function taskCardDetailBtnContainerHtml(task) {
   return `
     <div class="task-card-detail-btn-container">
-    <div class="task-card-detail-btn" onclick="taskCardDelete(${task.id})">
-      <img src="/assets/img/icons/form-add-task/trash-blue.png"><span>Delete</span>
+      <div class="task-card-detail-btn" onclick="taskCardDelete(${task.id})">
+        <img src="/assets/img/icons/form-add-task/trash-blue.png"><span>Delete</span>
+      </div>
+      <span class="task-card-detail-seperator"></span>
+      <div class="task-card-detail-btn" onclick="openTaskCardDetailEditForm(${task.id})">
+        <img src="/assets/img/icons/form-add-task/edit-blue.png"><span>Edit</span>
+      </div>
     </div>
-    <span class="task-card-detail-seperator"></span>
-    <div class="task-card-detail-btn" onclick="openTaskCardDetailEditForm(${task.id})">
-      <img src="/assets/img/icons/form-add-task/edit-blue.png"><span>Edit</span>
-    </div>
-  </div>`;
+  `;
 }
-//***********************************
 
-//Task Card for Board
+// Task Card for Board
 function taskCardHtml(task) {
   const { categoryClass, categoryStyle } = taskCardCategoryBackgroundColor(task);
   return `
     <div class="task-card ${task.status}" id=(${task.id}) draggable="true" ondragstart="startDragging(event, ${task.id})" onclick="openTaskCardDetail(${task.id})">
-    <span class="${categoryClass}" ${categoryStyle}>${task.category || ''}</span>
-    <span class="task-card-title" >
-    ${task.title}</span>
-    <span class="task-card-description">${task.description || ''}</span>   
+      <span class="${categoryClass}" ${categoryStyle}>${task.category || ''}</span>
+      <span class="task-card-title">${task.title}</span>
+      <span class="task-card-description">${task.description || ''}</span>   
       ${taskCardSubtaskProcessbarHtml(task)}    
-    <div class="task-card-assigned-prio-container">
-      <div class="task-card-assigned">${task.assignedImage || ''}</div>
-      <div class="task-card-prio"><img src="${task.prioImage || ''}"/></div>
+      <div class="task-card-assigned-prio-container">
+        <div class="task-card-assigned">${task.assignedImage || ''}</div>
+        <div class="task-card-prio"><img src="${task.prioImage || ''}"/></div>
+      </div>
     </div>
-    </div>
-    `;
+  `;
 }
-//***********************************
 
-//Task Card Detail Edit Form
+// Task Card Detail Edit Form
 function taskCardDetailEditFormHtml(task) {
   return `    
     <div class="task-card-detail-form-container">
-    ${taskCardDetailEditFormCloseBtnHtml()} 
-    <div class="task-card-detail-form">    
-    ${taskCardDetailEditFormTitleHtml(task)}
-    ${taskCardDetailEditFormDescriptionHtml(task)}
-    ${taskCardDetailEditFormDueDateHtml(task)}
-    ${taskCardDetailEditFormPrioHtml(task)} 
-    ${taskCardDetailEditFormAssignedHtml(task)}
-    ${taskCardDetailEditFormSubtaskHtml(task)}
-    </div>
-    ${taskCardDetailFormOkBtn(task)}     
+      ${taskCardDetailEditFormCloseBtnHtml()} 
+      <div class="task-card-detail-form">    
+        ${taskCardDetailEditFormTitleHtml(task)}
+        ${taskCardDetailEditFormDescriptionHtml(task)}
+        ${taskCardDetailEditFormDueDateHtml(task)}
+        ${taskCardDetailEditFormPrioHtml(task)} 
+        ${taskCardDetailEditFormAssignedHtml(task)}
+        ${taskCardDetailEditFormSubtaskHtml(task)}
+      </div>
+      ${taskCardDetailFormOkBtn(task)}     
     </div>    
-    `;
+  `;
 }
 
 function taskCardDetailEditFormCloseBtnHtml() {
   return `
-    <div class="task-card-detail-category flex-end" >    
-    <img src="/assets/img/icons/form-add-task/close-blue-32.png" onclick="closeTaskCardDetail()">
-    </div>`;
+    <div class="task-card-detail-category flex-end">    
+      <img src="/assets/img/icons/form-add-task/close-blue-32.png" onclick="closeTaskCardDetail()">
+    </div>
+  `;
 }
 
 function taskCardDetailEditFormTitleHtml(task) {
   return `<label for="title-${task.id}" class="label-title label">
             <input type="text" placeholder="Enter a title" id="title-${task.id}" value="${task.title}"/>
-            </label>`;
+          </label>`;
 }
 
 function taskCardDetailEditFormDescriptionHtml(task) {
   return `<label for="description" class="label-description">
-    Description (optional)
-    <textarea placeholder="Enter a description" id="description-${task.id}">${task.description}</textarea>
-    </label>`;
+            Description (optional)
+            <textarea placeholder="Enter a description" id="description-${task.id}">${task.description}</textarea>
+          </label>`;
 }
 
 function taskCardDetailEditFormDueDateHtml(task) {
   return `<label for="due-date-${task.id}" class="label-due-date label">
-          <input type="date" placeholder="Due date" id="due-date-${task.id}"/value=${task.dueDate}>            
+            <input type="date" placeholder="Due date" id="due-date-${task.id}" value="${task.dueDate}">
           </label>`;
 }
 
@@ -202,93 +202,71 @@ function taskCardDetailEditFormPrioHtml(task) {
 
   return `
     <label for="priority" class="label-prio">
-        Priority
-            <div class="prio-btn-container">
-                <button class="prio-btn ${prioClassUrgent}" id="prio-btn-edit-form-urgent" data-value="Urgent" onclick="prioBtnEditFormData('Urgent')">
-                Urgent <img src="${prioImgUrgent}" id="prio-icon-urgent"/>
-                </button>
-                <button class="prio-btn ${prioClassMedium}" id="prio-btn-edit-form-medium" data-value="Medium"   onclick="prioBtnEditFormData('Medium')">
-                Medium <img src="${prioImgMedium}" id="prio-icon-medium"/  >
-                </button>
-                <button class="prio-btn ${prioClassLow}" id="prio-btn-edit-form-low" data-value="Low"   onclick="prioBtnEditFormData('Low')">
-                Low <img src="${prioImgLow}" id="prio-icon-low"/>
-                </button>
-            </div>
+      Priority
+      <div class="prio-btn-container">
+        <button class="prio-btn ${prioClassUrgent}" id="prio-btn-edit-form-urgent" data-value="Urgent" onclick="prioBtnEditFormData('Urgent')">
+          Urgent <img src="${prioImgUrgent}" id="prio-icon-urgent"/>
+        </button>
+        <button class="prio-btn ${prioClassMedium}" id="prio-btn-edit-form-medium" data-value="Medium" onclick="prioBtnEditFormData('Medium')">
+          Medium <img src="${prioImgMedium}" id="prio-icon-medium"/>
+        </button>
+        <button class="prio-btn ${prioClassLow}" id="prio-btn-edit-form-low" data-value="Low" onclick="prioBtnEditFormData('Low')">
+          Low <img src="${prioImgLow}" id="prio-icon-low"/>
+        </button>
+      </div>
     </label>`;
 }
 
 function taskCardDetailEditFormAssignedHtml(task) {
   return `
-      <label for="assigned" class="label">
-        Assigned To (optional)
-        <div class="input-icon-container">
-        <input id="assigned" type="text" autocomplete="off"
-        placeholder="Select contacts to assign"
-        onclick="toogleEditFromAssignedDropdown()"/>
-        <img onclick="toogleEditFromAssignedDropdown()"
-        class="dropdown-icon" id="assigned-edit-form-dropdown-arrow"
-        src="/assets/img/icons/form-add-task/arrow-dropdown-down.png"/>
-        </div>
-        <div class="custom-dropdown-assigned custom-dropdown" id="dropdown-edit-form-assigned">
-        </div>
-      </label>
-    
-    <div  id="task-card-detail-profile-assigned">
-        ${task.assignedImage}
+    <label for="assigned" class="label">
+      Assigned To (optional)
+      <div class="input-icon-container">
+        <input id="assigned" type="text" autocomplete="off" placeholder="Select contacts to assign" onclick="toggleEditFormAssignedDropdown()"/>
+        <img onclick="toggleEditFormAssignedDropdown()" class="dropdown-icon" id="assigned-edit-form-dropdown-arrow" src="/assets/img/icons/form-add-task/arrow-dropdown-down.png"/>
+      </div>
+      <div class="custom-dropdown-assigned custom-dropdown" id="dropdown-edit-form-assigned"></div>
+    </label>
+    <div id="task-card-detail-profile-assigned">
+      ${task.assignedImage}
     </div>
-    `;
+  `;
 }
 
 function taskCardDetailEditFormSubtaskHtml(task) {
   return `<label for="subtask-${task.id}" class="label">
-  Subtasks
-  
-  <div class="input-icon-container">
-  <input type="text" placeholder="Add new Subtask" id="subtask-${task.id}" onclick="formEditShowDuoIconSubtaskInput(${task.id})" />    
-
+    Subtasks
+    <div class="input-icon-container">
+      <input type="text" placeholder="Add new Subtask" id="subtask-${task.id}" onclick="formEditShowDuoIconSubtaskInput(${task.id})"/>    
       <div class="subtask-icon-container" id="subtask-icon-container-${task.id}">
-        <img
-        class="dropdown-icon"
-        id="subtask-icon-plus-${task.id}"
-        src="/assets/img/icons/form-add-task/plus-blue.png"/>
+        <img class="dropdown-icon" id="subtask-icon-plus-${task.id}" src="/assets/img/icons/form-add-task/plus-blue.png"/>
       </div>
-
       <div class="subtask-icon-container" id="subtask-duo-icon-container-${task.id}" style="display: none;">
-        <img class="dropdown-icon"
-        id="subtask-icon-close-${task.id}" onclick="clearEditSubtaskInputValue(${task.id})"
-        src="/assets/img/icons/form-add-task/close-blue.png"/>
+        <img class="dropdown-icon" id="subtask-icon-close-${task.id}" onclick="clearEditSubtaskInputValue(${task.id})" src="/assets/img/icons/form-add-task/close-blue.png"/>
         <span class="task-card-detail-seperator"></span>
-        <img class="dropdown-icon"
-        id="subtask-icon-check-${task.id}" onclick="addEditSubtaskItemToList(${task.id})"
-        src="/assets/img/icons/form-add-task/check-blue.png"/>
+        <img class="dropdown-icon" id="subtask-icon-check-${task.id}" onclick="addEditSubtaskItemToList(${task.id})" src="/assets/img/icons/form-add-task/check-blue.png"/>
       </div>
-</div>
-  
-</label>
-<div class="subtask-container subtask-edit-container" id="task-card-detail-subtask-${task.id}">
-${taskCardDeatailEditFormSubtaksItemHtml(task)}</div>`;
-
+    </div>
+  </label>
+  <div class="subtask-container subtask-edit-container" id="task-card-detail-subtask-${task.id}">
+    ${taskCardDetailEditFormSubtasksItemHtml(task)}
+  </div>`;
 }
 
-function taskCardDeatailEditFormSubtaksItemHtml(task) {
+function taskCardDetailEditFormSubtasksItemHtml(task) {
   let subtaskItemsHtml = '';
 
   for (let i = 0; i < task.subtasks.length; i++) {
     let subtaskItem = task.subtasks[i];
     let subtaskItemHtml = `
-    <li class="subtask-item-li" onmouseleave="hideSubtaskEditTrashIcons(${task.id}, ${i})" onmouseenter="showSubtaskEditTrashIcons(${task.id}, ${i})">
-      <input class="subtask-item" type="text" id="subtask-item-input-${task.id}-${i}" readonly value="${subtaskItem.content}" />
-
-      <div class="subtask-icon-container subtask-item-edit-icon-container" id="subtask-duo-icon-container-${task.id}-${i}" style="display: none;">
-        <img class="dropdown-icon"
-        id="subtask-icon-edit-${task.id}-${i}" onclick="editSubtaskItemEditForm(${task.id}, ${i})"
-        src="/assets/img/icons/form-add-task/edit-blue.png"/>
-        <span class="task-card-detail-seperator"></span>
-        <img class="dropdown-icon subtask-icon-edit"
-        id="subtask-icon-trash-${task.id}-${i}" onclick="deleteSubtaskItem(${task.id}, ${i})"
-        src="/assets/img/icons/form-add-task/trash-blue.png"/>
-      </div>
-    </li>
+      <li class="subtask-item-li" onmouseleave="hideSubtaskEditTrashIcons(${task.id}, ${i})" onmouseenter="showSubtaskEditTrashIcons(${task.id}, ${i})">
+        <input class="subtask-item" type="text" id="subtask-item-input-${task.id}-${i}" readonly value="${subtaskItem.content}" />
+        <div class="subtask-icon-container subtask-item-edit-icon-container" id="subtask-duo-icon-container-${task.id}-${i}" style="display: none;">
+          <img class="dropdown-icon" id="subtask-icon-edit-${task.id}-${i}" onclick="editSubtaskItemEditForm(${task.id}, ${i})" src="/assets/img/icons/form-add-task/edit-blue.png"/>
+          <span class="task-card-detail-seperator"></span>
+          <img class="dropdown-icon subtask-icon-edit" id="subtask-icon-trash-${task.id}-${i}" onclick="deleteSubtaskItem(${task.id}, ${i})" src="/assets/img/icons/form-add-task/trash-blue.png"/>
+        </div>
+      </li>
     `;
     subtaskItemsHtml += subtaskItemHtml;
   }
@@ -297,13 +275,12 @@ function taskCardDeatailEditFormSubtaksItemHtml(task) {
 }
 
 function taskCardDetailFormOkBtn(task) {
-  currentTaskId = task.id;
   return `
-  <div class="task-card-detail-btn-container">
-  <button class="create-ok-btn" onclick="saveEditTask(${task.id})">
-  Ok
-  <img src="/assets/img/icons/btn/check-white.png"/>
-  
-  </button>
-  </div>`;
+    <div class="task-card-detail-btn-container">
+      <button class="create-ok-btn" onclick="saveEditTask(${task.id})">
+        Ok
+        <img src="/assets/img/icons/btn/check-white.png"/>
+      </button>
+    </div>
+  `;
 }

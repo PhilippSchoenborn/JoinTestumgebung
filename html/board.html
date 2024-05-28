@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/template.css" />
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/board.css" />
     <link rel="stylesheet" href="../css/form-add-task.css" />
     <link rel="stylesheet" href="/css/board-responsive.css" />
     <title>Join</title>
+    
   </head>
 
   <body onload="boardInit()" id="board-body">
@@ -30,13 +26,10 @@
       <aside w3-include-html="../template/asideMenu.html"></aside>
       <div class="section-container">
         <section class="search-btn-container">
-          <label for="search" class="searchbar"
-            ><input
-              type="text"
-              oninput="searchTasks(this.value)"
-              placeholder="Find Task"
-              id="search-board" /><img src="../assets/img/icons/board/search.png"
-          /></label>
+          <label for="search" class="searchbar">
+            <input type="text" oninput="searchTasks(this.value)" placeholder="Find Task" id="search-board" />
+            <img src="../assets/img/icons/board/search.png" />
+          </label>
           <button class="board-blue-btn" onclick="openAddTask()">
             Add Task <img src="../assets/img/icons/board/plus.png" />
           </button>
@@ -45,84 +38,44 @@
           <div>
             <div class="board-task-headline">
               To do
-              <img
-                onclick="openAddTask()"
-                src="../assets/img/icons/board/plus-btn-blue.png"
-              />
+              <img onclick="openAddTask()" src="../assets/img/icons/board/plus-btn-blue.png" />
             </div>
-            <div
-              class="board-task-sub-container"
-              id="to-do-container"
-              ondrop="moveTo('open')"
-              
-              ondragover="allowDrop(event)"
-            ></div>
+            <div class="board-task-sub-container" id="to-do-container" ondrop="moveTo('open')" ondragover="allowDrop(event)"></div>
           </div>
           <div>
             <div class="board-task-headline">
               In progress
-              <img
-                onclick="openAddTask()"
-                src="../assets/img/icons/board/plus-btn-blue.png"
-              />
+              <img onclick="openAddTask()" src="../assets/img/icons/board/plus-btn-blue.png" />
             </div>
-            <div
-              class="board-task-sub-container"
-              id="in-progress-container"
-              ondrop="moveTo( 'inProgress')"
-              ondragover="allowDrop(event)"
-            ></div>
+            <div class="board-task-sub-container" id="in-progress-container" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)"></div>
           </div>
           <div>
             <div class="board-task-headline">
               Await feedback
-              <img
-                onclick="openAddTask()"
-                src="../assets/img/icons/board/plus-btn-blue.png"
-              />
+              <img onclick="openAddTask()" src="../assets/img/icons/board/plus-btn-blue.png" />
             </div>
-            <div
-              class="board-task-sub-container"
-              id="feedback-container"
-              ondrop="moveTo('feedback')"
-              ondragover="allowDrop(event)"
-            ></div>
+            <div class="board-task-sub-container" id="feedback-container" ondrop="moveTo('feedback')" ondragover="allowDrop(event)"></div>
           </div>
           <div>
             <div class="board-task-headline">Done</div>
-            <div
-              class="board-task-sub-container"
-              id="done-container"
-              ondrop="moveTo('done')"
-              ondragover="allowDrop(event)"
-            ></div>
+            <div class="board-task-sub-container" id="done-container" ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>
           </div>
         </section>
-        <section
-          class="floating-add-task-container slideFromRight"
-          id="floating-add-task-container"
-        >
+        <section class="floating-add-task-container slideFromRight" id="floating-add-task-container">
           <h1 class="floating-task-headline">Add Task</h1>
-          <img
-            onclick="closeAddTask()"
-            class="close"
-            src="../assets/img/icons/board/close.png"
-          />
-          <form 
-            id="board-add-task"
-            class="form-add-task "
-            onsubmit="return false;"
-          ></form>
+          <img onclick="closeAddTask()" class="close" src="../assets/img/icons/board/close.png" />
+          <form id="board-add-task" class="form-add-task" onsubmit="return false;"></form>
           <div class="btn-form-container">
-            <button class="blue-btn btn-form-board" onclick="addTask()">
-              Create Task
-            </button>
+            <button class="blue-btn btn-form-board" onclick="addTask()">Create Task</button>
           </div>
         </section>
-        <section id="task-card-detail-background" class="slideFromBottom" style="display: none"></section>
+        <section id="task-card-detail-background" class="slideFromBottom" style="display: none">
+          <div id="task-detail"></div> <!-- Hinzugefügtes Element -->
+        </section>
         <section class="bottom-menu" id="mobile-menu"></section>
       </div>
     </main>
+
     <script src="../js/storage.js"></script>
     <script src="../js/task-card-html.js"></script>
     <script src="../js/html.js"></script>
@@ -131,7 +84,6 @@
     <script src="../js/board.js"></script>
     <script src="../js/drag-and-drop.js"></script>
     <script src="../js/login.js"></script>
-
 
   </body>
 </html>
