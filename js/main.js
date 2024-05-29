@@ -20,7 +20,6 @@ async function boardInit() {
     displayTaskCard();
     updateBoardHtml();
     updateProfileName();
-    showLogOut()
 }
 /* 
 function summaryInit() {
