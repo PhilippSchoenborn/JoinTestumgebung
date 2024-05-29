@@ -20,7 +20,7 @@ async function boardInit() {
     displayTaskCard();
     updateBoardHtml();
     updateProfileName();
-    
+    showLogOut()
 }
 /* 
 function summaryInit() {
@@ -157,6 +157,16 @@ function bottomMenuActive() {
 
 }
 
+
+function showLogOut() {
+    let logOutContainer = document.getElementById('profile-logout-menu');
+    if (logOutContainer.style.display === 'flex') {
+        logOutContainer.style.display = 'none';
+
+    } else {
+        logOutContainer.style.display = 'flex';
+    }
+}
 
 
 
