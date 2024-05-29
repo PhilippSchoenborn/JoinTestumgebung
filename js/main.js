@@ -42,22 +42,17 @@ function summaryInit() {
 
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
-    for (let i = 0; i < includeElements.length; i++) {
-        const element = includeElements[i];
-        file = element.getAttribute("w3-include-html");
+    for (let element of includeElements) {
+        const file = element.getAttribute("w3-include-html");
         let resp = await fetch(file);
         if (resp.ok) {
             element.innerHTML = await resp.text();
-            // Hervorhebungsfunktion für Links hinzufügen
-            // addHighlightFunctionality(element);
-            // Aktiven Link setzen
-            // setHighlight();
         } else {
+            console.error('Error loading file:', file, resp.status);
             element.innerHTML = 'Page not found';
         }
     }
-  }
-
+}
 // function displayHeader() {
 //     let header = document.getElementById('header');
 
@@ -157,7 +152,7 @@ function bottomMenuActive() {
 
 }
 
-
+boardInit();
 
 
 
