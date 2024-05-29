@@ -76,7 +76,7 @@ function taskCardDetailCategoryHtml(task) {
   return `
     <div class="task-card-detail-category">
       <span class="${categoryClass}" ${categoryStyle}>${task.category}</span>
-      <img src="/assets/img/icons/form-add-task/close-blue-32.png" onclick="closeTaskCardDetail()">
+      <img src="../assets/img/icons/form-add-task/close-blue-32.png" onclick="closeTaskCardDetail()">
     </div>
   `;
 }
