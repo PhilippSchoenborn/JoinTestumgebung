@@ -1,4 +1,4 @@
-const STORAGE_TOKEN = 'D27C7VHM5527E2YM6SNX0MENK48ANZKJ394WDZQY';
+const STORAGE_TOKEN = '6KQVzK7rg9Avzi82VXMOq97RZXHygp4lj8GUUKIpCDWtCDO0vJGQb618YDXf7LjO';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 
 let contacts = [

@@ -234,15 +234,54 @@ body {
   flex-direction: column;
   gap: 8px;
 }
-.header {
+
+.headerBoard {
+  height: 136px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 20px 39px;
-  height: 96px;
   background-color: #4589ff;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
-  position: relative;
+}
+
+.logoHeader{
+  height: 56px;
+}
+
+#contactMenu {
+  color: #42526e;
+  padding: 8px 30px;
+  border-radius: 8px;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  width: 180px;
+}
+
+#asideTop {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 42px 23px;
+  width: 232px;
+}
+
+.menuLinks{
+  color: #42526e;
+  padding: 8px 30px;
+  border-radius: 8px;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  width: 180px;
+}
+
+.menuLinks:hover,
+.active {
+  background-color: #d2e3ff;
 }
 
 .logo-header {
@@ -284,13 +323,13 @@ body {
   cursor: pointer;
 }
 
-.header-menu {
+.headerMenu {
+  color: #fff;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  color: #fff;
-  font-size: 19px;
+  width: 433px;
+  justify-content: flex-end;
+  gap: 8px;
 }
 
 .help-icon {
@@ -325,8 +364,7 @@ body {
   border-radius: 8px;
 }
 
-#aside-menu {
-  padding: 66px 0;
+#sidebar {
   display: flex;
   flex-direction: column;
   width: 232px;
