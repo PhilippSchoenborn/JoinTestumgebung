@@ -277,6 +277,33 @@ body {
   width: 152px;
 }
 
+.dropdownIcon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 2px;
+  margin-bottom: 12px;
+  margin-right: 16px;
+}
+
+.taskCardDetailSeperator {
+  height: 24px;
+  width: 1px;
+  background-color: #d1d1d1;
+}
+
+.subtaskIconContainer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  position: absolute;
+  right: 16px;
+  bottom: 6px;
+}
+
 .profileIconWrap {
   height: 56px;
   width: 56px;

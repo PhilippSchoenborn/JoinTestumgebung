@@ -241,10 +241,10 @@ function taskCardDetailEditFormSubtaskHtml(task) {
       <div class="subtask-icon-container" id="subtask-icon-container-${task.id}">
         <img class="dropdown-icon" id="subtask-icon-plus-${task.id}" src="/assets/img/icons/form-add-task/plus-blue.png"/>
       </div>
-      <div class="subtask-icon-container" id="subtask-duo-icon-container-${task.id}" style="display: none;">
-        <img class="dropdown-icon" id="subtask-icon-close-${task.id}" onclick="clearEditSubtaskInputValue(${task.id})" src="/assets/img/icons/form-add-task/close-blue.png"/>
+      <div class="subtaskIconContainer" id="subtask-duo-icon-container-${task.id}" style="display: none;">
+        <img class="dropdownIcon" id="subtask-icon-close-${task.id}" onclick="clearEditSubtaskInputValue(${task.id})" src="/assets/img/icons/form-add-task/close-blue.png"/>
         <span class="task-card-detail-seperator"></span>
-        <img class="dropdown-icon" id="subtask-icon-check-${task.id}" onclick="addEditSubtaskItemToList(${task.id})" src="/assets/img/icons/form-add-task/check-blue.png"/>
+        <img class="dropdownIcon" id="subtask-icon-check-${task.id}" onclick="addEditSubtaskItemToList(${task.id})" src="/assets/img/icons/form-add-task/check-blue.png"/>
       </div>
     </div>
   </label>
@@ -261,10 +261,10 @@ function taskCardDetailEditFormSubtasksItemHtml(task) {
     let subtaskItemHtml = `
       <li class="subtask-item-li" onmouseleave="hideSubtaskEditTrashIcons(${task.id}, ${i})" onmouseenter="showSubtaskEditTrashIcons(${task.id}, ${i})">
         <input class="subtask-item" type="text" id="subtask-item-input-${task.id}-${i}" readonly value="${subtaskItem.content}" />
-        <div class="subtask-icon-container subtask-item-edit-icon-container" id="subtask-duo-icon-container-${task.id}-${i}" style="display: none;">
-          <img class="dropdown-icon" id="subtask-icon-edit-${task.id}-${i}" onclick="editSubtaskItemEditForm(${task.id}, ${i})" src="/assets/img/icons/form-add-task/edit-blue.png"/>
-          <span class="task-card-detail-seperator"></span>
-          <img class="dropdown-icon subtask-icon-edit" id="subtask-icon-trash-${task.id}-${i}" onclick="deleteSubtaskItem(${task.id}, ${i})" src="/assets/img/icons/form-add-task/trash-blue.png"/>
+        <div class="subtaskIconContainer subtask-item-edit-icon-container" id="subtask-duo-icon-container-${task.id}-${i}" style="display: none;">
+          <img class="dropdownIcon" id="subtask-icon-edit-${task.id}-${i}" onclick="editSubtaskItemEditForm(${task.id}, ${i})" src="../assets/img/icons/form-add-task/edit-blue.png"/>
+          <span class="taskCardDetailSeperator"></span>
+          <img class="dropdownIcon subtask-icon-edit" id="subtask-icon-trash-${task.id}-${i}" onclick="deleteSubtaskItem(${task.id}, ${i})" src="../assets/img/icons/form-add-task/trash-blue.png"/>
         </div>
       </li>
     `;
