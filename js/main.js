@@ -20,6 +20,16 @@ async function boardInit() {
     displayTaskCard();
     updateBoardHtml();
     updateProfileName();
+
+    // Prüfen, ob die Elemente existieren, bevor die Funktion aufgerufen wird
+    let contentContact = document.getElementById('contentContact');
+    let icon = document.getElementById('dropdownIconContact');
+
+    if (contentContact && icon) {
+        toggleContactDropdown(new Event('dummy')); // Ein Dummy-Event übergeben
+    } else {
+        console.error('Elemente contentContact oder dropdownIconContact wurden nicht gefunden.');
+    }
 }
 /* 
 function summaryInit() {
@@ -167,5 +177,24 @@ function showLogOut() {
     }
 }
 
+function toggleContactDropdown(event) {
+    let contentContact = document.getElementById('contentContact');
+    let icon = document.getElementById('dropdownIconContact');
 
+    if (!contentContact || !icon) {
+        console.error('Elemente contentContact oder dropdownIconContact wurden nicht gefunden.');
+        return;
+    }
+
+    // Verhindern, dass das Ereignis weitergeleitet wird
+    if (event) {
+        event.stopPropagation();
+    }
+
+    // Umschalten der Sichtbarkeit des Dropdowns
+    contentContact.style.display = contentContact.style.display === 'block' ? 'none' : 'block';
+
+    // Bild je nach Zustand ändern
+    icon.src = contentContact.style.display === 'block' ? '../assets/img/input/arrow_dropdown_up.png' : '../assets/img/input/arrow_dropdown_down.png';
+}
 

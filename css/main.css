@@ -296,7 +296,7 @@ body {
 }
 
 .subtaskIconContainer {
-  display: flex;
+  display: flex !important;
   align-items: center;
   gap: 4px;
   position: absolute;
@@ -391,6 +391,14 @@ body {
 
 .inner-profile-icon:hover {
   background-color: #b5dbff;
+}
+
+.dropdownContact .contentContact {
+  display: none;
+}
+
+.dropdownContact .contentContact.show {
+  display: block;
 }
 
 #profile-initialen {

@@ -77,7 +77,7 @@ function contactClickHandler(contact, i) {
       <h1>${contact.name}</h1>
       <div id="editDiv">
         <img id="edit" onclick="showeditContact(${i})" src="../assets/img/buttonIcons/edit_normal.png" alt="edit">
-        <img id="delete" onclick="deleteContact(${i})" src="/assets/img/buttonIcons/delete_normal.png" alt="delete" > 
+        <img id="delete" onclick="deleteContact(${i})" src="../assets/img/buttonIcons/delete_normal.png" alt="delete" > 
       </div>
     </div>
   </div>
@@ -105,7 +105,7 @@ function editContactResponsive(contact, i) {
   contactSection.innerHTML = ` 
     <div id="contactInfoResponsive">
     <div id="contactInformation" >
-    <h2>Contact Information</h2> <img onclick="backToContactResponsive()" id="backIconContactInfo" src="/assets/img/buttonIcons/arrow-left.svg">
+    <h2>Contact Information</h2> <img onclick="backToContactResponsive()" id="backIconContactInfo" src="../assets/img/buttonIcons/arrow-left.svg">
   </div>
   <div id="contactInfoandProfilePic" >
     <div id="whiteCircle">
@@ -129,10 +129,10 @@ function editContactResponsive(contact, i) {
     </div>
   </div>
   <div id="editResponsiveDiv" class="d-none" onclick="event.stopPropagation()">
-  <img onclick="showeditContact(${i})" src="/assets/img/buttonIcons/edit_contacts.png">
-  <img onclick="deleteContact(${i})" src="/assets/img/buttonIcons/delete_contact.png">
+  <img onclick="showeditContact(${i})" src="../assets/img/buttonIcons/edit_contacts.png">
+  <img onclick="deleteContact(${i})" src="../assets/img/buttonIcons/delete_contact.png">
   </div>
-  <div onclick="openEditResponsive(${i});event.stopPropagation()" id="editResponsive"><img src="/assets/img/buttonIcons/points.png" ></div>
+  <div onclick="openEditResponsive(${i});event.stopPropagation()" id="editResponsive"><img src="../assets/img/buttonIcons/points.png" ></div>
   </div>`;
 }
 
@@ -268,13 +268,13 @@ function editContactHTML(i) {
     </div>
     <div id="inputDiv" onclick="writeContact(event.stopPropagation())">
       <div id="inputBox1" class="inputBox inputBox1"><input id="editName" required type="text" placeholder="Name"> <img
-          src="/assets/img/addNewContact/person.png" alt=""></div>
+          src="../assets/img/addNewContact/person.png" alt=""></div>
       <div class="inputBox"><input type="text" id="editEmail" required placeholder="Email"> <img src="../assets/img/addNewContact/mail.png" alt=""></div>
       <div class="inputBox"><input type="tel" id="editPhone" required pattern="[0-9+]+" placeholder="Phone"> <img src="../assets/img/addNewContact/call.png" alt=""></div>
     </div>
     <div id="btnDiv">
       <button onclick="cancelEditContact();deleteContact(${i}) " id="cancelButtonContact">Delete</button>
-      <button onclick="editContactToArray(${i})" id="safeButton">Safe <img src="/assets/img/addNewContact/check_whitepng.png"></button>
+      <button onclick="editContactToArray(${i})" id="safeButton">Safe <img src="../assets/img/addNewContact/check_whitepng.png"></button>
     </div>
   </div>`;
 }

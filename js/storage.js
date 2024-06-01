@@ -66,20 +66,20 @@ const buttons = {
     urgent: {
         button: 'prioUrgent',
         icon: 'prioUrgentIcon',
-        activeIcon: '/assets/img/formAddTask/prioBtnIcon/prioUrgentWhite.png',
-        defaultIcon: '/assets/img/formAddTask/prioBtnIcon/prioUrgent.png'
+        activeIcon: '../assets/img/formAddTask/prioBtnIcon/prioUrgentWhite.png',
+        defaultIcon: '../assets/img/formAddTask/prioBtnIcon/prioUrgent.png'
     },
     medium: {
         button: 'prioMedium',
         icon: 'prioMediumIcon',
-        activeIcon: '/assets/img/formAddTask/prioBtnIcon/prioMediumWhite.png',
-        defaultIcon: '/assets/img/formAddTask/prioBtnIcon/prioMedium.png'
+        activeIcon: '../assets/img/formAddTask/prioBtnIcon/prioMediumWhite.png',
+        defaultIcon: '../assets/img/formAddTask/prioBtnIcon/prioMedium.png'
     },
     low: {
         button: 'prioLow',
         icon: 'prioLowIcon',
-        activeIcon: '/assets/img/formAddTask/prioBtnIcon/prioLowWhite.png',
-        defaultIcon: '/assets/img/formAddTask/prioBtnIcon/prioLow.png'
+        activeIcon: '../assets/img/formAddTask/prioBtnIcon/prioLowWhite.png',
+        defaultIcon: '../assets/img/formAddTask/prioBtnIcon/prioLow.png'
     }
 };
 
@@ -87,20 +87,20 @@ const editButtons = {
     urgent: {
         button: 'btnEditUrgent',
         icon: 'btnEditUrgentIcon',
-        activeIcon: '/assets/img/formAddTask/prioBtnIcon/prioUrgentWhite.png',
-        defaultIcon: '/assets/img/formAddTask/prioBtnIcon/prioUrgent.png'
+        activeIcon: '../assets/img/formAddTask/prioBtnIcon/prioUrgentWhite.png',
+        defaultIcon: '../assets/img/formAddTask/prioBtnIcon/prioUrgent.png'
     },
     medium: {
         button: 'btnEditMedium',
         icon: 'btnEditMediumIcon',
-        activeIcon: '/assets/img/formAddTask/prioBtnIcon/prioMediumWhite.png',
-        defaultIcon: '/assets/img/formAddTask/prioBtnIcon/prioMedium.png'
+        activeIcon: '../assets/img/formAddTask/prioBtnIcon/prioMediumWhite.png',
+        defaultIcon: '../assets/img/formAddTask/prioBtnIcon/prioMedium.png'
     },
     low: {
         button: 'btnEditLow',
         icon: 'btnEditLowIcon',
-        activeIcon: '/assets/img/formAddTask/prioBtnIcon/prioLowWhite.png',
-        defaultIcon: '/assets/img/formAddTask/prioBtnIcon/prioLow.png'
+        activeIcon: '../assets/img/formAddTask/prioBtnIcon/prioLowWhite.png',
+        defaultIcon: '../assets/img/formAddTask/prioBtnIcon/prioLow.png'
     }
 };
 

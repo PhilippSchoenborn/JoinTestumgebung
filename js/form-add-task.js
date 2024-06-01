@@ -58,7 +58,7 @@ function removeClassesAndData() {
 
         // Setzt das 'src' Attribut des 'img' Elements zurück
         let img = button.querySelector('img');
-        img.setAttribute('src', `/assets/img/icons/prio-btn/${dataValue.toLowerCase()}.png`);
+        img.setAttribute('src', `../assets/img/icons/prio-btn/${dataValue.toLowerCase()}.png`);
     });
 }
 
@@ -73,7 +73,7 @@ function addPrioData(button, img, priority, originalImgSrc) {
     let dataValue = button.getAttribute('data-value');
 
     // Ändert das 'src' Attribut des 'img' Elements
-    img.setAttribute('src', `/assets/img/icons/prio-btn/${priority.toLowerCase()}-white.png`);
+    img.setAttribute('src', `../assets/img/icons/prio-btn/${priority.toLowerCase()}-white.png`);
 
     // Fügt die Daten zum Array hinzu
     buttonData.push({ dataValue, originalImgSrc, class: priority.toLowerCase() });

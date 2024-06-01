@@ -77,24 +77,24 @@ function assignedDropdownHtml(){
     return `<div class="groupInput m-b-24">
     <label for="contacts" class="formLabel">Assigned to</label>
     <div class="dropdownContact">
-      <div class="inputIconWrap">
-        <input
-          type="text"
-          class="addTaskInputStandard"
-          placeholder="Select contacts to assign"
-          id="inputContact"
-          onclick="toggleContactDropdown(event)"
-        />
-        <img
-          src="../assets/img/input/arrow_dropdown_down.png"
-          class="dropdown-icon"
-          id="dropdownIconContact"
-          onclick="toggleContactDropdown(event)"
-        />
-      </div>
-      <div class="contentContact" id="contentContact"></div>
+        <div class="inputIconWrap">
+            <input
+                type="text"
+                class="addTaskInputStandard"
+                placeholder="Select contacts to assign"
+                id="inputContact"
+                onclick="toggleContactDropdown(event)"
+            />
+            <img
+                src="../assets/img/input/arrow_dropdown_down.png"
+                class="dropdown-icon"
+                id="dropdownIconContact"
+                onclick="toggleContactDropdown(event)"
+            />
+        </div>
+        <div class="contentContact" id="contentContact"></div>
     </div>
-  </div>`;
+</div>`;
 }
 function categoryDropdownHtml(){
     return `<div class="groupInput m-b-24">
@@ -214,3 +214,4 @@ function okBtnHtml(){
 function closeFormHtml(){
     return `<div class="closeBtnTaskOverlay"><img class="taskOverlayCloseBtn" src="../assets/img/formAddTask/addTaskClose.png" onclick="closeOkCardOverlay()"></div>`;
 }
+
