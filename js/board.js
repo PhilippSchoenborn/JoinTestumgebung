@@ -175,52 +175,75 @@ function deleteSubtaskItem(taskId, subtaskId) {
     }
 }
 
-function saveEditTask(currentTaskId) {
-    let titleElement = document.getElementById('title-' + currentTaskId);
-    let descriptionElement = document.getElementById('description-' + currentTaskId);
-    let dueDateElement = document.getElementById('due-date-' + currentTaskId);
+async function saveEditTask(taskId) {
+    let task = getTaskById(taskId);
+    if (!task) return;
 
-    let title = titleElement && titleElement.value ? titleElement.value : '';
-    let description = descriptionElement && descriptionElement.value ? descriptionElement.value : '';
-    let dueDate = dueDateElement && dueDateElement.value ? dueDateElement.value : '';
+    task.title = document.getElementById(`title-${taskId}`).value;
+    task.description = document.getElementById(`description-${taskId}`).value;
+    task.dueDate = document.getElementById(`due-date-${taskId}`).value;
+    task.prioClass = getSelectedPrioClass();
+    
+    if (task.prioClass && buttons[task.prioClass]) {
+        task.priority = buttons[task.prioClass].defaultIcon;
+    }
 
-    let currentTask = tasks.find(t => t.id === currentTaskId);
-
-    let category = currentTask.category;
-    let priority = buttonData[0]?.dataValue || currentTask.priority;
-    let prioImage = buttonData[0]?.originalImgSrc || currentTask.prioImage;
-    let prioClass = buttonData[0]?.class || currentTask.prioClass;
-    let assignedContacts = selectAssigned() || currentTask.assignedContacts;
-    let assignedImage = collectProfileImage(assignedContacts) || currentTask.assignedImage;
-    let subtasks = subtaskItemValue() || currentTask.subtasks;
-    let status = currentTask.status;
-
-    let task = {
-        id: currentTaskId,
-        category,
-        title,
-        description,
-        dueDate,
-        priority,
-        prioImage,
-        prioClass,
-        assignedContacts,
-        assignedImage,
-        subtasks,
-        status
-    };
-
-    let taskIndex = tasks.findIndex(t => t.id === currentTaskId);
+    task.assigned = getAssignedContacts();
+  
+    // Aktualisieren Sie die globale Aufgabenliste
+    const taskIndex = tasks.findIndex(t => t.id === task.id);
     if (taskIndex !== -1) {
         tasks[taskIndex] = task;
     } else {
         tasks.push(task);
     }
-    saveTasks();
-    displaySucessMessage();
-    loadTasks();
+    
+    // Speichern Sie die aktualisierte Aufgabenliste
+    await saveTasks();
+  
+    // Aktualisieren Sie die Task-Karte und Detail-Ansicht
+    updateTaskCard(taskId);
+    updateTaskCardDetail(taskId);
     closeTaskCardDetail();
-    updateBoardHtml();
+}
+  
+
+function getSelectedPrioClass() {
+    if (document.querySelector('#prio-btn-edit-form-urgent').classList.contains('urgent')) return 'urgent';
+    if (document.querySelector('#prio-btn-edit-form-medium').classList.contains('medium')) return 'medium';
+    if (document.querySelector('#prio-btn-edit-form-low').classList.contains('low')) return 'low';
+    return '';
+}
+
+function getAssignedContacts() {
+    let assigned = [];
+    document.querySelectorAll('.assigned-contact').forEach(contact => {
+        assigned.push({ 
+            name: contact.textContent, 
+            profileColor: contact.style.backgroundColor, 
+            initialien: contact.dataset.initialien 
+        });
+    });
+    return assigned;
+}
+
+function updateTaskCard(taskId) {
+    const task = getTaskById(taskId);
+    const taskCard = document.getElementById(`task-${taskId}`);
+    if (!taskCard || !task) return;
+
+    taskCard.querySelector('.task-card-title').textContent = task.title;
+    taskCard.querySelector('.task-card-description').textContent = task.description;
+    taskCard.querySelector('.task-card-prio img').src = task.priority;
+    taskCard.querySelector('.task-card-assigned').innerHTML = task.assigned.map(contactProfileImageHtml).join('');
+}
+
+function updateTaskCardDetail(taskId) {
+    const task = getTaskById(taskId);
+    const taskDetailContainer = document.querySelector('.task-card-detail-container');
+    if (!taskDetailContainer || !task) return;
+
+    taskDetailContainer.innerHTML = taskCardDetailHtml(task);
 }
 
 function searchTasks(query) {

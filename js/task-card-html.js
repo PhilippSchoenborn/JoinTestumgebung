@@ -15,12 +15,11 @@ function taskCardDetailHtml(task) {
 }
 
 function taskCardDetailAssignedHtml(task) {
-  const assigned = Array.isArray(task.assigned) ? task.assigned : [];
   return `
     <div class="task-card-detail-column-wrapper">
       <span class="task-card-detail-label">Assigned to:</span>
       <div class="task-card-detail-assigned">
-        ${taskCardDetailAssignedItemHtml(assigned)}
+        ${task.profileHtml || ''}
       </div>
     </div>
   `;
@@ -37,6 +36,8 @@ function getTaskById(taskId) {
   const task = tasks.find(task => task.id === taskId);
   if (task) {
     task.assigned = task.assigned || [];
+    task.prioValue = task.prioValue || ''; // Sicherstellen, dass prioValue vorhanden ist
+    task.prioImage = task.prioImage || ''; // Sicherstellen, dass prioImage vorhanden ist
     return task;
   }
   return null; // oder ein leeres Objekt, falls keine Aufgabe gefunden wird
@@ -84,10 +85,10 @@ function taskCardDetailCategoryHtml(task) {
 
 function taskCardDetailPrioHtml(task) {
   return `
-    <div class="task-card-detail-wrapper">
-      <span class="task-card-detail-label">Priority:</span>
-      <span class="task-card-detail-value">${task.priority} <img src="${task.prioImage || ''}" alt="Priority Icon"></span>
-    </div>
+      <div class="task-card-detail-wrapper">
+          <span class="task-card-detail-label">Priority:</span>
+          <span class="task-card-detail-value"><img src="${task.priority}" alt="Priority" /></span>
+      </div>
   `;
 }
 
@@ -134,16 +135,16 @@ function taskCardDetailBtnContainerHtml(task) {
 function taskCardHtml(task) {
   const { categoryClass, categoryStyle } = taskCardCategoryBackgroundColor(task);
   return `
-    <div class="task-card ${task.status}" id=(${task.id}) draggable="true" ondragstart="startDragging(event, ${task.id})" onclick="openTaskCardDetail(${task.id})">
-      <span class="${categoryClass}" ${categoryStyle}>${task.category || ''}</span>
-      <span class="task-card-title">${task.title}</span>
-      <span class="task-card-description">${task.description || ''}</span>   
-      ${taskCardSubtaskProcessbarHtml(task)}    
-      <div class="task-card-assigned-prio-container">
-        <div class="task-card-assigned">${task.assignedImage || ''}</div>
-        <div class="task-card-prio"><img src="${task.prioImage || ''}"/></div>
+      <div class="task-card ${task.status}" id="task-${task.id}" draggable="true" ondragstart="startDragging(event, ${task.id})" onclick="openTaskCardDetail(${task.id})">
+          <span class="${categoryClass}" ${categoryStyle}>${task.category || ''}</span>
+          <span class="task-card-title">${task.title}</span>
+          <span class="task-card-description">${task.description || ''}</span>   
+          ${taskCardSubtaskProcessbarHtml(task)}    
+          <div class="task-card-assigned-prio-container">
+              <div class="task-card-assigned">${task.profileHtml || ''}</div>
+              <div class="task-card-prio"><img src="${task.priority}" alt="Priority" /></div>
+          </div>
       </div>
-    </div>
   `;
 }
 
@@ -202,20 +203,20 @@ function taskCardDetailEditFormPrioHtml(task) {
   let prioImgLow = task.prioClass === 'low' ? '../assets/img/icons/prio-btn/low-white.png' : '../assets/img/icons/prio-btn/low.png';
 
   return `
-    <label for="priority" class="label-prio">
-      Priority
-      <div class="prio-btn-container">
-        <button class="prio-btn ${prioClassUrgent}" id="prio-btn-edit-form-urgent" data-value="Urgent" onclick="prioBtnEditFormData('Urgent')">
-          Urgent <img src="${prioImgUrgent}" id="prio-icon-urgent"/>
-        </button>
-        <button class="prio-btn ${prioClassMedium}" id="prio-btn-edit-form-medium" data-value="Medium" onclick="prioBtnEditFormData('Medium')">
-          Medium <img src="${prioImgMedium}" id="prio-icon-medium"/>
-        </button>
-        <button class="prio-btn ${prioClassLow}" id="prio-btn-edit-form-low" data-value="Low" onclick="prioBtnEditFormData('Low')">
-          Low <img src="${prioImgLow}" id="prio-icon-low"/>
-        </button>
-      </div>
-    </label>`;
+      <label for="priority" class="label-prio">
+          Priority
+          <div class="prio-btn-container">
+              <button class="prio-btn ${prioClassUrgent}" id="prio-btn-edit-form-urgent" data-value="Urgent" onclick="prioBtnEditFormData('Urgent')">
+                  Urgent <img src="${prioImgUrgent}" id="prio-icon-urgent" alt="Priority" />
+              </button>
+              <button class="prio-btn ${prioClassMedium}" id="prio-btn-edit-form-medium" data-value="Medium" onclick="prioBtnEditFormData('Medium')">
+                  Medium <img src="${prioImgMedium}" id="prio-icon-medium" alt="Priority" />
+              </button>
+              <button class="prio-btn ${prioClassLow}" id="prio-btn-edit-form-low" data-value="Low" onclick="prioBtnEditFormData('Low')">
+                  Low <img src="${prioImgLow}" id="prio-icon-low" alt="Priority" />
+              </button>
+          </div>
+      </label>`;
 }
 
 function taskCardDetailEditFormAssignedHtml(task) {
@@ -223,13 +224,13 @@ function taskCardDetailEditFormAssignedHtml(task) {
     <label for="assigned" class="label">
       Assigned To (optional)
       <div class="input-icon-container">
-        <input id="assigned" type="text" autocomplete="off" placeholder="Select contacts to assign" onclick="toggleContactDropdown(event)"/>
-        <img onclick="toggleContactDropdown(event)" class="dropdown-icon" id="assigned-edit-form-dropdown-arrow" src="../assets/img/icons/form-add-task/arrow-dropdown-down.png"/>
+        <input id="assigned-${task.id}" type="text" autocomplete="off" placeholder="Select contacts to assign" onclick="toggleContactDropdown(${task.id}, event)"/>
+        <img onclick="toggleContactDropdown(${task.id}, event)" class="dropdown-icon" id="assigned-edit-form-dropdown-arrow-${task.id}" src="../assets/img/icons/form-add-task/arrow-dropdown-down.png"/>
       </div>
-      <div class="custom-dropdown-assigned custom-dropdown" id="dropdown-edit-form-assigned"></div>
+      <div class="custom-dropdown-assigned custom-dropdown" id="dropdown-edit-form-assigned-${task.id}"></div>
     </label>    
     <div id="task-card-detail-profile-assigned">
-      ${task.assignedImage}
+      ${task.profileHtml || ''}
     </div>
   `;
 }
@@ -242,11 +243,13 @@ function taskCardDetailEditFormSubtaskHtml(task) {
       <div class="subtaskIconContainer" id="subtask-icon-container-${task.id}">
         <img class="dropdown-icon" id="subtask-icon-plus-${task.id}" src="../assets/img/icons/form-add-task/plus-blue.png"/>
       </div>
+
       <div class="subtaskIconContainer" id="subtask-duo-icon-container-${task.id}" style="display: none;">
-        <img class="dropdownIcon" id="subtask-icon-close-${task.id}" onclick="clearEditSubtaskInputValue(${task.id})" src="../assets/img/icons/form-add-task/close-blue.png"/>
-        <span class="task-card-detail-seperator"></span>
-        <img class="dropdownIcon" id="subtask-icon-check-${task.id}" onclick="addEditSubtaskItemToList(${task.id})" src="../assets/img/icons/form-add-task/check-blue.png"/>
-      </div>
+      <img class="dropdownIcon" id="subtask-icon-close-${task.id}" onclick="clearEditSubtaskInputValue(${task.id})" src="../assets/img/icons/form-add-task/close-blue.png"/>
+      <span class="task-card-detail-seperator"></span>
+      <img class="dropdownIcon" id="subtask-icon-check-${task.id}" onclick="addEditSubtaskItemToList(${task.id})" src="../assets/img/icons/form-add-task/check-blue.png"/>
+    </div>
+    
     </div>
   </label>
   <div class="subtask-container subtask-edit-container" id="task-card-detail-subtask-${task.id}">

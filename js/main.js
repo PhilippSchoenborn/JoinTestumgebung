@@ -177,24 +177,24 @@ function showLogOut() {
     }
 }
 
-function toggleContactDropdown(event) {
-    let contentContact = document.getElementById('contentContact');
-    let icon = document.getElementById('dropdownIconContact');
-
-    if (!contentContact || !icon) {
-        console.error('Elemente contentContact oder dropdownIconContact wurden nicht gefunden.');
-        return;
+function toggleContactDropdown(taskId, event) {
+    event.stopPropagation();
+    const contentContact = document.getElementById(`dropdown-edit-form-assigned-${taskId}`);
+    const dropdownIconContact = document.getElementById(`assigned-edit-form-dropdown-arrow-${taskId}`);
+  
+    if (!contentContact || !dropdownIconContact) {
+      console.error('Elemente contentContact oder dropdownIconContact wurden nicht gefunden.');
+      return;
     }
-
-    // Verhindern, dass das Ereignis weitergeleitet wird
-    if (event) {
-        event.stopPropagation();
-    }
-
-    // Umschalten der Sichtbarkeit des Dropdowns
-    contentContact.style.display = contentContact.style.display === 'block' ? 'none' : 'block';
-
-    // Bild je nach Zustand ändern
-    icon.src = contentContact.style.display === 'block' ? '../assets/img/input/arrow_dropdown_up.png' : '../assets/img/input/arrow_dropdown_down.png';
-}
+  
+    contentContact.classList.toggle('show');
+    dropdownIconContact.classList.toggle('rotate');
+  }
+  
+  document.addEventListener('click', function() {
+    const dropdowns = document.querySelectorAll('.custom-dropdown-assigned');
+    const icons = document.querySelectorAll('.dropdown-icon');
+    dropdowns.forEach(dropdown => dropdown.classList.remove('show'));
+    icons.forEach(icon => icon.classList.remove('rotate'));
+  });
 

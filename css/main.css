@@ -289,6 +289,18 @@ body {
   margin-right: 16px;
 }
 
+.custom-dropdown-assigned {
+  display: none;
+}
+
+.custom-dropdown-assigned.show {
+  display: block;
+}
+
+.dropdown-icon.rotate {
+  transform: rotate(180deg);
+}
+
 .taskCardDetailSeperator {
   height: 24px;
   width: 1px;
@@ -297,11 +309,13 @@ body {
 
 .subtaskIconContainer {
   display: flex !important;
-  align-items: center;
+  display: inline-block !important;
   gap: 4px;
   position: absolute;
   right: 16px;
   bottom: 6px;
+  width: 30px;
+  justify-content: space-between !important;
 }
 
 .profileIconWrap {

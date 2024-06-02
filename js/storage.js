@@ -104,6 +104,11 @@ const editButtons = {
     }
 };
 
+function getAssignedContacts() {
+    const assignedElements = document.querySelectorAll('.assigned-contact');
+    return Array.from(assignedElements).map(element => element.textContent.trim());
+  }
+
 
 let activePriority = '';
 
