@@ -150,10 +150,10 @@ function saveContacs() {
 }
 
 
-function loadContacts() {
-    let storageAsText = localStorage.getItem("contacts");
+// function loadContacts() {
+//     let storageAsText = localStorage.getItem("contacts");
 
-    if (storageAsText) {
-        contacts = JSON.parse(storageAsText);
-    }
-}
+//     if (storageAsText) {
+//         contacts = JSON.parse(storageAsText);
+//     }
+// }

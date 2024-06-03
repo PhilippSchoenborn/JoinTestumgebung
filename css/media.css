@@ -1,244 +1,436 @@
-@media (max-width: 375px){
-
-    #formAddTask{
-        margin: 0;
-        padding: 0;
-        width: auto !important;
-    }
-
-    .groupInput{
-        width: 300px !important;
-    }
-
-    .addTaskInputStandard{
-        width: 300px !important;
-        font-size: 16px !important;
-    }
-
-    .textareaDescription{
-        width: 300px !important;
-    }
-
-    .groupPrioBtn{
-        width: 300px !important;
-    }
-
-    .prioBtnContainer{
-        width: 300px !important;
-    }
-
-    .prioBtn{
-        font-size: 12px !important;
-    }
-
-    #prioUrgentIcon{
-        width: 12px !important;
-    }
-
-    #prioMediumIcon{
-        width: 12px !important;
-    }
-
-    #prioLowIcon{
-        width: 12px !important;
-    }
-
-    .inputIconWrap{
-        width: 300px !important;
-    }
-
-    #inputContact{
-        font-size: 16px !important;
-    }
-
-    .textareaDescription{
-        font-size: 16px !important;
-    }
-
-    .btn-cancel{
-        font-size: 12px !important;
-    }
-
-    .addTaskBtnPostion{
-        position: unset !important;
-    }
-
-    .contactList{
-        width: 300px !important;
-        margin: 0;
-    }
-
-    .contentContact{
-        width: 300px !important;
-    }   
-    
-    .singUpForm{
-        margin-bottom: 50px;
-    }
-}
-    
-@media (max-width: 414px){
-
-    #formAddTask{
-        margin: 0;
-        padding: 0;
-        width: auto !important;
-    }
-
-    .formFloatingInputContainer{
-        margin-left: 5px;
-    }
-
-    .groupInput{
-        width: 355px !important;
-    }
-
-    .addTaskInputStandard{
-        width: 355px !important;
-    }
-
-    .textareaDescription{
-        width: 355px !important;
-    }
-
-    .groupPrioBtn{
-        width: 355px !important;
-    }
-
-    .prioBtnContainer{
-        width: 355px !important;
-    }
-
-    .prioBtn{
-        font-size: 12px !important;
-    }
-
-    #prioUrgentIcon{
-        width: 12px !important;
-    }
-
-    #prioMediumIcon{
-        width: 12px !important;
-    }
-
-    #prioLowIcon{
-        width: 12px !important;
-    }
-
-    .inputIconWrap{
-        width: 355px !important;
-    }
-
-    #inputContact{
-        font-size: 16px !important;
-    }
-
-    .textareaDescription{
-        font-size: 16px !important;
-    }
-
-    .btn-cancel{
-        font-size: 12px !important;
-    }
-
-    .addTaskBtnPostion{
-        position: unset !important;
-    }
-
-    .contactList{
-        width: 355px !important;
-        margin: 0;
-    }
-
-    .contentContact{
-        width: 355px !important;
-    }
-
-    .singUpForm{
-        margin-bottom: 50px;
-    }
-}
-
-@media (max-width: 475px){
-
-    #formAddTask{
-        margin: 0;
-        padding: 0;
-        width: auto !important;
-    }
-
-    .formFloatingInputContainer{
-        margin-left: 5px;
-    }
-
-    .groupInput{
-        width: 398px !important;
-    }
-
-    .addTaskInputStandard{
-        width: 398px !important;
-        font-size: 16px !important;
-    }
-
-    .textareaDescription{
-        width: 398px !important;
-    }
-
-    .groupPrioBtn{
-        width: 398px !important;
-    }
-
-    .prioBtnContainer{
-        width: 398px !important;
-    }
-
-    .prioBtn{
-        font-size: 12px !important;
-    }
-
-    #prioUrgentIcon{
-        width: 12px !important;
-    }
-
-    #prioMediumIcon{
-        width: 12px !important;
-    }
-
-    #prioLowIcon{
-        width: 12px !important;
-    }
-
-    .inputIconWrap{
-        width: 398px !important;
-    }
-
-    #inputContact{
-        font-size: 16px !important;
-    }
-
-    .textareaDescription{
-        font-size: 16px !important;
-    }
-
-    .btn-cancel{
-        font-size: 12px !important;
-    }
-
-    .addTaskBtnPostion{
-        position: fixed !important;
-    }
-
-    .contactList{
-        width: 398px !important;
-        margin: 0;
-    }
-
-    .contentContact{
-        width: 398px !important;
-    }
-
-    .singUpForm{
-        margin-bottom: 50px;
-    }
-}
-    
+* {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-size: 16px;
+  }
+  
+  span {
+    display: inline-block;
+  }
+  
+  :root {
+    --inter-font: "Inter", sans-serif;
+  }
+  
+  body {
+    min-height: 100vh;
+  }
+  
+  .blue-btn a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 23px;
+  }
+  
+  .blue-btn {
+    background-color: #4589ff;
+    padding: 16px 10px;
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+    font-size: 23px;
+    cursor: pointer;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .blue-btn:hover {
+    background-color: #005dff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .blue-btn:active {
+    background-color: #fff;
+    color: #4589ff;
+  }
+  
+  .blue-btn:active a {
+    background-color: #fff;
+    color: #4589ff;
+  }
+  
+  .white-btn {
+    padding: 10px 18px;
+    display: flex;
+    border: 1px solid #647188;
+    background-color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    align-items: center;
+  }
+  
+  .white-btn:hover {
+    border: 2px solid #4589ff;
+    box-shadow: 0 4px 8ox 0 rgba(0, 0, 0, 0.2);
+    color: #4589ff;
+  }
+  
+  .white-btn:active {
+    border: 1px solid #005dff;
+    color: #005dff;
+  }
+  
+  .headline {
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset: 16px;
+    text-decoration-color: #4589ff;
+    text-decoration-thickness: 3px;
+  }
+  
+  .main-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-container {
+    border-radius: 30px;
+    padding: 48px 65px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.08);
+    width: 552px;
+    margin: 0 auto;
+    margin-top: 65px;
+    gap: 39px;
+  }
+  
+  .login-label input {
+    border: none;
+    outline: none;
+    font-size: 19px;
+  }
+  
+  .password-label:focus-within {
+    border-bottom: 1px solid #005dff;
+  }
+  
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .policy-container {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+    justify-content: center;
+    position: absolute;
+    bottom: 43px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .policy-container a {
+    text-decoration: none;
+    color: #42526e;
+    cursor: pointer;
+  }
+  
+  .policy-container a:hover {
+    color: #005dff !important;
+  }
+  
+  .logo {
+    padding-top: 80px;
+    padding-left: 77px;
+  }
+  
+  .login-label {
+    border-bottom: 1px solid #d1d1d1;
+    padding: 12px 21px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 422px;
+  }
+  
+  .login-label input {
+    cursor: pointer;
+  }
+  
+  .sign-up-text {
+    font-size: 23px;
+  }
+  
+  .sign-up-container {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+  }
+  
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+  }
+  
+  .checkbox {
+    appearance: none;
+    background-image: url(/assets/img/checkbox/checkbox-border-blue.png);
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+  
+  .checkbox:hover {
+    background-color: #edf2fa;
+    border-radius: 12px;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .checkbox:checked {
+    background-image: url(/assets/img/checkbox/checkbox-checked-blue.png);
+  }
+  
+  .successfully-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff9a;
+  }
+  
+  .message {
+    font-size: 23px;
+    background-color: #4589ff;
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
+    padding: 23px 19px;
+  }
+  
+  .error-message {
+    font-family: var(--inter-font);
+    font-size: 13px;
+    color: #ff8190;
+  }
+  
+  .error-message-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 39px;
+    height: 96px;
+    background-color: #4589ff;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .logo-header {
+    height: 56px;
+  }
+  
+  .wrap-profile-icon {
+    height: 56px;
+    width: 56px;
+    background-color: #fff;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .inner-profile-icon {
+    height: 50px;
+    width: 50px;
+    border: 2px solid #4589ff;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .inner-profile-icon:hover {
+    background-color: #b5dbff;
+  }
+  
+  #profile-initialen {
+    color: #005dff;
+    font-size: 19px;
+    font-weight: 700;
+  }
+  
+  .header-project-name {
+    cursor: pointer;
+  }
+  
+  .header-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    color: #fff;
+    font-size: 19px;
+  }
+  
+  .help-icon {
+    cursor: pointer;
+  }
+  
+  .help-icon:hover {
+    transform: scale(1.1);
+  }
+  
+  .menu-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    margin: 0 auto;
+    align-items: center;
+  }
+  
+  .menu-container a {
+    text-decoration: none;
+    color: #42526e;
+    width: 186px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 8px 30px;
+  }
+  
+  .menu-container a:hover {
+    background-color: #d2e3ff;
+    border-radius: 8px;
+  }
+  
+  #aside-menu {
+    padding: 66px 0;
+    display: flex;
+    flex-direction: column;
+    width: 232px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+    justify-content: space-between;
+    height: calc(100vh - 96px);
+  }
+  
+  .policy-menu-container a {
+    color: #42526e;
+    text-decoration: none;
+  }
+  
+  .policy-menu-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin: 0 auto;
+  }
+  
+  .active {
+    background-color: #d2e3ff;
+    border-radius: 8px;
+  }
+  
+  .logout-container {
+    background-color: #fff;
+    border-radius: 20px 0 20px 20px;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    position: absolute;
+    right: 4px;
+    top: 97px;
+  }
+  
+  .logout-container a {
+    text-decoration: none;
+    color: #42526e;
+    padding: 8px 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+  }
+  
+  .logout-container a:hover {
+    background-color: #e3eeff;
+  }
+  
+  .help-link {
+    display: none !important;
+  }
+  
+  .bottom-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 16px;
+    box-shadow: 0 -1px 6px 0 rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .bottom-menu a {
+    text-decoration: none;
+    color: #42526e;
+  }
+  
+  .summary-active span {
+    color: #4589ff;
+  }
+  
+  .summary-active img {
+    content: url(/assets/img/icons/menu/summary-blue.png);
+  }
+  
+  .board-active span {
+    color: #4589ff;
+  }
+  
+  .board-active img {
+    content: url(/assets/img/icons/menu/board-blue.png);
+  }
+  
+  .contacts-active span {
+    color: #4589ff;
+  }
+  
+  .contact-active img {
+    content: url(/assets/img/icons/menu/contacts-blue.png);
+  }
+  
+  .add-task-active span {
+    color: #4589ff;
+  }
+  
+  .add-task-active img {
+    content: url(/assets/img/icons/menu/add-task-blue.png);
+  }
+  
+  .bottom-menu span {
+    display: flex !important;
+  }
+  

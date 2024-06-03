@@ -10,16 +10,18 @@
 
 async function boardInit() {
     await includeHTML();
+    currentPage();
+    // loadContacts();
     displayMobileMenu();
     bottomMenuActive();
     await loadTasks();
-    await loadContacts();
     // displayHeader();
     // displayAsideMenu();
     // menuActive();
     displayTaskCard();
     updateBoardHtml();
     updateProfileName();
+    
 
     // Prüfen, ob die Elemente existieren, bevor die Funktion aufgerufen wird
     let contentContact = document.getElementById('contentContact');
@@ -31,6 +33,66 @@ async function boardInit() {
         console.error('Elemente contentContact oder dropdownIconContact wurden nicht gefunden.');
     }
 }
+
+function currentPage() {
+    let currentPage = window.location.href;
+
+    if(window.innerWidth < 1360) {
+        responsiveCurrentPage(currentPage);
+    }else {
+        normalCurrentPage(currentPage);
+    }
+}
+
+function normalCurrentPage(cP) {
+    if (cP.includes('summary.html')) {
+        document.getElementById('summaryMenu').classList.add('currentPage');
+    }
+    else if (cP.includes('addTask.html')) {
+        document.getElementById('addTaskMenu').classList.add('currentPage');
+    }
+    else if (cP.includes('board.html')) {
+        document.getElementById('boardMenu').classList.add('currentPage');
+    } 
+    else if(cP.includes('contact.html')) {
+        document.getElementById('contactMenu').classList.add('currentPage');
+    }
+    else if (cP.includes('imprint.html')){
+        document.getElementById('imprintMenu').classList.add('currentPagePolicy');
+    }
+    else if(cP.includes('dataProtection.html')){
+        document.getElementById('dataProtectionMenu').classList.add('currentPagePolicy');
+    }
+    }
+    
+    function responsiveCurrentPage(cP) {
+    responsiveLogoutMenu();
+    if (cP.includes('summary.html')) {
+        document.getElementById('summaryMenu').classList.add('currentPageResponsive');
+        document.getElementById('summaryIcon').style = 'content: url(/assets/img/aside-icon/summary_blue.png) !important;';
+    }
+    else if (cP.includes('addTask.html')) {
+        document.getElementById('addTaskMenu').classList.add('currentPageResponsive');
+        document.getElementById('addTaskIcon').style = 'content: url(/assets/img/aside-icon/addTask_blue.png)!important;';
+    }
+    else if (cP.includes('board.html')) {
+        document.getElementById('boardMenu').classList.add('currentPageResponsive');
+        document.getElementById('boardIcon').style = 'url(/assets/img/aside-icon/board_blue.png) !important;';
+    } 
+    else if(cP.includes('contact.html')) {
+        document.getElementById('contactMenu').classList.add('currentPageResponsive');
+        document.getElementById('contactsIcon').style = 'content: url(/assets/img/aside-icon/contacts_blue.png)!important;';
+    } 
+    
+    }
+    
+    function responsiveLogoutMenu() {
+    document.getElementById('helpHeaderMenu').classList.remove('d-none');
+    document.getElementById('logout-linkLogOut').classList.add('blueColorResponsive');
+    document.getElementById('logout-linkData').classList.add('blueColorResponsive');
+    document.getElementById('logout-linkImprint').classList.add('blueColorResponsive');
+    }
+
 /* 
 function summaryInit() {
     displayMobileMenu();

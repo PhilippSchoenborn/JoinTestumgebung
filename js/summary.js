@@ -1,6 +1,6 @@
 async function summaryInit() {
     await includeHTML();
-    // currentPage();
+    currentPage();
     renderContactListDropdown();
     openCategoryDropdown();
     // openEditCategoryDropdown();

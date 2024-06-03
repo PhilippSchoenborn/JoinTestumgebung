@@ -1,6 +1,6 @@
 async function init() {
     await includeHTML();
-    responsive();
+    // responsive();
     renderContactListDropdown();
     openCategoryDropdown();
     openEditCategoryDropdown();
@@ -21,8 +21,9 @@ async function signUpInit(){
 
 async function addTaskInit(){
     await includeHTML();
-    // currentPage();
+    currentPage();
     // responsive();
+    loadContacts();
     renderContactListDropdown();
     openCategoryDropdown();
     // openEditCategoryDropdown();
@@ -36,7 +37,8 @@ async function addTaskInit(){
 
 async function contactInit(){
     await includeHTML();
-    // currentPage();
+    currentPage();
+    loadContacts();
     // responsive();
     renderContactListDropdown();
     openCategoryDropdown();
@@ -51,7 +53,7 @@ async function contactInit(){
 
 async function imprintInit(){
     await includeHTML();
-    // currentPage();
+    currentPage();
     // responsive();
     renderContactListDropdown();
     openCategoryDropdown();
@@ -66,7 +68,7 @@ async function imprintInit(){
 
 async function dataProtectionInit(){
     await includeHTML();
-    // currentPage();
+    currentPage();
     // responsive();
     renderContactListDropdown();
     openCategoryDropdown();
@@ -81,7 +83,7 @@ async function dataProtectionInit(){
 
 async function helpInit(){
     await includeHTML();
-    // currentPage();
+    currentPage();
     // responsive();
     renderContactListDropdown();
     openCategoryDropdown();
@@ -103,61 +105,120 @@ async function includeHTML() {
         if (resp.ok) {
             element.innerHTML = await resp.text();
             // Hervorhebungsfunktion für Links hinzufügen
-            addHighlightFunctionality(element);
+            // addHighlightFunctionality(element);
             // Aktiven Link setzen
-            setHighlight();
+            // setHighlight();
         } else {
             element.innerHTML = 'Page not found';
         }
     }
 }
 
-function responsive(){
-    if(window.innerWidth < 1200){
-        document.getElementById('helpHeaderMenu').classList.remove('d-none');
-        document.getElementById('profile-logout-menu').classList.add('blueColorResponsive');
-    }else{
-        document.getElementById('helpHeaderMenu').classList.add('d-none');
+function currentPage() {
+    let currentPage = window.location.href;
+
+    if(window.innerWidth < 1360) {
+        responsiveCurrentPage(currentPage);
+    }else {
+        normalCurrentPage(currentPage);
     }
+}
+
+function normalCurrentPage(cP) {
+if (cP.includes('summary.html')) {
+    document.getElementById('summaryMenu').classList.add('currentPage');
+}
+else if (cP.includes('addTask.html')) {
+    document.getElementById('addTaskMenu').classList.add('currentPage');
+}
+else if (cP.includes('board.html')) {
+    document.getElementById('boardMenu').classList.add('currentPage');
+} 
+else if(cP.includes('contact.html')) {
+    document.getElementById('contactMenu').classList.add('currentPage');
+}
+else if (cP.includes('imprint.html')){
+    document.getElementById('imprintMenu').classList.add('currentPagePolicy');
+}
+else if(cP.includes('dataProtection.html')){
+    document.getElementById('dataProtectionMenu').classList.add('currentPagePolicy');
+}
+}
+
+function responsiveCurrentPage(cP) {
+responsiveLogoutMenu();
+if (cP.includes('summary.html')) {
+    document.getElementById('summaryMenu').classList.add('currentPageResponsive');
+    document.getElementById('summaryIcon').style = 'content: url(/assets/img/aside-icon/summary_blue.png) !important;';
+}
+else if (cP.includes('addTask.html')) {
+    document.getElementById('addTaskMenu').classList.add('currentPageResponsive');
+    document.getElementById('addTaskIcon').style = 'content: url(/assets/img/aside-icon/addTask_blue.png)!important;';
+}
+else if (cP.includes('board.html')) {
+    document.getElementById('boardMenu').classList.add('currentPageResponsive');
+    document.getElementById('boardIcon').style = 'url(/assets/img/aside-icon/board_blue.png) !important;';
+} 
+else if(cP.includes('contact.html')) {
+    document.getElementById('contactMenu').classList.add('currentPageResponsive');
+    document.getElementById('contactsIcon').style = 'content: url(/assets/img/aside-icon/contacts_blue.png)!important;';
+} 
 
 }
 
-function addHighlightFunctionality(element) {
-    let links = element.querySelectorAll('.menu-links, .policy-links');
-    links.forEach(link => {
-        link.addEventListener('click', function(event) {
-            // Toggle-Klasse für Hervorhebung hinzufügen oder entfernen
-            link.classList.toggle('highlight');
-            // Führe das Standardverhalten des Links nach der Hervorhebung aus
-            setTimeout(() => {
-                window.location.href = link.getAttribute('href');
-            }, 100);
-        });
-    });
+function responsiveLogoutMenu() {
+document.getElementById('helpHeaderMenu').classList.remove('d-none');
+document.getElementById('logout-linkLogOut').classList.add('blueColorResponsive');
+document.getElementById('logout-linkData').classList.add('blueColorResponsive');
+document.getElementById('logout-linkImprint').classList.add('blueColorResponsive');
 }
+
+// function responsive(){
+//     if(window.innerWidth < 1200){
+//         document.getElementById('helpHeaderMenu').classList.remove('d-none');
+//         document.getElementById('profile-logout-menu').classList.add('blueColorResponsive');
+//     }else{
+//         document.getElementById('helpHeaderMenu').classList.add('d-none');
+//     }
+
+// }
+
+// function addHighlightFunctionality(element) {
+//     let links = element.querySelectorAll('.menu-links, .policy-links');
+//     links.forEach(link => {
+//         link.addEventListener('click', function(event) {
+//             // Toggle-Klasse für Hervorhebung hinzufügen oder entfernen
+//             link.classList.toggle('highlight');
+//             // Führe das Standardverhalten des Links nach der Hervorhebung aus
+//             setTimeout(() => {
+//                 window.location.href = link.getAttribute('href');
+//             }, 100);
+//         });
+//     });
+// }
 
 // Diese Funktion setzt die Hervorhebung basierend auf der aktuellen Seite
-function setHighlight() {
-    let currentPath = window.location.pathname;
-    let links = document.querySelectorAll('.menu-links, .policy-links');
-    links.forEach(link => {
-        if (link.getAttribute('href') === currentPath) {
-            link.classList.add('highlight');
-        } else {
-            link.classList.remove('highlight');
-        }
-    });
-}
+// function setHighlight() {
+//     let currentPath = window.location.pathname;
+//     let links = document.querySelectorAll('.menu-links, .policy-links');
+//     links.forEach(link => {
+//         if (link.getAttribute('href') === currentPath) {
+//             link.classList.add('highlight');
+//         } else {
+//             link.classList.remove('highlight');
+//         }
+//     });
+// }
 
 // Führe die includeHTML-Funktion aus, um die Seiteninhalte einzubinden und die Hervorhebung zu setzen
-function toggleHighlight(element) {
-    // Toggle-Klasse für Hervorhebung hinzufügen oder entfernen
-    element.classList.toggle('highlight');
-    // Führe das Standardverhalten des Links nach der Hervorhebung aus
-    setTimeout(() => {
-        window.location.href = element.getAttribute('href');
-    }, 100);
-}
+// function toggleHighlight(element) {
+//     // Toggle-Klasse für Hervorhebung hinzufügen oder entfernen
+//     element.classList.toggle('highlight');
+//     // Führe das Standardverhalten des Links nach der Hervorhebung aus
+//     setTimeout(() => {
+//         window.location.href = element.getAttribute('href');
+//     }, 100);
+// }
 
 async function displaySuccessMessage() {
     const successHtml = successfullyHtml(); // Generiere das HTML für die Erfolgsmeldung

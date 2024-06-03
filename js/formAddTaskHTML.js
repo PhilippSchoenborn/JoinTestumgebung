@@ -73,6 +73,7 @@ function prioBtnHtml(){
     </div>
   </div>`;
 }
+
 function assignedDropdownHtml(){
     return `<div class="groupInput m-b-24">
     <label for="contacts" class="formLabel">Assigned to</label>
@@ -96,6 +97,7 @@ function assignedDropdownHtml(){
     </div>
 </div>`;
 }
+
 function categoryDropdownHtml(){
     return `<div class="groupInput m-b-24">
     <label for="category" class="formLabel">Category</label>

@@ -1,7 +1,7 @@
 
 
 function renderContacts() {
-  load();
+  loadContacts();
   createContactList();
 }
 
@@ -189,7 +189,7 @@ function getNewContact() {
     };
     contacts.push(newContact);
     save();
-    load();
+    loadContacts();
     contactClickHandler(newContact, contacts.length - 1);
     createContactList();
     name.value = '';
@@ -218,7 +218,7 @@ function save() {
 }
 
 
-function load() {
+function loadContacts() {
   let storageAsText = localStorage.getItem("contacts");
 
   if (storageAsText) {
@@ -294,7 +294,7 @@ function editContactToArray(i) {
   };
   contacts.splice(i, 1, newContact);
   save();
-  load();
+  loadContacts();
   contactClickHandler(newContact, contacts.length);
   cancelEditContact();
   createContactList();
