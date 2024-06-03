@@ -278,15 +278,20 @@ body {
 }
 
 .dropdownIcon {
-  position: absolute;
-  right: 0;
-  bottom: 0;
   display: flex;
   align-items: center;
   cursor: pointer;
   padding: 2px;
   margin-bottom: 12px;
   margin-right: 16px;
+}
+
+.subtask-duo-icon-container {
+  display: none;
+}
+
+.subtask-duo-icon-container.show {
+  display: flex;
 }
 
 .custom-dropdown-assigned {
@@ -308,14 +313,13 @@ body {
 }
 
 .subtaskIconContainer {
-  display: flex !important;
-  display: inline-block !important;
+  display: inline-block;
   gap: 4px;
   position: absolute;
   right: 16px;
   bottom: 6px;
   width: 30px;
-  justify-content: space-between !important;
+  justify-content: space-between;
 }
 
 .profileIconWrap {

@@ -222,15 +222,15 @@ function taskCardDetailEditFormPrioHtml(task) {
 function taskCardDetailEditFormAssignedHtml(task) {
   return `
     <label for="assigned" class="label">
-      Assigned To (optional)
-      <div class="input-icon-container">
-        <input id="assigned-${task.id}" type="text" autocomplete="off" placeholder="Select contacts to assign" onclick="toggleContactDropdown(${task.id}, event)"/>
-        <img onclick="toggleContactDropdown(${task.id}, event)" class="dropdown-icon" id="assigned-edit-form-dropdown-arrow-${task.id}" src="../assets/img/icons/form-add-task/arrow-dropdown-down.png"/>
-      </div>
-      <div class="custom-dropdown-assigned custom-dropdown" id="dropdown-edit-form-assigned-${task.id}"></div>
-    </label>    
+        Assigned To (optional)
+       <div class="input-icon-container">
+          <input id="assigned-{task.id}" type="text" autocomplete="off" placeholder="Select contacts to assign" onclick="toggleContactDropdown(event, {task.id})"/>
+          <img onclick="toggleContactDropdown(event, {task.id})" class="dropdown-icon" id="assigned-edit-form-dropdown-arrow-{task.id}" src="../assets/img/icons/form-add-task/arrow-dropdown-down.png"/>
+       </div>
+       <div class="custom-dropdown-assigned custom-dropdown" id="dropdown-edit-form-assigned-{task.id}"></div>
+    </label>
     <div id="task-card-detail-profile-assigned">
-      ${task.profileHtml || ''}
+        ${task.profileHtml || ''}
     </div>
   `;
 }

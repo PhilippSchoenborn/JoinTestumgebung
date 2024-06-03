@@ -117,8 +117,8 @@ function openTaskCardDetailEditForm(taskId) {
 }
 
 function formEditShowDuoIconSubtaskInput(taskId) {    
-    document.getElementById('subtask-icon-container-' + taskId).style.display = 'none';
-    document.getElementById('subtask-duo-icon-container-' + taskId).style.display = 'flex';
+    document.getElementById('subtask-icon-container-' + taskId).classList.add('hide');
+    document.getElementById('subtask-duo-icon-container-' + taskId).classList.add('show');
 }
 
 function clearEditSubtaskInputValue(taskId) {
@@ -154,11 +154,11 @@ function editSubtaskItemEditForm(taskId, subtaskId) {
 }
 
 function showSubtaskEditTrashIcons(taskId, subtaskId) {
-    document.getElementById(`subtask-duo-icon-container-${taskId}-${subtaskId}`).style.display = 'flex';
+    document.getElementById(`subtask-duo-icon-container-${taskId}-${subtaskId}`).classList.add('show');
 }
 
 function hideSubtaskEditTrashIcons(taskId, subtaskId) {
-    document.getElementById(`subtask-duo-icon-container-${taskId}-${subtaskId}`).style.display = 'none';
+    document.getElementById(`subtask-duo-icon-container-${taskId}-${subtaskId}`).classList.remove('show');
 }
 
 function deleteSubtaskItem(taskId, subtaskId) {

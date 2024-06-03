@@ -177,13 +177,13 @@ function showLogOut() {
     }
 }
 
-function toggleContactDropdown(taskId, event) {
+function toggleContactDropdown(event, taskId) {
     event.stopPropagation();
     const contentContact = document.getElementById(`dropdown-edit-form-assigned-${taskId}`);
     const dropdownIconContact = document.getElementById(`assigned-edit-form-dropdown-arrow-${taskId}`);
   
     if (!contentContact || !dropdownIconContact) {
-      console.error('Elemente contentContact oder dropdownIconContact wurden nicht gefunden.');
+      console.error(`Elemente contentContact oder dropdownIconContact für Task-ID ${taskId} wurden nicht gefunden.`);
       return;
     }
   
@@ -197,4 +197,3 @@ function toggleContactDropdown(taskId, event) {
     dropdowns.forEach(dropdown => dropdown.classList.remove('show'));
     icons.forEach(icon => icon.classList.remove('rotate'));
   });
-
