@@ -851,11 +851,28 @@ input:-webkit-autofill:active {
         padding: 90px 24px 170px 24px !important;
     }
 
+    .dropdownMenuLogout{
+        margin-top: 110px !important;
+    }
+
+    .logoutLinkHelp{
+        display: block !important;
+        display: flex !important;
+        gap: 8px;
+        color: #42526e;
+        width: 132px;
+        justify-content: flex-end;
+      }
+
 }
 
   @media (max-width: 1000px) {
     #contacts {
         display: none !important;
+    }
+
+    .dropdownMenuLogout{
+        margin-top: 66px !important;
     }
 
     #content {

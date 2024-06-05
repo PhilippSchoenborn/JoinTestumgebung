@@ -298,6 +298,19 @@
         top: 110px;
         bottom: 84px;
     }
+
+    .dropdownMenuLogout{
+        margin-top: 110px !important;
+    }
+
+    .logoutLinkHelp{
+        display: block !important;
+        display: flex !important;
+        gap: 8px;
+        color: #42526e;
+        width: 132px;
+        justify-content: flex-end;
+      }
     
     #greetingBox {
         display: none;
@@ -463,6 +476,10 @@
     .content {
         top: 64px;
         bottom: 65px;
+    }
+
+    .dropdownMenuLogout{
+        margin-top: 66px !important;
     }
 
     #buttonBox {

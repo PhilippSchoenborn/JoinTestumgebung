@@ -86,6 +86,24 @@ body{
     height: calc(100vh - 96px);
   }
 
+  .profileLogoutMenu {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 20px 0 20px 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 136px;
+    display: none;
+    z-index: 999;
+    width: 152px !important;
+  }
+
   /* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
 /* * {
   scrollbar-width: thin;
@@ -222,12 +240,29 @@ body{
     margin-top: 0;
     height: 680px;
   }
+
+  .profileLogoutMenu{
+    margin-top: 110px !important;
+  }
+
+  .logoutLinkHelp{
+    display: block !important;
+    display: flex !important;
+    gap: 8px;
+    color: #42526e;
+    width: 132px;
+    justify-content: flex-end;
+  }
   
 }
 
 @media (max-width: 1000px) {
   .headerAddTask{
     height: 64px;
+  }
+
+  .profileLogoutMenu{
+    margin-top: 66px !important;
   }
 
   .logoHeader {

@@ -586,9 +586,24 @@ body {
   display: flex !important;
 }
 
+.logoutLinkHelp{
+  display: none !important;
+  border-radius: 8px;
+  padding: 8px 16px;
+  gap: 8px;
+  color: #42526e;
+  width: 132px;
+  justify-content: flex-end;
+}
+
 @media (max-width: 1360px){
   .headerBoard{
     height: 110px;
+  }
+
+  .logoutLinkHelp{
+    display: block !important;
+    display: flex !important;
   }
   
   .header-headline{
@@ -597,6 +612,19 @@ body {
 
   .help-icon{
     display: none;
+  }
+
+  .profileLogoutMenu{
+    margin-top: 110px !important;
+  }
+
+  .logoutLinkHelp{
+    display: block !important;
+    display: flex !important;
+    gap: 8px;
+    color: #42526e;
+    width: 132px;
+    justify-content: flex-end;
   }
 
   .main-board{
@@ -669,6 +697,10 @@ body {
 @media (max-width: 1000px){
   .headerBoard{
     height: 64px;
+  }
+
+  .profileLogoutMenu{
+    margin-top: 66px !important;
   }
   
   .logoHeader {
