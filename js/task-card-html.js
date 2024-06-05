@@ -176,7 +176,7 @@ function taskCardDetailEditFormCloseBtnHtml() {
 
 function taskCardDetailEditFormTitleHtml(task) {
   return `<label for="title-${task.id}" class="label-title label">
-            <input type="text" placeholder="Enter a title" id="title-${task.id}" value="${task.title}"/>
+            <input class="detailedTaskTitle" type="text" placeholder="Enter a title" id="title-${task.id}" value="${task.title}"/>
           </label>`;
 }
 
@@ -224,7 +224,7 @@ function taskCardDetailEditFormAssignedHtml(task) {
     <label for="assigned" class="label">
         Assigned To (optional)
        <div class="input-icon-container">
-          <input id="assigned-{task.id}" type="text" autocomplete="off" placeholder="Select contacts to assign" onclick="toggleContactDropdown(event, {task.id})"/>
+          <input class="placeholderFontSize" id="assigned-{task.id}" type="text" autocomplete="off" placeholder="Select contacts to assign" onclick="toggleContactDropdown(event, {task.id})"/>
           <img onclick="toggleContactDropdown(event, {task.id})" class="dropdown-icon" id="assigned-edit-form-dropdown-arrow-{task.id}" src="../assets/img/icons/form-add-task/arrow-dropdown-down.png"/>
        </div>
        <div class="custom-dropdown-assigned custom-dropdown" id="dropdown-edit-form-assigned-{task.id}"></div>
@@ -239,7 +239,7 @@ function taskCardDetailEditFormSubtaskHtml(task) {
   return `<label for="subtask-${task.id}" class="label">
     Subtasks
     <div class="input-icon-container">
-        <input type="text" placeholder="Add new Subtask" id="subtask-${task.id}" onclick="changeIcon(event)"/>    
+        <input class="placeholderFontSize" type="text" placeholder="Add new Subtask" id="subtask-${task.id}" onclick="changeIcon(event)"/>    
         <div class="subtaskIconContainer" id="subtask-icon-container-${task.id}">
             <img class="dropdown-icon" id="subtask-icon-plus-${task.id}" src="../assets/img/icons/form-add-task/plus-blue.png"/>
         </div>

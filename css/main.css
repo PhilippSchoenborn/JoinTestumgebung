@@ -718,3 +718,103 @@ body {
     margin-top: 5px;
   } 
 }
+
+@media(max-width: 780px){
+  .task-card-detail-container{
+    width: 400px !important;
+  }
+
+  .task-card-detail-form-container{
+    width: 400px !important;
+  }
+
+  .task-card-detail-form{
+    width: 350px !important;
+  }
+
+  .label{
+    width: 300px !important;
+  }
+
+  .detailedTaskTitle{
+    width: 280px !important;
+  }
+
+  .label-description{
+    width: 300px !important;
+  }
+
+  .label-prio{
+    width: 300px !important;
+  }
+
+  #task-card-detail-profile-assigned{
+    width: 280px !important;
+  }
+
+  .subtask-item-li{
+    width: 280px !important;
+  }
+
+  .subtask-container{
+    width: 300px !important;
+  }
+
+  .prio-btn-container{
+    flex-direction: column;
+    justify-content: center;
+    align-items: start !important;
+    width: 250px;
+  }
+}
+
+@media(max-width: 450px){
+  .task-card-detail-container{
+    width: 300px !important;
+  }
+
+  .task-card-detail-form-container{
+    width: 300px !important;
+  }
+
+  .task-card-detail-form{
+    width: 250px !important;
+  }
+
+  .label{
+    width: 200px !important;
+    font-size: 15px;
+  }
+
+  .detailedTaskTitle{
+    width: 180px !important;
+  }
+
+  .label-description{
+    width: 200px !important;
+  }
+
+  .label-prio{
+    width: 200px !important;
+  }
+
+  #task-card-detail-profile-assigned{
+    width: 180px !important;
+  }
+
+  .subtask-item-li{
+    width: 180px !important;
+  }
+
+  .subtask-container{
+    width: 200px !important;
+  }
+
+  .placeholderFontSize{
+    font-size: 10px !important;
+  }
+
+  .prio-btn-container{
+    width: 150px;
+  }
+}
