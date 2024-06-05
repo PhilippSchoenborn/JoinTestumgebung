@@ -314,11 +314,44 @@
 
 .subtask-icon-container {
   display: flex;
+  flex-direction: row;
+}
+
+.dropdownIcon{  
+  display: flex;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+}
+
+.dropdownIcon:hover {
+  background-color: #d2e3ff;
+  border-radius: 50%;
+}
+
+.taskCardDetailSeperator{
+  margin-top: 10px;
+  margin-left: 3px;
+  margin-right: 3px;
+  height: 24px;
+  width: 1px;
+  background-color: #d1d1d1;
+}
+
+.dNone{
+  display: none !important;
+}
+
+.inputIconContainer{
+  display: flex;
   align-items: center;
-  gap: 4px;
-  position: absolute;
-  right: 16px;
-  bottom: 6px;
+  justify-content: space-between;
+  flex-direction: row;
+  font-size: 10px;
+  width: 100%;
 }
 
 .create-ok-btn {

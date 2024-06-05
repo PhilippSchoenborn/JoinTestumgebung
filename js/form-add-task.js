@@ -189,16 +189,23 @@ function selectCategory(category){
     let inputCategory = document.getElementById('category');
     inputCategory.value = category;
     toggleCategoryDropdown();
+
+
+}function formShowDuoIconSubtaskInput() {    
+    document.getElementById('subtask-icon-container').classList.add('dNone');
+    document.getElementById('subtask-duo-icon-container').classList.remove('dNone');
 }
 
 
-function formShowDuoIconSubtaskInput() {    
-    let icon = document.getElementById('subtask-icon-container');
-    let duoIcon = document.getElementById('subtask-duo-icon-container');
+
+
+// function formShowDuoIconSubtaskInput() {    
+//     let icon = document.getElementById('subtask-icon-container');
+//     let duoIcon = document.getElementById('subtask-duo-icon-container');
     
-    icon.style.display = 'none';
-    duoIcon.style.display = 'flex';        
-}
+//     icon.style.display = 'none';
+//     duoIcon.style.display = 'flex';        
+// }
 
 function formHideDuoIconSubtaskInput() {
     let icon = document.getElementById('subtask-icon-container');

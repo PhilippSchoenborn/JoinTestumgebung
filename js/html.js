@@ -218,7 +218,7 @@ function formAddTaskSubtaskHtml() {
 
   return `<label for="subtask" class="label">
   Subtasks (optional)
-  <div class="input-icon-container">
+  <div class="inputIconContainer">
     <input type="text" placeholder="Add new Subtask" id="subtask" onclick="formShowDuoIconSubtaskInput()" />
 
       <div class="subtask-icon-container" id="subtask-icon-container">
@@ -228,12 +228,12 @@ function formAddTaskSubtaskHtml() {
         src="../assets/img/icons/form-add-task/plus-blue.png"/>
       </div>
 
-      <div class="subtask-icon-container" id="subtask-duo-icon-container" style="display: none">
-        <img class="dropdown-icon"
+      <div class="subtask-icon-container dNone" id="subtask-duo-icon-container">
+        <img class="dropdownIcon"
         id="subtask-icon-close" onclick="clearSubtaskInputValue()"
         src="../assets/img/icons/form-add-task/close-blue.png"/>
-        <span class="task-card-detail-seperator"></span>
-        <img class="dropdown-icon"
+        <span class="taskCardDetailSeperator"></span>
+        <img class="dropdownIcon"
         id="subtask-icon-check" onclick="addSubtaskItemToList()"
         src="../assets/img/icons/form-add-task/check-blue.png"/>
       </div>
