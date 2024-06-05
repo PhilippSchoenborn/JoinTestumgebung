@@ -18,13 +18,15 @@
     
   </head>
   <body onload="addTaskInit()" onclick="closeDropdown(); hideSubtaskIcons()">
-    <header w3-include-html="../template/header.html"></header>
+    <div class="headerAddTask" w3-include-html="../template/headerAddTask.html"></div>
+
     <main class="addTaskMain">
-      <aside w3-include-html="../template/asideMenu.html"></aside>
+      <div w3-include-html="../template/asideMenuAddTask.html"></div>
       <form
         onsubmit="event.preventDefault();"
         w3-include-html="../template/formAddTask.html"
         id="formAddTask"
+        class="formAddTask"
       >
       
         
@@ -33,6 +35,7 @@
       onmouseup="mouseupCancelTaskBtn()" onmouseover="mouseoverCancelTaskBtn()" onmouseout="mouseoutCancelTaskBtn()"
           class="btn-cancel cancelTaskBtnPostion addTaskBtnPostion"
           id="cancel-task-btn"
+          onclick="clearForm()"
         >
           Cancel<img
             id="cancel-task-btn-icon"

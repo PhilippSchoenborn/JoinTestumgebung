@@ -326,6 +326,7 @@ aside {
   position: relative;
   left: 0;
   margin-left: 252px;
+  margin-top: -280px;
   width: 33%;
   padding: 64px 24px 0 24px;
   overflow-y: scroll;

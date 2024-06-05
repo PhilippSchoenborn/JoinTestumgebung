@@ -19,7 +19,63 @@ body{
     bottom: 0;
   }
  
+  .headerAddTask {
+    height: 136px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 39px;
+    background-color: #4589ff;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .logoHeader{
+    height: 56px;
+  }
+
+  .headerMenu {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    width: 433px;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  .profileIconInnerRing {
+    height: 50px;
+    width: 50px;
+    border: 3px solid #4589ff;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .asideTop {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px !important;
+    padding: 42px 23px !important;
+    width: 232px !important;
+  }
+
+  .menuLinks{
+    color: #42526e;
+    padding: 8px 30px;
+    border-radius: 8px;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    width: 180px;
+  }
   
+  .menuLinks:hover,
+  .active {
+    background-color: #d2e3ff;
+  }
 
   /* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
 /* * {
@@ -58,3 +114,83 @@ body{
 *::-webkit-scrollbar-thumb:active {
   background-color: #A8A8A8;
 }
+
+@media (max-width: 1450px){
+  #formAddTask{
+    width: 420px;
+  }
+
+  .addTaskInputStandard{
+    width: 380px;
+  }
+
+  .formLabel{
+    width: 380px;
+  }
+
+  .textareaDescription{
+    width: 380px;
+  }
+
+  .groupInput{
+    width: 380px;
+  }
+
+  .prioBtnContainer{
+    flex-direction: column;
+    align-items: start;
+    width: 380px;
+  }
+
+  .prioBtn{
+    padding: 10px 10px;
+    font-size: 15px;
+  }
+
+  .inputIconWrap{
+    width: 380px;
+  }
+}
+
+@media (max-width: 1360px){
+  .addTaskMain{
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+
+  .asideTop{
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  .content {
+    left: 0px;
+    top: 110px;
+    bottom: 84px;
+  }
+
+
+
+  .sidebar {
+    flex-direction: row;
+    align-items: center;
+    padding: 15px 0px;
+    justify-content: space-around;
+    gap: 0px;
+  }
+  
+  .header-header{
+    display: none;
+  }
+
+  .help-icon{
+    display: none;
+  }
+  
+}
+
+/* @media (max-width: 1000px) {
+  .content {
+
+  }
+} */
