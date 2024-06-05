@@ -154,12 +154,20 @@ function editSubtaskItemEditForm(taskId, subtaskId) {
     }
 }
 
-function showSubtaskEditTrashIcons(taskId, subtaskId) {
-    document.getElementById(`subtask-duo-icon-container-${taskId}-${subtaskId}`).classList.add('show');
+function showSubtaskEditTrashIcons(taskId, subtaskIndex) {
+    console.log(`showSubtaskEditTrashIcons called for taskId: ${taskId}, subtaskIndex: ${subtaskIndex}`);
+    const iconContainer = document.getElementById(`subtask-duo-icon-container-${taskId}-${subtaskIndex}`);
+    if (iconContainer) {
+        iconContainer.style.display = 'flex';
+    }
 }
 
-function hideSubtaskEditTrashIcons(taskId, subtaskId) {
-    document.getElementById(`subtask-duo-icon-container-${taskId}-${subtaskId}`).classList.remove('show');
+function hideSubtaskEditTrashIcons(taskId, subtaskIndex) {
+    console.log(`hideSubtaskEditTrashIcons called for taskId: ${taskId}, subtaskIndex: ${subtaskIndex}`);
+    const iconContainer = document.getElementById(`subtask-duo-icon-container-${taskId}-${subtaskIndex}`);
+    if (iconContainer) {
+        iconContainer.style.display = 'none';
+    }
 }
 
 function deleteSubtaskItem(taskId, subtaskId) {
