@@ -239,15 +239,15 @@ function taskCardDetailEditFormSubtaskHtml(task) {
   return `<label for="subtask-${task.id}" class="label">
     Subtasks
     <div class="input-icon-container">
-      <input type="text" placeholder="Add new Subtask" id="subtask-${task.id}" onclick="formEditShowDuoIconSubtaskInput(${task.id})"/>    
+      <input type="text" placeholder="Add new Subtask" id="subtask-${task.id}" onclick="changeIcon()"/>    
       <div class="subtaskIconContainer" id="subtask-icon-container-${task.id}">
         <img class="dropdown-icon" id="subtask-icon-plus-${task.id}" src="../assets/img/icons/form-add-task/plus-blue.png"/>
       </div>
 
-      <div class="subtaskIconContainer" id="subtask-duo-icon-container-${task.id}" style="display: none;">
-      <img class="dropdownIcon" id="subtask-icon-close-${task.id}" onclick="clearEditSubtaskInputValue(${task.id})" src="../assets/img/icons/form-add-task/close-blue.png"/>
-      <span class="task-card-detail-seperator"></span>
-      <img class="dropdownIcon" id="subtask-icon-check-${task.id}" onclick="addEditSubtaskItemToList(${task.id})" src="../assets/img/icons/form-add-task/check-blue.png"/>
+      <div class="subtaskIconContainer" id="subtask-duo-icon-container-${task.id}">
+      <img class="dropdownIconClose" id="subtask-icon-close-${task.id}" onclick="clearEditSubtaskInputValue(${task.id})" src="../assets/img/icons/form-add-task/close-blue.png"/>
+      <span class="task-card-detail-seperator" id="subtaskSeparator"></span>
+      <img class="dropdownIconCheck" id="subtask-icon-check-${task.id}" onclick="addEditSubtaskItemToList(${task.id})" src="../assets/img/icons/form-add-task/check-blue.png"/>
     </div>
     
     </div>

@@ -277,13 +277,26 @@ body {
   width: 152px;
 }
 
-.dropdownIcon {
-  display: flex;
+.dropdownIconClose {
+  display: none;
   align-items: center;
   cursor: pointer;
   padding: 2px;
   margin-bottom: 12px;
   margin-right: 16px;
+}
+
+.dropdownIconCheck {
+  display: none;
+  align-items: center;
+  cursor: pointer;
+  padding: 2px;
+  margin-bottom: 12px;
+  margin-right: 16px;
+}
+
+.task-card-detail-seperator{
+  display: none;
 }
 
 .subtask-duo-icon-container {
@@ -535,6 +548,10 @@ body {
   padding: 0 16px;
   box-shadow: 0 -1px 6px 0 rgba(0, 0, 0, 0.1);
   background-color: #fff;
+}
+
+.dNone{
+  display: none;
 }
 
 .bottom-menu a {

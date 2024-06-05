@@ -260,3 +260,4 @@ function deleteAllTasks() {
     saveTasks();
     updateBoardHtml();
 }
+

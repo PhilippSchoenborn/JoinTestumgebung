@@ -259,3 +259,11 @@ function toggleContactDropdown(event, taskId) {
     dropdowns.forEach(dropdown => dropdown.classList.remove('show'));
     icons.forEach(icon => icon.classList.remove('rotate'));
   });
+
+
+  function changeIcon(){
+    document.getElementById('subtask-icon-close-${task.id}').classList.remove('dNone');
+    document.getElementById('subtaskSeparator').classList.remove('dNone');
+    document.getElementById('subtask-icon-check-${task.id}').classList.remove('dNone');
+    document.getElementById('subtask-icon-plus-${task.id}').classList.add('dNone');
+  }
