@@ -239,22 +239,21 @@ function taskCardDetailEditFormSubtaskHtml(task) {
   return `<label for="subtask-${task.id}" class="label">
     Subtasks
     <div class="input-icon-container">
-      <input type="text" placeholder="Add new Subtask" id="subtask-${task.id}" onclick="changeIcon()"/>    
-      <div class="subtaskIconContainer" id="subtask-icon-container-${task.id}">
-        <img class="dropdown-icon" id="subtask-icon-plus-${task.id}" src="../assets/img/icons/form-add-task/plus-blue.png"/>
-      </div>
+        <input type="text" placeholder="Add new Subtask" id="subtask-${task.id}" onclick="changeIcon(event)"/>    
+        <div class="subtaskIconContainer" id="subtask-icon-container-${task.id}">
+            <img class="dropdown-icon" id="subtask-icon-plus-${task.id}" src="../assets/img/icons/form-add-task/plus-blue.png"/>
+        </div>
 
-      <div class="subtaskIconContainer" id="subtask-duo-icon-container-${task.id}">
-      <img class="dropdownIconClose" id="subtask-icon-close-${task.id}" onclick="clearEditSubtaskInputValue(${task.id})" src="../assets/img/icons/form-add-task/close-blue.png"/>
-      <span class="task-card-detail-seperator" id="subtaskSeparator"></span>
-      <img class="dropdownIconCheck" id="subtask-icon-check-${task.id}" onclick="addEditSubtaskItemToList(${task.id})" src="../assets/img/icons/form-add-task/check-blue.png"/>
+        <div class="subtaskIconContainer hidden" id="subtask-duo-icon-container-${task.id}">
+            <img class="dropdownIconClose" id="subtask-icon-close-${task.id}" onclick="clearEditSubtaskInputValue(${task.id})" src="../assets/img/icons/form-add-task/close-blue.png"/>
+            <span class="task-card-detail-seperator" id="subtaskSeparator"></span>
+            <img class="dropdownIconCheck" id="subtask-icon-check-${task.id}" onclick="addEditSubtaskItemToList(${task.id})" src="../assets/img/icons/form-add-task/check-blue.png"/>
+        </div>
     </div>
-    
-    </div>
-  </label>
-  <div class="subtask-container subtask-edit-container" id="task-card-detail-subtask-${task.id}">
+</label>
+<div class="subtask-container subtask-edit-container" id="task-card-detail-subtask-${task.id}">
     ${taskCardDetailEditFormSubtasksItemHtml(task)}
-  </div>`;
+</div>`;
 }
 
 function taskCardDetailEditFormSubtasksItemHtml(task) {

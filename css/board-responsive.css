@@ -39,23 +39,11 @@
     height: 40px;
   }
 
-  #aside-menu {
-    display: none;
-  }
-
-  .search-btn-container {
-    flex-direction: column;
-    margin: 61px 16px 0 16px !important;
-  }
 
   .board-blue-btn {
     display: none !important;
   }
 
-  .searchbar {
-    width: 100%;
-    margin-bottom: 32px;
-  }
 
   .board-task-container {
     margin: 0 16px;
@@ -73,10 +61,6 @@
     width: 100%;
   }
 
-  .board-task-headline {
-    justify-content: space-between;
-    width: 100%;
-  }
 
   .board-task-sub-container {
     flex-direction: row;
@@ -131,8 +115,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 15px 0;
-    gap: 4px;
     cursor: pointer;
     text-decoration: none;
   }
@@ -147,13 +129,6 @@
     font-size: 12px;
   }
 
-  .searchbar img {
-    padding: 4px;
-  }
-
-  .searchbar {
-    gap: 0;
-  }
 }
 
 @media (min-width: 769px) and (max-width: 1500px) {

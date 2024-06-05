@@ -261,9 +261,22 @@ function toggleContactDropdown(event, taskId) {
   });
 
 
-  function changeIcon(){
-    document.getElementById('subtask-icon-close-${task.id}').classList.remove('dNone');
-    document.getElementById('subtaskSeparator').classList.remove('dNone');
-    document.getElementById('subtask-icon-check-${task.id}').classList.remove('dNone');
-    document.getElementById('subtask-icon-plus-${task.id}').classList.add('dNone');
-  }
+  function changeIcon() {
+    // Diese Funktion wird aufgerufen, wenn auf das Subtask-Eingabefeld geklickt wird
+    // Extrahiere die task.id aus dem ID-Attribut des Eingabefelds
+    var inputElement = event.target;
+    var taskId = inputElement.id.split('-')[1];
+
+    // Versuche, das Element anhand der dynamischen ID zu finden
+    var iconContainer = document.getElementById('subtask-icon-container-' + taskId);
+    var duoIconContainer = document.getElementById('subtask-duo-icon-container-' + taskId);
+
+    // Überprüfe, ob die Elemente existieren
+    if (iconContainer && duoIconContainer) {
+        // Verberge das erste Icon-Container und zeige das zweite
+        iconContainer.classList.add('hidden');
+        duoIconContainer.classList.remove('hidden');
+    } else {
+        console.error(`Elemente mit IDs 'subtask-icon-container-${taskId}' oder 'subtask-duo-icon-container-${taskId}' nicht gefunden.`);
+    }
+}

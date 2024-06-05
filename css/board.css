@@ -336,7 +336,7 @@ body {
 
 .task-card-detail-assigned {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 4px;
 }
 

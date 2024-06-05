@@ -46,6 +46,7 @@ function closeTaskCardDetail() {
 }
 
 function openTaskCardDetail(taskId) {
+    
     const taskCardDetailBackground = document.getElementById('task-card-detail-background');
     let taskDetail = document.getElementById('task-detail');
 

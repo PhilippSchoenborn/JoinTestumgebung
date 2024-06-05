@@ -109,6 +109,7 @@ body {
   font-size: 19px;
 }
 
+
 .password-label:focus-within {
   border-bottom: 1px solid #005dff;
 }
@@ -278,25 +279,15 @@ body {
 }
 
 .dropdownIconClose {
-  display: none;
   align-items: center;
   cursor: pointer;
   padding: 2px;
-  margin-bottom: 12px;
-  margin-right: 16px;
 }
 
 .dropdownIconCheck {
-  display: none;
   align-items: center;
   cursor: pointer;
   padding: 2px;
-  margin-bottom: 12px;
-  margin-right: 16px;
-}
-
-.task-card-detail-seperator{
-  display: none;
 }
 
 .subtask-duo-icon-container {
@@ -326,12 +317,12 @@ body {
 }
 
 .subtaskIconContainer {
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
   gap: 4px;
   position: absolute;
   right: 16px;
   bottom: 6px;
-  width: 30px;
   justify-content: space-between;
 }
 
@@ -550,7 +541,7 @@ body {
   background-color: #fff;
 }
 
-.dNone{
+.hidden{
   display: none;
 }
 
@@ -593,4 +584,137 @@ body {
 
 .bottom-menu span {
   display: flex !important;
+}
+
+@media (max-width: 1360px){
+  .headerBoard{
+    height: 110px;
+  }
+  
+  .header-headline{
+    display: none;
+  }
+
+  .help-icon{
+    display: none;
+  }
+
+  .main-board{
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+  }
+
+  .bottom-menu {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-around;
+    height: 83px;
+  }
+
+  .menu-link{
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  span{
+    margin-top: 10px;
+  } 
+
+  .asideTop{
+    justify-content: space-around;
+    flex-direction: row;
+    width: 100% !important;
+    height: 83px;
+    padding: 0 !important;
+    align-items: center;
+  }
+
+  .sidebar {
+    flex-direction: row;
+    align-items: center;
+    padding: 15px 0px;
+    justify-content: space-around;
+    gap: 0px;
+    width: 100%;
+    height: 83px;
+    margin-top: 140px;
+  }
+
+  .search-btn-container{
+    width: 100%;
+  }
+
+  .menuLinks{
+    flex-direction: column;
+  }
+
+  .board-task-headline {
+    justify-content: space-between;
+    width: 250px !important;
+    margin-left: 10px;
+  }
+  
+ 
+}
+
+@media (max-width: 1200px){
+  .search-btn-container{
+    margin-left: 125px !important;
+  }
+}
+
+@media (max-width: 1000px){
+  .headerBoard{
+    height: 64px;
+  }
+  
+  .logoHeader {
+    height: 40px;
+  }
+
+  .profile-icon-wrap{
+    width: 40px;
+    height: 40px;
+  }
+
+  .profileIconInnerRing{
+    width: 34.44px;
+    height: 34.44px;
+  }
+
+  .search-btn-container{
+    margin-left: 0px !important;
+  }
+
+  .board-blue-btn{
+    display: none !important;
+  }
+
+  .searchbar{
+    width: 290px !important;
+    margin-left: 24px;
+    margin-bottom: 24px;
+  }
+
+  .imgSearchBar{
+    padding: 0 !important;
+    padding-left: 5px !important;
+  }
+
+  .bottom-menu {
+    height: 64px;
+  }
+
+  .board-task-headline {
+    justify-content: space-between;
+    width: 250px !important;
+    margin-left: 10px;
+  }
+
+  .  span{
+    margin-top: 5px;
+  } 
 }

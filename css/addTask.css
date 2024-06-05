@@ -230,6 +230,10 @@ body{
     height: 64px;
   }
 
+  .logoHeader {
+    height: 40px;
+}
+
   .profileIconInnerRing{
     width: 34.44px;
     height: 34.44px;
