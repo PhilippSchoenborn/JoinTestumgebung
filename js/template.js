@@ -688,20 +688,4 @@ function fromAddTaskToBoardPage() {
     }
 }
 
-function clearForm(){
-    taskHeadline = document.getElementById('addTaskInputTitle').value;
-    taskDesription = document.getElementById('description').value;
-    taskDate = document.getElementById('formDate').value;
-    taskPrioBtnUrgent = document.getElementById('prioUrgent');
-    taskPrioBtnMedium = document.getElementById('prioMedium');
-    taskPrioBtnLow = document.getElementById('prioLow');
-    taskContact = document.getElementById('inputContact').value;
-    taskSub = document.getElementById('inputSubtask').value;
-
-    taskHeadline.innerHTML = '';
-    taskDesription.innerHTML = '';
-    taskDate.innerHTML = '';
-    taskContact.innerHTML = '';
-    taskSub.innerHTML = '';
-}
 

@@ -77,6 +77,15 @@ body{
     background-color: #d2e3ff;
   }
 
+  .sidebar{
+    display: flex;
+    flex-direction: column;
+    width: 232px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+    justify-content: space-between;
+    height: calc(100vh - 96px);
+  }
+
   /* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
 /* * {
   scrollbar-width: thin;
@@ -139,6 +148,7 @@ body{
   .prioBtnContainer{
     flex-direction: column;
     align-items: start;
+    justify-content: center;
     width: 380px;
   }
 
@@ -150,6 +160,14 @@ body{
   .inputIconWrap{
     width: 380px;
   }
+
+  .contentContact{
+    width: 380px;
+  }
+
+  .contactList{
+    width: 360px;
+  }
 }
 
 @media (max-width: 1360px){
@@ -158,9 +176,17 @@ body{
     flex-direction: column-reverse;
   }
 
+  .headerAddTask{
+    height: 110px;
+  }
+
   .asideTop{
-    justify-content: space-between;
+    justify-content: space-around;
     flex-direction: row;
+    width: 100% !important;
+    height: 83px;
+    padding: 0 !important;
+    align-items: center;
   }
 
   .content {
@@ -169,14 +195,19 @@ body{
     bottom: 84px;
   }
 
-
-
   .sidebar {
     flex-direction: row;
     align-items: center;
     padding: 15px 0px;
     justify-content: space-around;
     gap: 0px;
+    width: 100%;
+    height: 83px;
+    margin-top: 140px;
+  }
+
+  .menuLinks{
+    flex-direction: column;
   }
   
   .header-header{
@@ -186,11 +217,100 @@ body{
   .help-icon{
     display: none;
   }
+
+  #formAddTask{
+    margin-top: 0;
+    height: 680px;
+  }
   
 }
 
-/* @media (max-width: 1000px) {
-  .content {
-
+@media (max-width: 1000px) {
+  .headerAddTask{
+    height: 64px;
   }
-} */
+
+  .profileIconInnerRing{
+    width: 34.44px;
+    height: 34.44px;
+  }
+
+  .sidebar {
+    padding: 15px 0px;
+    gap: 0px;
+    width: 100%;
+    height: 64.646px;
+    margin-top: 150px;
+  }
+
+  .asideTop{
+    justify-content: space-around;
+    flex-direction: row;
+    width: 100% !important;
+    height: 64.646px;
+    padding: 0 !important;
+    align-items: center;
+  }
+
+  .menuLinks{
+    font-size: 12px;
+    width: 120px;
+  }
+
+  #formAddTask{
+    margin-top: 0;
+    height: 730px;
+  }
+}
+
+@media(max-width: 500px){
+  .menuLinks{
+    padding: 0 !important;
+  }
+}
+
+@media(max-width: 425px){
+  #formAddTask{
+    width: 319px;
+  }
+
+  .addTaskInputStandard{
+    width: 280px;
+  }
+
+  .formLabel{
+    width: 280px;
+  }
+
+  .textareaDescription{
+    width: 280px;
+  }
+
+  .groupInput{
+    width: 280px;
+  }
+
+  .prioBtnContainer{
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 280px;
+  }
+
+  .prioBtn{
+    padding: 10px 10px;
+    font-size: 15px;
+  }
+
+  .inputIconWrap{
+    width: 280px;
+  }
+
+  .contentContact{
+    width: 280px;
+  }
+
+  .contactList{
+    width: 260px;
+  }
+}
