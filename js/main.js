@@ -11,7 +11,7 @@
 async function boardInit() {
     await includeHTML();
     currentPage();
-    // loadContacts();
+    loadContacts();
     displayMobileMenu();
     bottomMenuActive();
     await loadTasks();
