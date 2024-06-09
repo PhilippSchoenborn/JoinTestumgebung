@@ -170,6 +170,34 @@ function hideSubtaskEditTrashIcons(taskId, subtaskIndex) {
     }
 }
 
+function showSubtaskEditFloation(subtaskId) {
+    const iconContainer = document.getElementById(`subtask-trash-edit-icon-container-${subtaskId}`);
+    if (iconContainer) {
+        iconContainer.style.display = 'flex';
+    }
+}
+
+function hideSubtaskEditFloation(subtaskId) {
+    const iconContainer = document.getElementById(`subtask-trash-edit-icon-container-${subtaskId}`);
+    if (iconContainer) {
+        iconContainer.style.display = 'none';
+    }
+}
+
+const subtasks = ['Subtask 1', 'Subtask 2', 'Subtask 3'];
+
+function renderSubtasks(subtasks) {
+  const subtaskList = document.getElementById('subtask-list');
+  subtaskList.innerHTML = ''; // Clear existing subtasks
+
+  subtasks.forEach((subtask, index) => {
+    subtaskList.innerHTML += subtaskItemHtml(subtask, index);
+  });
+}
+
+// Beispielaufruf
+renderSubtasks(subtasks);
+
 function deleteSubtaskItem(taskId, subtaskId) {
     let subtaskInput = document.getElementById(`subtask-item-input-${taskId}-${subtaskId}`);
     if (subtaskInput) {

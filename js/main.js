@@ -23,15 +23,15 @@ async function boardInit() {
     updateProfileName();
     
 
-    // Prüfen, ob die Elemente existieren, bevor die Funktion aufgerufen wird
-    let contentContact = document.getElementById('contentContact');
-    let icon = document.getElementById('dropdownIconContact');
+    // // Prüfen, ob die Elemente existieren, bevor die Funktion aufgerufen wird
+    // let contentContact = document.getElementById('contentContact');
+    // let icon = document.getElementById('dropdownIconContact');
 
-    if (contentContact && icon) {
-        toggleContactDropdown(new Event('dummy')); // Ein Dummy-Event übergeben
-    } else {
-        console.error('Elemente contentContact oder dropdownIconContact wurden nicht gefunden.');
-    }
+    // if (contentContact && icon) {
+    //     toggleContactDropdown(new Event('dummy')); // Ein Dummy-Event übergeben
+    // } else {
+    //     console.error('Elemente contentContact oder dropdownIconContact wurden nicht gefunden.');
+    // }
 }
 
 function currentPage() {

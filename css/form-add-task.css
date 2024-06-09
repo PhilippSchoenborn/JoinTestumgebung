@@ -118,6 +118,16 @@
   flex-direction: column;
 }
 
+/* .subtaskIconContainerFloation { */
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* gap: 4px;
+  /* position: absolute; */
+  /* right: 16px;
+  bottom: 6px;
+  justify-content: space-between; */
+/* }  */
+
 .dropdown-item-assigned {
   display: flex;
   align-items: center;
@@ -236,6 +246,13 @@
   width: 440px;
 }
 
+.subtaskItemLi{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 440px;
+}
+
 .subtask-item {
   cursor: pointer;
   background-color: transparent;
@@ -247,11 +264,11 @@
   background-color: #e3eeff;
 }
 
-.subtask-item-edit-icon-container {
-  position: absolute;
-  right: 16px;
-  top: 4px;
-  margin-top: -10px;
+.editIconsSubtask{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 50px;
 }
 
 .subtask-edit-container {

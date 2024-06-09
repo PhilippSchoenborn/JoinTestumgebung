@@ -243,22 +243,22 @@ function formAddTaskSubtaskHtml() {
 <div class="subtask-container" id="subtask-container"></div>`;
 }
 
-function subtaskItemHtml(subtask) {
+function subtaskItemHtml(subtask, subtaskId) {
   return `
-  <li class="subtask-item-li" onmouseleave="hideSubtaskEditTrashIcons()" onmouseenter="showSubtaskEditTrashIcons()">
-  <input class="subtask-item" type="text" id="subtask-item-input" readonly value="${subtask}"/>
+  <li class="subtaskItemLi" onmouseleave="hideSubtaskEditFloation(${subtaskId})" onmouseenter="showSubtaskEditFloation(${subtaskId})">
+    <span class="bullet">&#x2022; <input class="subtask-item" type="text" id="subtask-item-input-${subtaskId}" readonly value="${subtask}"/></span>
+    
 
-  <div class="subtask-icon-container add-task-subtask-item-edit-icon-container" id="subtask-trash-edit-icon-container" style="display: none;">
-    <img class="dropdown-icon"
-    id="add-task-subtask-icon-edit" onclick="editSubtaskItemEditForm()"
-    src="../assets/img/icons/form-add-task/edit-blue.png"/>
-    <span class="task-card-detail-seperator"></span>
-    <img class="dropdown-icon subtask-icon-edit"
-    id="add-task-subtask-icon-trash" onclick="deleteSubtaskItem()"
-    src="../assets/img/icons/form-add-task/trash-blue.png"/>
-  </div>
-</li>
-    `;
+    <div class="editIconsSubtask" id="subtask-trash-edit-icon-container-${subtaskId}">
+      <img class="dropdown-icon"
+      id="add-task-subtask-icon-edit-${subtaskId}" onclick="editSubtaskItemEditForm(${subtaskId})"
+      src="../assets/img/icons/form-add-task/edit-blue.png"/>
+      <span class="taskCardDetailSeperator"></span>
+      <img class="dropdown-icon subtask-icon-edit"
+      id="add-task-subtask-icon-trash-${subtaskId}" onclick="deleteSubtaskItem(${subtaskId})"
+      src="../assets/img/icons/form-add-task/trash-blue.png"/>
+    </div>
+  </li>`;
 }
 
 function succesSaveTaskHtml(){
