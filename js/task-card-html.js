@@ -150,7 +150,8 @@ function taskCardHtml(task) {
 
 // Task Card Detail Edit Form
 function taskCardDetailEditFormHtml(task) {
-  return `    
+  return `  
+  <div class="dNone" id="openDetailedTask">
     <div class="task-card-detail-form-container">
       ${taskCardDetailEditFormCloseBtnHtml()} 
       <div class="task-card-detail-form">    
@@ -162,7 +163,8 @@ function taskCardDetailEditFormHtml(task) {
         ${taskCardDetailEditFormSubtaskHtml(task)}
       </div>
       ${taskCardDetailFormOkBtn(task)}     
-    </div>    
+    </div> 
+  </div>   
   `;
 }
 
@@ -221,20 +223,16 @@ function taskCardDetailEditFormPrioHtml(task) {
 
 function taskCardDetailEditFormAssignedHtml(task) {
   return `
-    <div class="task-card-detail-edit-form-assigned">
-      <label for="assigned" class="label">
+    <label for="assigned" class="label">
         Assigned To (optional)
-      </label>
-      <div class="input-icon-container">
-        <input class="placeholderFontSize" id="assigned-${task.id}" type="text" autocomplete="off" placeholder="Select contacts to assign" onclick="toggleContactDropdown(event, ${task.id})"/>
-        <img onclick="toggleContactDropdown(event, ${task.id})" class="dropdown-icon" id="assigned-edit-form-dropdown-arrow-${task.id}" src="../assets/img/icons/form-add-task/arrow-dropdown-down.png"/>
-      </div>
-      <div class="custom-dropdown-assigned custom-dropdown" id="dropdown-edit-form-assigned-${task.id}">
-        <!-- Dropdown-Inhalt hier -->
-      </div>
-      <div id="task-card-detail-profile-assigned">
+       <div class="input-icon-container">
+          <input class="placeholderFontSize" id="assigned-{task.id}" type="text" autocomplete="off" placeholder="Select contacts to assign" onclick="toggleContactDropdown(event, {task.id})"/>
+          <img onclick="toggleContactDropdown(event, {task.id})" class="dropdown-icon" id="assigned-edit-form-dropdown-arrow-{task.id}" src="../assets/img/icons/form-add-task/arrow-dropdown-down.png"/>
+       </div>
+       <div class="custom-dropdown-assigned custom-dropdown" id="dropdown-edit-form-assigned-{task.id}"></div>
+    </label>
+    <div id="task-card-detail-profile-assigned">
         ${task.profileHtml || ''}
-      </div>
     </div>
   `;
 }

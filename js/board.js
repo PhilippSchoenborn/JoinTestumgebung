@@ -35,43 +35,109 @@ function collectProfileImage(selectAssigned) {
 }
 
 function closeTaskCardDetail() {
-    const taskCardDetailBackground = document.getElementById('task-card-detail-background');
-    if (taskCardDetailBackground) {
-        taskCardDetailBackground.classList.add('slideToBottom');
-        setTimeout(() => {
-            taskCardDetailBackground.style.display = 'none';
-            taskCardDetailBackground.classList.remove('slideToBottom');
-        }, 100);
+    console.log("Closing task card detail...");
+    if (detailViewOpen) {
+        const taskCardDetailBackground = document.getElementById('task-card-detail-background');
+        document.getElementById('openDetailedTask').classList.add('dNone');
+        if (taskCardDetailBackground) {
+            taskCardDetailBackground.classList.add('slideToBottom');
+            setTimeout(() => {
+                taskCardDetailBackground.style.display = 'none';
+                taskCardDetailBackground.classList.remove('slideToBottom');
+                // Detailansicht schließen und Flag zurücksetzen
+                detailViewOpen = false;
+                console.log("Task card detail closed.");
+                
+                // Hinzugefügt: Überprüfen Sie, ob das Task-Detail-Element entfernt wurde
+                const taskDetail = document.getElementById('task-detail');
+                if (taskDetail) {
+                    console.log("Task detail element found, removing...");
+                    taskDetail.remove();
+                } else {
+                    console.log("Task detail element not found.");
+                }
+            }, 100);
+        }
+    } else {
+        console.log("DetailView is already closed, skipping...");
     }
 }
 
-function openTaskCardDetail(taskId) {
-    
-    const taskCardDetailBackground = document.getElementById('task-card-detail-background');
-    let taskDetail = document.getElementById('task-detail');
 
+
+// Initialisierung des Detailelements beim Laden der Seite
+document.addEventListener('DOMContentLoaded', function() {
+    const taskCardDetailBackground = document.getElementById('task-card-detail-background');
     if (!taskCardDetailBackground) {
         console.error('Task card detail background not found');
-        return;
-    }
-
-    // Ensure taskDetail element is present and clear it
-    if (!taskDetail) {
-        console.error('Task detail element not found, creating a new one');
-        taskDetail = document.createElement('div');
-        taskDetail.id = 'task-detail';
-        taskCardDetailBackground.appendChild(taskDetail);
     } else {
-        taskDetail.innerHTML = '';
+        const taskDetail = document.getElementById('task-detail');
+        if (!taskDetail) {
+            console.error('Task detail element not found, creating a new one');
+            const newTaskDetail = document.createElement('div');
+            newTaskDetail.id = 'task-detail';
+            taskCardDetailBackground.appendChild(newTaskDetail);
+        }
     }
+});
 
-    const task = getTaskById(taskId);
-    if (task) {
-        const taskDetailHtml = taskCardDetailHtml(task);
-        taskDetail.innerHTML = taskDetailHtml;
-        taskCardDetailBackground.style.display = 'block';
+// Entfernen des Detailelements bei Bedarf
+function removeTaskDetailElement() {
+    const taskDetail = document.getElementById('task-detail');
+    if (taskDetail) {
+        taskDetail.remove();
+    }
+}
+
+let detailViewOpen = false;
+
+function openTaskCardDetail(taskId) {
+    console.log("Opening task card detail for taskId:", taskId); // Neues Log hinzugefügt
+    console.log("DetailView is currently:", detailViewOpen);
+    console.log("Tasks:", tasks);
+
+    const taskCardDetailBackground = document.getElementById('task-card-detail-background');
+    let taskDetail = document.getElementById('task-detail');
+    
+
+    if (!detailViewOpen || taskDetail.dataset.taskId !== taskId) {
+        console.log("DetailView is not open or different task is clicked, opening...");
+        // Öffne die Detailansicht nur, wenn sie nicht bereits geöffnet ist oder wenn ein anderer Task geklickt wurde
+        detailViewOpen = true;
+
+        if (!taskCardDetailBackground) {
+            console.error('Task card detail background not found');
+            return;
+        }
+
+        console.log("Task card detail background found");
+
+        // Überprüfen, ob das Task-Detail-Element bereits vorhanden ist
+        if (!taskDetail) {
+            // Wenn nicht, erstellen Sie das Element
+            console.error('Task detail element not found, creating a new one');
+            taskDetail = document.createElement('div');
+            taskDetail.id = 'task-detail';
+            taskCardDetailBackground.appendChild(taskDetail);
+        } else {
+            // Wenn bereits vorhanden, setzen Sie nur den Inhalt zurück
+            taskDetail.innerHTML = '';
+        }
+
+        console.log("Task detail element found or created");
+
+        const task = getTaskById(taskId);
+        if (task) {
+            console.log("Task found:", task);
+            const taskDetailHtml = taskCardDetailHtml(task);
+            taskDetail.innerHTML = taskDetailHtml;
+            taskDetail.dataset.taskId = taskId; // Speichere die taskId im taskDetail-Dataset
+            taskCardDetailBackground.style.display = 'block';
+        } else {
+            console.error('Task not found');
+        }
     } else {
-        console.error('Task not found');
+        console.log("DetailView is already open for the same task, skipping...");
     }
 }
 
@@ -109,9 +175,11 @@ function taskCardDelete(taskId) {
 
 function openTaskCardDetailEditForm(taskId) {
     const task = getTaskById(taskId);
+   
     if (task) {
         document.getElementById('task-card-detail-background').innerHTML = taskCardDetailEditFormHtml(task);
         document.getElementById('task-card-detail-background').style.display = 'block';
+        document.getElementById('openDetailedTask').classList.remove('dNone');
     } else {
         console.error('Task not found:', taskId);
     }
@@ -184,19 +252,18 @@ function hideSubtaskEditFloation(subtaskId) {
     }
 }
 
-const subtasks = ['Subtask 1', 'Subtask 2', 'Subtask 3'];
+// const subtasks = ['Subtask 1', 'Subtask 2', 'Subtask 3'];
 
-function renderSubtasks(subtasks) {
-  const subtaskList = document.getElementById('subtask-list');
-  subtaskList.innerHTML = ''; // Clear existing subtasks
+// function renderSubtasks(subtasks) {
+//   const subtaskList = document.getElementById('subtask-list');
+// //   subtaskList.innerHTML = ''; // Clear existing subtasks
 
-  subtasks.forEach((subtask, index) => {
-    subtaskList.innerHTML += subtaskItemHtml(subtask, index);
-  });
-}
+//   subtasks.forEach((subtask, index) => {
+//     subtaskList.innerHTML += subtaskItemHtml(subtask, index);
+//   });
+// }
 
-// Beispielaufruf
-renderSubtasks(subtasks);
+// renderSubtasks(subtasks);
 
 function deleteSubtaskItem(taskId, subtaskId) {
     let subtaskInput = document.getElementById(`subtask-item-input-${taskId}-${subtaskId}`);
