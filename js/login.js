@@ -112,6 +112,25 @@ function loginGuestAndRedirect() {
     }
 }
 
+// function takeUserContact() {
+//     contacts = 0;
+//     let name = localStorage.getItem('currentUser');
+//     let email = localStorage.getItem('currentEmail');
+//     let colorIndx = Math.floor(Math.random() * beautifulColors.length); // Zufälliger Index für Farbe
+//     let color = beautifulColors[colorIndx];
+//     // let initial = extractInitials(name);
+//     let contactLength = contacts.length;
+//     contacts.push({
+//         name: name,
+//         email: email,
+//         profileColor: color,
+//         // initialien: initial,
+
+//     })
+//     let contactsLength = contactLength;
+//     saveContacs();
+// }
+
 function updateGreeting() {
     console.log("Updating greeting...");
     const greetElement = document.getElementById('greet');
@@ -134,12 +153,13 @@ console.log("Script loaded.");
 
 function logout() {
     console.log('Logout-Funktion wurde aufgerufen');
-    
+
     // Lösche den Benutzerstatus aus dem Local Storage
     localStorage.removeItem('currentUser');
-    
+
     // Leite den Benutzer zur Login-Seite weiter
     window.location.href = '../html/login.html';
+
 }
 
 function startAnimation() {
@@ -288,7 +308,7 @@ async function getCurrentUser(email, password) {
     }
 }
 
-function checkFormFields() {    
+function checkFormFields() {
     const isTermsAccepted = document.getElementById('customCheckbox');
     const registerBtn = document.getElementById('registerBtn');
 
@@ -323,12 +343,12 @@ function slideSuccessfully() {
     }, 2000); // Warten Sie z.B. 1000 Millisekunden (1 Sekunde)
 }
 
-function pwWarningHTML(){
+function pwWarningHTML() {
     return `<span id="signUpWarning"
     >The password must be at least 8 characters long and must contain a number.</span>`
 }
 
-function closeWarning(){
+function closeWarning() {
     document.getElementById('pwWarningContainer').style.display = 'none';
 }
 
@@ -360,9 +380,10 @@ async function login() {
                 console.log('Eingeloggt:', user.name);
                 // Hier wird der Benutzer erfolgreich eingeloggt
 
-                // Speichern des aktuellen Benutzernamens im Local Storage
+                // Speichern des aktuellen Benutzerdaten im Local Storage
                 localStorage.setItem('currentUser', user.name);
-
+                localStorage.setItem('currentEmail', user.email);
+                // takeUserContact();
                 window.location.href = '../html/summary.html';
             } else {
                 console.log('Ungültiges Passwort.');

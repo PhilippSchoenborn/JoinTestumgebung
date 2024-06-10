@@ -1,9 +1,11 @@
 
-
 function renderContacts() {
   loadContacts();
   createContactList();
 }
+
+
+
 
 // Funktion zum Erstellen der Kontaktliste
 function createContactList() {
