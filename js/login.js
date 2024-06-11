@@ -283,11 +283,12 @@ async function register() {
 
 
 async function addNewContact(name, email) {
+    let youName = name + '&nbsp; (You)';
     const colorIndex = Math.floor(Math.random() * beautifulColors.length); // Zufälliger Index für Farbe
     const color = beautifulColors[colorIndex];
     const initial = extractInitials(name); // Annahme: extractInitials ist bereits implementiert
     const newContact = {
-        name: name,
+        name: youName,
         email: email,
         phone: '', // Da wir keine Telefonnummer während der Registrierung erhalten
         profileColor: color,
