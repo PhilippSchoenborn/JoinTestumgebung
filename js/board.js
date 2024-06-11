@@ -238,15 +238,17 @@ function hideSubtaskEditTrashIcons(taskId, subtaskIndex) {
     }
 }
 
-function showSubtaskEditFloation(subtaskId) {
-    const iconContainer = document.getElementById(`subtask-trash-edit-icon-container-${subtaskId}`);
+function showSubtaskEditTrashIcons(taskId, subtaskIndex) {
+    console.log(`showSubtaskEditTrashIcons called for taskId: ${taskId}, subtaskIndex: ${subtaskIndex}`);
+    const iconContainer = document.getElementById(`subtask-duo-icon-container-${taskId}-${subtaskIndex}`);
     if (iconContainer) {
         iconContainer.style.display = 'flex';
     }
 }
 
-function hideSubtaskEditFloation(subtaskId) {
-    const iconContainer = document.getElementById(`subtask-trash-edit-icon-container-${subtaskId}`);
+function hideSubtaskEditTrashIcons(taskId, subtaskIndex) {
+    console.log(`hideSubtaskEditTrashIcons called for taskId: ${taskId}, subtaskIndex: ${subtaskIndex}`);
+    const iconContainer = document.getElementById(`subtask-duo-icon-container-${taskId}-${subtaskIndex}`);
     if (iconContainer) {
         iconContainer.style.display = 'none';
     }
@@ -281,8 +283,12 @@ function deleteSubtaskItem(taskId, subtaskId) {
 
 async function saveEditTask(taskId) {
     let task = getTaskById(taskId);
-    if (!task) return;
+    if (!task) {
+        console.error('Task not found:', taskId);
+        return;
+    }
 
+    // Aktualisiere die task-Daten mit den Eingabewerten aus dem Formular
     task.title = document.getElementById(`title-${taskId}`).value;
     task.description = document.getElementById(`description-${taskId}`).value;
     task.dueDate = document.getElementById(`due-date-${taskId}`).value;
@@ -293,23 +299,28 @@ async function saveEditTask(taskId) {
     }
 
     task.assigned = getAssignedContacts();
+
+    // Protokolliere die aktuellen task-Daten
+    console.log('Updated Task:', task);
   
-    // Aktualisieren Sie die globale Aufgabenliste
+    // Aktualisiere die globale Aufgabenliste
     const taskIndex = tasks.findIndex(t => t.id === task.id);
     if (taskIndex !== -1) {
         tasks[taskIndex] = task;
     } else {
         tasks.push(task);
     }
-    
-    // Speichern Sie die aktualisierte Aufgabenliste
+
+    // Speichere die aktualisierte Aufgabenliste
     await saveTasks();
+    console.log('Task list saved successfully!');
   
-    // Aktualisieren Sie die Task-Karte und Detail-Ansicht
+    // Aktualisiere die Task-Karte und Detail-Ansicht
     updateTaskCard(taskId);
     updateTaskCardDetail(taskId);
     closeTaskCardDetail();
 }
+
   
 
 function getSelectedPrioClass() {
