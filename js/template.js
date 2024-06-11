@@ -1,5 +1,7 @@
 async function init() {
     await includeHTML();
+    currentPage();
+    loadContacts();
     // responsive();
     renderContactListDropdown();
     openCategoryDropdown();
@@ -22,7 +24,6 @@ async function signUpInit(){
 async function addTaskInit(){
     await includeHTML();
     currentPage();
-    // responsive();
     loadContacts();
     renderContactListDropdown();
     openCategoryDropdown();
@@ -104,10 +105,6 @@ async function includeHTML() {
         let resp = await fetch(file);
         if (resp.ok) {
             element.innerHTML = await resp.text();
-            // Hervorhebungsfunktion für Links hinzufügen
-            // addHighlightFunctionality(element);
-            // Aktiven Link setzen
-            // setHighlight();
         } else {
             element.innerHTML = 'Page not found';
         }

@@ -1,3 +1,4 @@
+let isItYou = false;
 
 function renderContacts() {
   loadContacts();
@@ -142,7 +143,7 @@ function openEditResponsive(i) {
   document.getElementById('editResponsiveDiv').classList.remove('d-none');
 }
 
-function closeEditResponsive(){
+function closeEditResponsive() {
   document.getElementById('editResponsiveDiv').classList.add('d-none');
 }
 
@@ -245,18 +246,33 @@ function cancelEditContact() {
 
 // Öffnet die Box 'Edit Contact'
 function showeditContact(i) {
-  document.getElementById('editContact').classList.add('editContactActive');
-  document.getElementById('blurBackground').classList.remove('d-none');
   const contact = contacts[i];
-  const color = contact['profileColor'];
-  document.getElementById('editSecondSectione').innerHTML = '';
-  document.getElementById('editSecondSectione').innerHTML = editContactHTML(i);
-  document.getElementById('editName').value = `${contact.name}`;
-  document.getElementById('editEmail').value = `${contact.email}`;
-  document.getElementById('editPhone').value = `${contact.phone}`;
-  document.getElementById('initialsEditContact').style = `background-color: ${color};`;
-  document.getElementById('initialsText').innerHTML = `${contact.initialien}`;
-  closeEditResponsive();
+  if (contact.name.includes('(You)')) {
+    let newName = contact.name.substr(0, contact.name.length - 12);
+    const color = contact['profileColor'];
+    document.getElementById('editSecondSectione').innerHTML = '';
+    document.getElementById('editContact').classList.add('editContactActive');
+    document.getElementById('blurBackground').classList.remove('d-none');
+    document.getElementById('editSecondSectione').innerHTML = editContactHTML(i);
+    document.getElementById('editName').value = `${newName}`;
+    document.getElementById('editEmail').value = `${contact.email}`;
+    document.getElementById('editPhone').value = `${contact.phone}`;
+    document.getElementById('initialsEditContact').style = `background-color: ${color};`;
+    document.getElementById('initialsText').innerHTML = `${contact.initialien}`;
+    closeEditResponsive();
+  } else {
+    const color = contact['profileColor'];
+    document.getElementById('editSecondSectione').innerHTML = '';
+    document.getElementById('editContact').classList.add('editContactActive');
+    document.getElementById('blurBackground').classList.remove('d-none');
+    document.getElementById('editSecondSectione').innerHTML = editContactHTML(i);
+    document.getElementById('editName').value = `${contact.name}`;
+    document.getElementById('editEmail').value = `${contact.email}`;
+    document.getElementById('editPhone').value = `${contact.phone}`;
+    document.getElementById('initialsEditContact').style = `background-color: ${color};`;
+    document.getElementById('initialsText').innerHTML = `${contact.initialien}`;
+    closeEditResponsive();
+  }
 }
 
 function editContactHTML(i) {
@@ -287,19 +303,37 @@ function editContactToArray(i) {
   let email = document.getElementById('editEmail');
   let phone = document.getElementById('editPhone');
   const initial = extractInitials(name.value);
-  const newContact = {
-    "name": name.value,
-    "email": email.value,
-    "phone": phone.value,
-    "profileColor": contact.profileColor,
-    "initialien": initial
-  };
-  contacts.splice(i, 1, newContact);
-  save();
-  loadContacts();
-  contactClickHandler(newContact, contacts.length);
-  cancelEditContact();
-  createContactList();
+  if (isItYou = true) {
+    let myName = name.value + '&nbsp; (You)';
+    const newContact = {
+      "name": myName,
+      "email": email.value,
+      "phone": phone.value,
+      "profileColor": contact.profileColor,
+      "initialien": initial
+    };
+    contacts.splice(i, 1, newContact);
+    isItYou = false;
+    save();
+    loadContacts();
+    contactClickHandler(newContact, contacts.length);
+    cancelEditContact();
+    createContactList();
+  } else {
+    const newContact = {
+      "name": name.value,
+      "email": email.value,
+      "phone": phone.value,
+      "profileColor": contact.profileColor,
+      "initialien": initial
+    };
+    contacts.splice(i, 1, newContact);
+    save();
+    loadContacts();
+    contactClickHandler(newContact, contacts.length);
+    cancelEditContact();
+    createContactList();
+  }
 
 }
 
@@ -321,7 +355,7 @@ function writeContact(event) {
 // Entfernt der InputBox den Effekt 'blaue Linie' 
 function StopPropergation() {
   document.getElementById('inputBox1').classList.remove('blueborder');
-} 
+}
 
 document.addEventListener('DOMContentLoaded', async () => {
   await loadContacts();

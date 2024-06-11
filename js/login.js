@@ -296,17 +296,6 @@ async function addNewContact(name, email) {
     };
 
     contacts.push(newContact);
-
-    try {
-        // Kontakte auf dem Server speichern
-        await setItem('contacts', JSON.stringify(contacts));
-        console.log('Kontakt erfolgreich gespeichert:', newContact);
-    } catch (e) {
-        console.error('Fehler beim Speichern des Kontakts:', e);
-        alert('Fehler beim Speichern des Kontakts.');
-        return false;
-    }
-
     saveContacts();
     console.log('Neuer Kontakt hinzugefügt:', newContact);
 }
@@ -331,16 +320,6 @@ async function saveContacts() {
         }
     } catch (error) {
         console.error('Error saving contacts:', error);
-    }
-}
-
-async function loadContacts() {
-    try {
-        const data = await getItem('contacts');
-        contacts = JSON.parse(data);
-        console.log('Kontakte erfolgreich geladen:', contacts);
-    } catch (error) {
-        console.error('Error loading contacts:', error);
     }
 }
 
