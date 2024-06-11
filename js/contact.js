@@ -322,3 +322,8 @@ function writeContact(event) {
 function StopPropergation() {
   document.getElementById('inputBox1').classList.remove('blueborder');
 } 
+
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadContacts();
+  createContactList();
+});

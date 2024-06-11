@@ -263,6 +263,13 @@ async function register() {
 
         await setItem('users', JSON.stringify(users));
 
+        // Neuen Kontakt hinzufügen und auf dem Server speichern
+        await addNewContact(name, email);
+
+        // Aktualisiere die Kontaktliste nach dem Hinzufügen des neuen Kontakts
+        await loadContacts();
+        // createContactList();
+
         slideSuccessfully();
     } catch (e) {
         console.error('Fehler beim Laden der Benutzerdaten:', e);
@@ -275,6 +282,35 @@ async function register() {
 }
 
 
+async function addNewContact(name, email) {
+    const colorIndex = Math.floor(Math.random() * beautifulColors.length); // Zufälliger Index für Farbe
+    const color = beautifulColors[colorIndex];
+    const initial = extractInitials(name); // Annahme: extractInitials ist bereits implementiert
+    const newContact = {
+        name: name,
+        email: email,
+        phone: '', // Da wir keine Telefonnummer während der Registrierung erhalten
+        profileColor: color,
+        initialien: initial,
+    };
+
+    contacts.push(newContact);
+
+    try {
+        // Kontakte auf dem Server speichern
+        await setItem('contacts', JSON.stringify(contacts));
+        console.log('Kontakt erfolgreich gespeichert:', newContact);
+    } catch (e) {
+        console.error('Fehler beim Speichern des Kontakts:', e);
+        alert('Fehler beim Speichern des Kontakts.');
+        return false;
+    }
+
+    saveContacts();
+    console.log('Neuer Kontakt hinzugefügt:', newContact);
+}
+
+
 function showWarningMessage(message, targetElementId) {
     const warningContainer = document.getElementById(targetElementId);
     if (warningContainer) {
@@ -283,6 +319,27 @@ function showWarningMessage(message, targetElementId) {
         console.log(`Warnmeldung angezeigt: ${message}`);
     } else {
         console.error(`Element mit der ID "${targetElementId}" nicht gefunden.`);
+    }
+}
+
+async function saveContacts() {
+    try {
+        const response = await setItem('contacts', JSON.stringify(contacts));
+        if (!response || response.error) {
+            throw new Error('Failed to save contacts: ' + (response ? response.error : 'No response'));
+        }
+    } catch (error) {
+        console.error('Error saving contacts:', error);
+    }
+}
+
+async function loadContacts() {
+    try {
+        const data = await getItem('contacts');
+        contacts = JSON.parse(data);
+        console.log('Kontakte erfolgreich geladen:', contacts);
+    } catch (error) {
+        console.error('Error loading contacts:', error);
     }
 }
 
