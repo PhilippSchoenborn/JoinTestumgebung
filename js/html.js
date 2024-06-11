@@ -77,7 +77,7 @@ function addContactHtml() {
         <img src="../assets/img/input-icons/mail.png">            
       </label>
       <label for="phone" class="label">
-        <input type="tel" placeholder="Phone" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+        <input type="number" placeholder="Phone" id="phone" name="phone" required pattern="[0-9+]+"">
         <img src="../assets/img/input-icons/call.png">            
       </label>
       <div class="add-contact-btn-container">

@@ -288,7 +288,7 @@ function editContactHTML(i) {
       <div id="inputBox1" class="inputBox inputBox1"><input id="editName" required type="text" placeholder="Name"> <img
           src="../assets/img/addNewContact/person.png" alt=""></div>
       <div class="inputBox"><input type="text" id="editEmail" required placeholder="Email"> <img src="../assets/img/addNewContact/mail.png" alt=""></div>
-      <div class="inputBox"><input type="tel" id="editPhone" required pattern="[0-9+]+" placeholder="Phone"> <img src="../assets/img/addNewContact/call.png" alt=""></div>
+      <div class="inputBox"><input type="number" id="editPhone"  pattern="[0-9+]" placeholder="Phone"> <img src="../assets/img/addNewContact/call.png" alt=""></div>
     </div>
     <div id="btnDiv">
       <button onclick="cancelEditContact();deleteContact(${i}) " id="cancelButtonContact">Delete</button>
