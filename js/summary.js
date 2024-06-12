@@ -6,7 +6,9 @@ async function summaryInit() {
     // openEditCategoryDropdown();
     // setupSubtaskIcons();
     // setupEditSubtaskIcons();     
-    loadTasks();
+    await loadTasks();
+    updateNumbers();
+    updateNextEvent();
     // renderEditContactListDropdown();
     updateUserName(); // Benutzername aktualisieren
     updateProfileName();
@@ -46,6 +48,45 @@ function setGreeting() {
     // Testen: Konsolenausgabe des Grußes
     console.log("Greeting:", greeting);
 }
+
+function updateNumbers() {
+    let urgentTasks = tasks.filter(task => task.prioValue=== "Urgent").length;
+        document.getElementById('urgentTaskNumber').innerHTML = '';
+        document.getElementById('urgentTaskNumber').innerHTML = `${urgentTasks}`;
+    let tasksInBoard = tasks.length;
+        document.getElementById('taskinBoardNumber').innerHTML = '';
+        document.getElementById('taskinBoardNumber').innerHTML = `${tasksInBoard}`;
+    let tasksToDo = tasks.filter(task => task.status=== "open").length;
+        document.getElementById('tasksToDoNumber').innerHTML = '';
+        document.getElementById('tasksToDoNumber').innerHTML = `${tasksToDo}`;
+    let tasksInProgress = tasks.filter(task => task.status=== "inProgress").length;
+        document.getElementById('tasksInProgressNumber').innerHTML = '';
+        document.getElementById('tasksInProgressNumber').innerHTML = `${tasksInProgress}`;
+    let tasksAwaitFeedback = tasks.filter(task => task.status=== "feedback").length;
+        document.getElementById('tasksAwaitFeedbackNumber').innerHTML = '';
+        document.getElementById('tasksAwaitFeedbackNumber').innerHTML = `${tasksAwaitFeedback}`;
+    let tasksDone = tasks.filter(task => task.status=== "done").length;
+        document.getElementById('tasksDoneNumber').innerHTML = '';
+        document.getElementById('tasksDoneNumber').innerHTML = `${tasksDone}`;
+}
+
+function updateNextEvent() {
+    const today = new Date();
+    let nearestDate = null;
+
+    tasks.forEach(task => {
+        const taskDate = new Date(task.date);
+        
+        if (!nearestDate || (taskDate >= today && taskDate < nearestDate)) {
+            nearestDate = taskDate;
+        }
+    });
+
+    const formattedDate = nearestDate ? nearestDate.toLocaleDateString('de-DE', { day: '2-digit', month: 'long', year: 'numeric' }) : 'No upcoming tasks';
+    document.getElementById('date').textContent = formattedDate;
+}
+
+
 
 setGreeting();
 
