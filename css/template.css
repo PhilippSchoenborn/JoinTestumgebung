@@ -575,7 +575,6 @@ aside {
 }
 
 .dropdown-icon {
-  position: absolute;
   right: 0;
   bottom: 0;
   display: flex;
@@ -732,7 +731,6 @@ aside {
 }
 
 .bullet {
-  position: absolute;
   bottom: 13px;
   left: 10px;
   padding: 0 16px;
