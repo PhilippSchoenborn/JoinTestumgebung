@@ -139,6 +139,10 @@ else if (cP.includes('imprint.html')){
 }
 else if(cP.includes('dataProtection.html')){
     document.getElementById('dataProtectionMenu').classList.add('currentPagePolicy');
+}else if(cP.includes('loginImprint.html')){
+    document.getElementById('imprintLogIn').classList.add('currentPagePolicy');
+}else if(cP.includes('loginDataProtection.html')){
+    document.getElementById('dataProtectionLogIn').classList.add('currentPagePolicy');
 }
 }
 
