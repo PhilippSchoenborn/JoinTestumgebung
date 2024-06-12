@@ -244,22 +244,50 @@ function toggleContactDropdown(event, taskId) {
     const contentContact = document.getElementById(`dropdown-edit-form-assigned-${taskId}`);
     const dropdownIconContact = document.getElementById(`assigned-edit-form-dropdown-arrow-${taskId}`);
   
+    console.log('Task ID:', taskId);
+    console.log('contentContact:', contentContact);
+    console.log('dropdownIconContact:', dropdownIconContact);
+  
     if (!contentContact || !dropdownIconContact) {
       console.error(`Elemente contentContact oder dropdownIconContact für Task-ID ${taskId} wurden nicht gefunden.`);
       return;
     }
   
+    // Falls das Dropdown noch nicht geladen wurde, Kontakte anzeigen
+    if (!contentContact.classList.contains('loaded')) {
+      console.log('Lade Kontakte für Task ID:', taskId);
+      displayContacts(contentContact);
+    } else {
+      console.log('Dropdown wurde bereits geladen für Task ID:', taskId);
+    }
+  
     contentContact.classList.toggle('show');
     dropdownIconContact.classList.toggle('rotate');
-  }
+}
+
+function displayContacts(contentContact) {
+    // Überprüfe, ob das Dropdown-Element vorhanden ist
+    if (!contentContact) {
+        console.error('Dropdown-Element nicht gefunden.');
+        return;
+    }
   
-  document.addEventListener('click', function() {
+    // Konstruiere HTML für die Anzeige aller Kontakte
+    let contactsHtml = '';
+    contacts.forEach((contact, i) => {
+        contactsHtml += formDropdownAssignedItemHtml(contact, i); // Verwenden Sie die formDropdownAssignedItemHtml-Funktion, um das HTML für jeden Kontakt zu generieren
+    });
+  
+    // Füge das HTML in das Dropdown-Element ein
+    contentContact.innerHTML = contactsHtml;
+}
+
+document.addEventListener('click', function() {
     const dropdowns = document.querySelectorAll('.custom-dropdown-assigned');
     const icons = document.querySelectorAll('.dropdown-icon');
     dropdowns.forEach(dropdown => dropdown.classList.remove('show'));
     icons.forEach(icon => icon.classList.remove('rotate'));
-  });
-
+});
 
   function changeIcon() {
     // Diese Funktion wird aufgerufen, wenn auf das Subtask-Eingabefeld geklickt wird
