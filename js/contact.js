@@ -241,39 +241,62 @@ function cancelAddContact() {
 // Schließt die Box 'Edit Contact'
 function cancelEditContact() {
   document.getElementById('editContact').classList.remove('editContactActive');
-  document.getElementById('blurBackground').classList.add('d-none');
+  document.getElementById('blurBackground').classList.add('d-none');s
 }
 
-// Öffnet die Box 'Edit Contact'
+
 function showeditContact(i) {
   const contact = contacts[i];
-  if (contact.name.includes('(You)')) {
-    let newName = contact.name.substr(0, contact.name.length - 12);
-    const color = contact['profileColor'];
-    document.getElementById('editSecondSectione').innerHTML = '';
-    document.getElementById('editContact').classList.add('editContactActive');
-    document.getElementById('blurBackground').classList.remove('d-none');
-    document.getElementById('editSecondSectione').innerHTML = editContactHTML(i);
-    document.getElementById('editName').value = `${newName}`;
-    document.getElementById('editEmail').value = `${contact.email}`;
-    document.getElementById('editPhone').value = `${contact.phone}`;
-    document.getElementById('initialsEditContact').style = `background-color: ${color};`;
-    document.getElementById('initialsText').innerHTML = `${contact.initialien}`;
-    closeEditResponsive();
-  } else {
-    const color = contact['profileColor'];
-    document.getElementById('editSecondSectione').innerHTML = '';
-    document.getElementById('editContact').classList.add('editContactActive');
-    document.getElementById('blurBackground').classList.remove('d-none');
-    document.getElementById('editSecondSectione').innerHTML = editContactHTML(i);
-    document.getElementById('editName').value = `${contact.name}`;
-    document.getElementById('editEmail').value = `${contact.email}`;
-    document.getElementById('editPhone').value = `${contact.phone}`;
-    document.getElementById('initialsEditContact').style = `background-color: ${color};`;
-    document.getElementById('initialsText').innerHTML = `${contact.initialien}`;
-    closeEditResponsive();
-  }
+  let name = contact.name;
+  isItYou = name.includes('(You)');
+  let displayName = isItYou ? name.substr(0, name.length - 12) : name;
+  
+  const color = contact['profileColor'];
+  
+  document.getElementById('editSecondSectione').innerHTML = '';
+  document.getElementById('editContact').classList.add('editContactActive');
+  document.getElementById('blurBackground').classList.remove('d-none');
+  document.getElementById('editSecondSectione').innerHTML = editContactHTML(i);
+  document.getElementById('editName').value = displayName;
+  document.getElementById('editEmail').value = contact.email;
+  document.getElementById('editPhone').value = contact.phone;
+  document.getElementById('initialsEditContact').style.backgroundColor = color;
+  document.getElementById('initialsText').innerHTML = contact.initialien;
+  closeEditResponsive();
 }
+
+// // Öffnet die Box 'Edit Contact'
+// function showeditContact(i) {
+//   const contact = contacts[i];
+//   let name = contact.name;
+//   if (name.includes('(You)')) {
+//     let newName = contact.name.substr(0, contact.name.length - 12);
+//     const color = contact['profileColor'];
+//     isItYou = true;
+//     document.getElementById('editSecondSectione').innerHTML = '';
+//     document.getElementById('editContact').classList.add('editContactActive');
+//     document.getElementById('blurBackground').classList.remove('d-none');
+//     document.getElementById('editSecondSectione').innerHTML = editContactHTML(i);
+//     document.getElementById('editName').value = `${newName}`;
+//     document.getElementById('editEmail').value = `${contact.email}`;
+//     document.getElementById('editPhone').value = `${contact.phone}`;
+//     document.getElementById('initialsEditContact').style = `background-color: ${color};`;
+//     document.getElementById('initialsText').innerHTML = `${contact.initialien}`;
+//     closeEditResponsive();
+//   } else {
+//     const color = contact['profileColor'];
+//     document.getElementById('editSecondSectione').innerHTML = '';
+//     document.getElementById('editContact').classList.add('editContactActive');
+//     document.getElementById('blurBackground').classList.remove('d-none');
+//     document.getElementById('editSecondSectione').innerHTML = editContactHTML(i);
+//     document.getElementById('editName').value = `${contact.name}`;
+//     document.getElementById('editEmail').value = `${contact.email}`;
+//     document.getElementById('editPhone').value = `${contact.phone}`;
+//     document.getElementById('initialsEditContact').style = `background-color: ${color};`;
+//     document.getElementById('initialsText').innerHTML = `${contact.initialien}`;
+//     closeEditResponsive();
+//   }
+// }
 
 function editContactHTML(i) {
   return `<div id="contactInput" class="contactInput">
@@ -297,45 +320,71 @@ function editContactHTML(i) {
   </div>`;
 }
 
+
 function editContactToArray(i) {
   let contact = contacts[i];
   let name = document.getElementById('editName');
   let email = document.getElementById('editEmail');
   let phone = document.getElementById('editPhone');
   const initial = extractInitials(name.value);
-  if (isItYou = true) {
-    let myName = name.value + '&nbsp; (You)';
-    const newContact = {
+
+  let myName = isItYou ? name.value + ' (You)' : name.value;
+
+  const newContact = {
       "name": myName,
       "email": email.value,
       "phone": phone.value,
       "profileColor": contact.profileColor,
       "initialien": initial
-    };
-    contacts.splice(i, 1, newContact);
-    isItYou = false;
-    save();
-    loadContacts();
-    contactClickHandler(newContact, contacts.length);
-    cancelEditContact();
-    createContactList();
-  } else {
-    const newContact = {
-      "name": name.value,
-      "email": email.value,
-      "phone": phone.value,
-      "profileColor": contact.profileColor,
-      "initialien": initial
-    };
-    contacts.splice(i, 1, newContact);
-    save();
-    loadContacts();
-    contactClickHandler(newContact, contacts.length);
-    cancelEditContact();
-    createContactList();
-  }
-
+  };
+  
+  contacts.splice(i, 1, newContact);
+  save();
+  loadContacts();
+  contactClickHandler(newContact, contacts.length);
+  cancelEditContact();
+  createContactList();
 }
+
+// function editContactToArray(i) {
+//   let contact = contacts[i];
+//   let name = document.getElementById('editName');
+//   let email = document.getElementById('editEmail');
+//   let phone = document.getElementById('editPhone');
+//   const initial = extractInitials(name.value);
+//   if (isItYou = true) {
+//     let myName = name.value + '&nbsp; (You)';
+//     const newContact = {
+//       "name": myName,
+//       "email": email.value,
+//       "phone": phone.value,
+//       "profileColor": contact.profileColor,
+//       "initialien": initial
+//     };
+//     isItYou = false;
+//     contacts.splice(i, 1, newContact);
+//     save();
+//     loadContacts();
+//     contactClickHandler(newContact, contacts.length);
+//     cancelEditContact();
+//     createContactList();
+//   } else {
+//     const newContact = {
+//       "name": name.value,
+//       "email": email.value,
+//       "phone": phone.value,
+//       "profileColor": contact.profileColor,
+//       "initialien": initial
+//     };
+//     contacts.splice(i, 1, newContact);
+//     save();
+//     loadContacts();
+//     contactClickHandler(newContact, contacts.length);
+//     cancelEditContact();
+//     createContactList();
+//   }
+
+// }
 
 
 // Öffnet die Box 'Add new Contact'
