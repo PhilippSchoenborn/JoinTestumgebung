@@ -107,12 +107,25 @@ function contactProfileImageHtml(contact) {
 }
 
 function formDropdownAssignedItemHtml(contact, i, taskId, isSelected) {
+  let profileHtml = generateProfileHtml([contact]); // Profilbild für den aktuellen Kontakt generieren
   return `
       <label class="contact-item">
           <input type="checkbox" class="checkbox-assigned" id="contact-${i}-${taskId}" ${isSelected ? 'checked' : ''}/>
-          <span class="assigned-name" data-value="${contact.name}">${contact.name}</span> 
+          ${profileHtml} <span class="assigned-name" data-value="${contact.name}">${contact.name}</span> 
       </label>
   `;
+}
+
+function generateProfileHtml(selectedContacts) {
+  let profilesHtml = '';
+  selectedContacts.forEach(contact => {
+      profilesHtml += `<div class="profileIconNameWrap">
+          <div class="profileCircle" style="background-color: ${contact.profileColor};">
+              <span class="initialsText">${contact.initialien}</span>
+          </div>
+      </div>`;
+  });
+  return profilesHtml;
 }
 
 function formAddTask() {

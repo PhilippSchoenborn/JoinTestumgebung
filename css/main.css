@@ -322,8 +322,18 @@ body {
 
 .contact-item {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
+  margin-bottom: 5px;
+
+}
+
+.assigned-name{
+  margin: 0;
+}
+
+.profileCircle{
+  margin-right: 15px !important;
 }
 
 .profileIconWrap {
