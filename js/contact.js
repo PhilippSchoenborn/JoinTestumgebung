@@ -7,14 +7,15 @@ function renderContacts() {
 
 
 
-
 // Funktion zum Erstellen der Kontaktliste
 function createContactList() {
   const contactList = document.getElementById('contact-list');
   contactList.innerHTML = '';
-  let currentLetter = null;
+  let addedLetters = {};
+
   for (let j = 0; j < alphabet.length; j++) {
     const letter = alphabet[j];
+    let letterAdded = false;
 
     for (let i = 0; i < contacts.length; i++) {
       const contact = contacts[i];
@@ -22,13 +23,15 @@ function createContactList() {
       const firstLetter = initials.charAt(0).toUpperCase();
 
       if (firstLetter === letter) {
-        if (firstLetter !== currentLetter) {
-          currentLetter = firstLetter;
+        if (!letterAdded && !addedLetters[letter]) {
           const letterHeading = document.createElement('div');
-          letterHeading.textContent = currentLetter;
+          letterHeading.textContent = letter;
           letterHeading.classList.add('letter-heading');
           contactList.appendChild(letterHeading);
+          letterAdded = true;
+          addedLetters[letter] = true;  // Markiere den Buchstaben als hinzugefügt
         }
+
         const contactItem = document.createElement('div');
         contactItem.classList.add('contact');
         const profileColor = contact['profileColor'];
@@ -60,6 +63,63 @@ function createContactList() {
     }
   }
 }
+
+
+
+
+
+// // Funktion zum Erstellen der Kontaktliste
+// function createContactList() {
+//   const contactList = document.getElementById('contact-list');
+//   contactList.innerHTML = '';
+//   let currentLetter = null;
+//   for (let j = 0; j < alphabet.length; j++) {
+//     const letter = alphabet[j];
+
+//     for (let i = 0; i < contacts.length; i++) {
+//       const contact = contacts[i];
+//       const initials = contact.initialien;
+//       const firstLetter = initials.charAt(0).toUpperCase();
+
+//       if (firstLetter === letter) {
+//         if (firstLetter !== currentLetter) {
+//           currentLetter = firstLetter;
+//           const letterHeading = document.createElement('div');
+//           letterHeading.textContent = currentLetter;
+//           letterHeading.classList.add('letter-heading');
+//           contactList.appendChild(letterHeading);
+//         }
+//         const contactItem = document.createElement('div');
+//         contactItem.classList.add('contact');
+//         const profileColor = contact['profileColor'];
+//         const profilePicture = document.createElement('div');
+//         profilePicture.classList.add('profile-picture');
+//         profilePicture.style.backgroundColor = profileColor;
+//         profilePicture.textContent = initials;
+//         contactItem.appendChild(profilePicture);
+
+//         const contactDetails = document.createElement('div');
+//         contactDetails.classList.add('oneContact');
+//         contactDetails.innerHTML = `
+//                     <h2>${contact.name}</h2>
+//                     <p class="blueColor">${contact.email}</p>
+//                 `;
+//         contactItem.appendChild(contactDetails);
+//         contactList.appendChild(contactItem);
+
+//         // Füge dem Kontakt und den Kontaktinformationen einen Click-Event-Listener hinzu
+//         contactItem.addEventListener('click', handleClick);
+//         function handleClick(event) {
+//           // Stelle sicher, dass nur das geklickte Element behandelt wird
+//           if (event.target === contactItem || event.target.parentElement === contactDetails) {
+//             // Rufe die Kontaktinformationen mit dem aktuellen Kontakt ab
+//             contactClickHandler(contact, i);
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
 
 // Funktion, die beim Klicken auf den Kontakt oder Kontaktinformationen aufgerufen wird
