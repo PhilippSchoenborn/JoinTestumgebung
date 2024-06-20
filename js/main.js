@@ -291,20 +291,19 @@ function toggleContactDropdownEditTask(event, taskId) {
     dropdownIconContact.classList.toggle('rotate');
 }
 
-function displayContacts(contentContact) {
-    // Überprüfe, ob das Dropdown-Element vorhanden ist
+function displayContacts(contentContact, taskId) { // Füge taskId als Parameter hinzu
     if (!contentContact) {
         console.error('Dropdown-Element nicht gefunden.');
         return;
     }
   
-    // Konstruiere HTML für die Anzeige aller Kontakte
     let contactsHtml = '';
     contacts.forEach((contact, i) => {
-        contactsHtml += formDropdownAssignedItemHtml(contact, i); // Verwenden Sie die formDropdownAssignedItemHtml-Funktion, um das HTML für jeden Kontakt zu generieren
+        // Überprüfe, ob der Kontakt bereits zugewiesen ist
+        let isSelected = getTaskById(taskId)?.assignedContacts.some(a => a.name === contact.name) || false; 
+        contactsHtml += formDropdownAssignedItemHtml(contact, i, taskId, isSelected); // Übergebe taskId an formDropdownAssignedItemHtml()
     });
   
-    // Füge das HTML in das Dropdown-Element ein
     contentContact.innerHTML = contactsHtml;
 }
 

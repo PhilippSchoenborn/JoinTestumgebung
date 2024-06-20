@@ -2,14 +2,15 @@ function toggleAssignedDropdown(taskId) {
     const dropdown = document.getElementById(`dropdown-assigned-${taskId}`);    
     let icon = document.getElementById(`assigned-dropdown-arrow-${taskId}`);   
     
-        if (dropdown.style.display === 'block') {            
-            dropdown.style.display = 'none';
-            icon.style.transform = 'rotate(0deg)';        
-        } else {
-            dropdown.style.display = 'block';            
-            icon.style.transform = 'rotate(180deg)';
-            displayDropdownAssigned(taskId); // Rufe die Funktion mit taskId auf
-        }
+    if (dropdown.style.display === 'block') {            
+        dropdown.style.display = 'none';
+        icon.style.transform = 'rotate(0deg)';        
+    } else {
+        dropdown.style.display = 'block';            
+        icon.style.transform = 'rotate(180deg)';
+        displayDropdownAssigned(taskId); 
+        selectAssigned(taskId); // Rufe selectAssigned auf, nachdem das Dropdown geöffnet wurde
+    }
 }
 
 function toogleEditFromAssignedDropdown() {
@@ -133,15 +134,21 @@ function prioBtnData(priority) {
     console.log(buttonData);
 }
 
-function displayDropdownAssigned(taskId){
+function displayDropdownAssigned(taskId) {
     let dropdown = document.getElementById(`dropdown-assigned-${taskId}`);
     dropdown.innerHTML = '';
-    for(let i = 0; i < contacts.length; i++){
+    for (let i = 0; i < contacts.length; i++) {
         let contact = contacts[i];
-        // Überprüfe, ob der Kontakt bereits zugewiesen ist
-        let isSelected = getTaskById(taskId)?.assigned.some(a => a.name === contact.name) || false; 
+        let isSelected = getTaskById(taskId)?.assigned.some(a => a.name === contact.name) || false;
         dropdown.innerHTML += formDropdownAssignedItemHtml(contact, i, taskId, isSelected);
     }
+    // Event-Listener für Checkboxen hinzufügen
+    let checkboxes = dropdown.querySelectorAll('.checkbox-assigned');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('click', () => {
+            selectAssigned(taskId); // Rufe selectAssigned mit der Task-ID auf
+        });
+    });
 }
 
 function displayDropdownEditFormAssigned() {

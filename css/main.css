@@ -320,6 +320,12 @@ body {
   justify-content: space-between;
 }
 
+.contact-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .profileIconWrap {
   height: 56px;
   width: 56px;

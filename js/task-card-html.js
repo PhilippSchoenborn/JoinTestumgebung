@@ -19,7 +19,8 @@ function taskCardDetailAssignedHtml(task) {
     <div class="task-card-detail-column-wrapper">
       <span class="task-card-detail-label">Assigned to:</span>
       <div class="task-card-detail-assigned">
-        ${formAddTaskAssignedHtml(task.id)}  </div>
+        ${task.profileHtml || ''}
+      </div>
     </div>
   `;
 }
@@ -222,19 +223,19 @@ function taskCardDetailEditFormPrioHtml(task) {
 
 function taskCardDetailEditFormAssignedHtml(task) {
   return `
-      <label for="assigned" class="label">
+      <label for="assigned-${task.id}" class="label">
           Assigned To (optional)
           <div class="input-icon-container">
-              <input class="placeholderFontSize" id="assigned-${task.id}" type="text" autocomplete="off" placeholder="Select contacts to assign" onclick="toggleContactDropdownEditTask(event, ${task.id})"/>
-              <img onclick="toggleContactDropdownEditTask(event, ${task.id})" class="dropdown-icon" id="assigned-edit-form-dropdown-arrow-${task.id}" src="../assets/img/icons/form-add-task/arrow-dropdown-down.png"/>
-          </div>
-          <div class="custom-dropdown-assigned custom-dropdown" id="dropdown-edit-form-assigned-${task.id}">
-              ${displayContacts(task.id)}
+              <input id="assigned-${task.id}" type="text" 
+                     placeholder="Select contacts to assign" 
+                     onclick="toggleAssignedDropdown(${task.id})"/>
+              <img onclick="toggleAssignedDropdown(${task.id})" 
+                   class="dropdown-icon" id="assigned-dropdown-arrow-${task.id}" 
+                   src="../assets/img/icons/form-add-task/arrow-dropdown-down.png"/>
           </div>
       </label>
-      <div id="task-card-detail-profile-assigned">
-          ${task.profileHtml || ''}
-      </div>
+      <div class="custom-dropdown-assigned custom-dropdown" id="dropdown-assigned-${task.id}">
+          </div> 
   `;
 }
 

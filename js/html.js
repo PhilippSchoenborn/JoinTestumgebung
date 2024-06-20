@@ -108,10 +108,10 @@ function contactProfileImageHtml(contact) {
 
 function formDropdownAssignedItemHtml(contact, i, taskId, isSelected) {
   return `
-      <div class="contact-item">
-          <input type="checkbox" class="checkbox-assigned" id="contact-${i}-${taskId}" onclick="selectAssigned(${taskId})" ${isSelected ? 'checked' : ''}/>
-          <button class="assigned-name" data-value="${contact.name}" onclick="selectAssigned(${taskId})">${contact.name}</button> 
-      </div>
+      <label class="contact-item">
+          <input type="checkbox" class="checkbox-assigned" id="contact-${i}-${taskId}" ${isSelected ? 'checked' : ''}/>
+          <span class="assigned-name" data-value="${contact.name}">${contact.name}</span> 
+      </label>
   `;
 }
 
