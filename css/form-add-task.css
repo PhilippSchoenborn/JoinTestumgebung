@@ -107,26 +107,28 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-direction: column;
+  flex-direction: row;
   font-size: 10px;
+  width: 100%;
 }
 
 .subtask-input-icon-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-direction: column;
+  flex-direction: row;
+  width: 100%;
 }
 
-/* .subtaskIconContainerFloation { */
-  /* display: flex; */
-  /* flex-direction: row; */
-  /* gap: 4px;
-  /* position: absolute; */
-  /* right: 16px;
+.subtaskIconContainerFloation {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  position: absolute;
+  right: 16px;
   bottom: 6px;
-  justify-content: space-between; */
-/* }  */
+  justify-content: space-between;
+} 
 
 .dropdown-item-assigned {
   display: flex;
@@ -170,7 +172,7 @@
   background-repeat: no-repeat;
   width: 24px;
   height: 24px;
-  cursor: pointer;
+  cursor: pointer !important;
   border-radius: 10px;
   position: absolute;
   right: 16px;
@@ -269,6 +271,8 @@
   flex-direction: row;
   justify-content: space-around;
   width: 50px;
+  margin-top: 5px;
+  margin-right: 20px;
 }
 
 .subtask-edit-container {

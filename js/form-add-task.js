@@ -167,23 +167,43 @@ function displayDropdownEditFormAssigned() {
     }
 }
 
-function selectAssigned() {
+function selectAssigned(taskId) {
     let selectAssigned = [];
-    let inputAssigned = document.getElementById('assigned');
-    let checkboxes = document.querySelectorAll('.checkbox-assigned');
+    let inputAssigned = document.getElementById(`assigned-${taskId}`);
+    let checkboxes = document.querySelectorAll(`#dropdown-edit-form-assigned-${taskId} .checkbox-assigned`);
 
     checkboxes.forEach(checkbox => {
         let contactName = checkbox.parentNode.querySelector('.assigned-name').getAttribute('data-value');
-        if (checkbox.checked) {            
+        if (checkbox.checked) {
             let contact = contacts.find(c => c.name === contactName);
-            selectAssigned.push(contact);
+            if (contact) {
+                selectAssigned.push(contact);
+            } else {
+                console.error(`Contact with name '${contactName}' not found.`);
+            }
         }
     });
 
-    inputAssigned.value = selectAssigned.length > 0 ? 'An: ' + selectAssigned.map(c => c.name).join(', '): '';
+    if (selectAssigned.length > 0) {
+        inputAssigned.value = 'An: ' + selectAssigned.map(c => c.name).join(', ');
+    } else {
+        inputAssigned.value = '';
+    }
+
     console.log('Selected contacts:', selectAssigned);
     return selectAssigned;
 }
+
+function editTaskSelectAssigned(taskId) {
+    const contentContact = document.getElementById(`dropdown-edit-form-assigned-${taskId}`);
+    if (!contentContact) {
+        console.error(`Dropdown-Element mit ID 'dropdown-edit-form-assigned-${taskId}' nicht gefunden.`);
+        return;
+    }
+
+    displayContacts(contentContact);
+}
+
 
 function selectCategory(category){
     let inputCategory = document.getElementById('category');

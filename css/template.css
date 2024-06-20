@@ -543,6 +543,10 @@ aside {
   content: url("../assets/img/input/checkboxCheck.png");
 }
 
+.dNone{
+  display: none;
+}
+
 .inputIconWrap {
   position: relative;
   width: 440px;
@@ -656,6 +660,16 @@ aside {
   display: flex;
   align-items: center;
   box-sizing: border-box;
+}
+
+.subtaskIconContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  position: absolute;
+  right: 16px;
+  bottom: 6px;
+  justify-content: space-between;
 }
 
 .p-6 {

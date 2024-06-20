@@ -265,21 +265,26 @@ function toggleContactDropdown(event, taskId) {
     dropdownIconContact.classList.toggle('rotate');
 }
 
-function displayContacts(contentContact) {
-    // Überprüfe, ob das Dropdown-Element vorhanden ist
-    if (!contentContact) {
-        console.error('Dropdown-Element nicht gefunden.');
+function toggleContactDropdownEditTask(event, taskId) {
+    event.stopPropagation();
+    const contentContact = document.getElementById(`dropdown-edit-form-assigned-${taskId}`);
+    const dropdownIconContact = document.getElementById(`assigned-edit-form-dropdown-arrow-${taskId}`);
+
+    if (!contentContact || !dropdownIconContact) {
+        console.error(`Elemente contentContact oder dropdownIconContact für Task-ID ${taskId} wurden nicht gefunden.`);
         return;
     }
-  
-    // Konstruiere HTML für die Anzeige aller Kontakte
+
+    contentContact.classList.toggle('show');
+    dropdownIconContact.classList.toggle('rotate');
+}
+
+function displayContacts(taskId) {
     let contactsHtml = '';
     contacts.forEach((contact, i) => {
-        contactsHtml += formDropdownAssignedItemHtml(contact, i); // Verwenden Sie die formDropdownAssignedItemHtml-Funktion, um das HTML für jeden Kontakt zu generieren
+        contactsHtml += formDropdownAssignedItemHtml(contact, i, taskId);
     });
-  
-    // Füge das HTML in das Dropdown-Element ein
-    contentContact.innerHTML = contactsHtml;
+    return contactsHtml;
 }
 
 document.addEventListener('click', function() {

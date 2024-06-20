@@ -310,12 +310,6 @@ body {
   transform: rotate(180deg);
 }
 
-.taskCardDetailSeperator {
-  height: 24px;
-  width: 1px;
-  background-color: #d1d1d1;
-}
-
 .subtaskIconContainer {
   display: flex;
   flex-direction: row;

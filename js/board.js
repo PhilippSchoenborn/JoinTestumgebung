@@ -38,17 +38,20 @@ function closeTaskCardDetail() {
     console.log("Closing task card detail...");
     if (detailViewOpen) {
         const taskCardDetailBackground = document.getElementById('task-card-detail-background');
-        document.getElementById('openDetailedTask').classList.add('dNone');
+        const openDetailedTask = document.getElementById('openDetailedTask');
+        if (openDetailedTask) {
+            openDetailedTask.classList.add('dNone');
+        } else {
+            console.error('Element with ID "openDetailedTask" not found');
+        }
         if (taskCardDetailBackground) {
             taskCardDetailBackground.classList.add('slideToBottom');
             setTimeout(() => {
                 taskCardDetailBackground.style.display = 'none';
                 taskCardDetailBackground.classList.remove('slideToBottom');
-                // Detailansicht schließen und Flag zurücksetzen
                 detailViewOpen = false;
                 console.log("Task card detail closed.");
                 
-                // Hinzugefügt: Überprüfen Sie, ob das Task-Detail-Element entfernt wurde
                 const taskDetail = document.getElementById('task-detail');
                 if (taskDetail) {
                     console.log("Task detail element found, removing...");
@@ -57,6 +60,8 @@ function closeTaskCardDetail() {
                     console.log("Task detail element not found.");
                 }
             }, 100);
+        } else {
+            console.error('Element with ID "task-card-detail-background" not found');
         }
     } else {
         console.log("DetailView is already closed, skipping...");

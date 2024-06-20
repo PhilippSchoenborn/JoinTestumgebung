@@ -106,17 +106,12 @@ function contactProfileImageHtml(contact) {
   `;
 }
 
-function formDropdownAssignedItemHtml(contact, i) {
+function formDropdownAssignedItemHtml(contact, i, taskId) {
   return `
-  <div class="assigned-item-wrap">
-      <input id="assigned-checkbox-${i}" type="checkbox" class="checkbox-assigned" onchange="selectAssigned()" />
-      <label for="assigned-checkbox-${i}" class="dropdown-item-assigned">
-          <div class="profile-name-container">
-              ${contactProfileImageHtml(contact)}
-              <span class="assigned-name" data-value="${contact.name}">${contact.name}</span>
-          </div>
-      </label>
-  </div>
+      <div class="contact-item">
+          <input type="checkbox" class="checkbox-assigned" id="contact-${i}" onclick="selectAssigned(${taskId})"/>
+          <span class="assigned-name" data-value="${contact.name}">${contact.name}</span>
+      </div>
   `;
 }
 

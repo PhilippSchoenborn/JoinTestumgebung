@@ -223,18 +223,19 @@ function taskCardDetailEditFormPrioHtml(task) {
 
 function taskCardDetailEditFormAssignedHtml(task) {
   return `
-    <label for="assigned" class="label">
-        Assigned To (optional)
-       <div class="input-icon-container">
-          <input class="placeholderFontSize" id="assigned-${task.id}" type="text" autocomplete="off" placeholder="Select contacts to assign" onclick="toggleContactDropdown(event, ${task.id})"/>
-          <img onclick="toggleContactDropdown(event, ${task.id})" class="dropdown-icon" id="assigned-edit-form-dropdown-arrow-${task.id}" src="../assets/img/icons/form-add-task/arrow-dropdown-down.png"/>
-       </div>
-       <div class="custom-dropdown-assigned custom-dropdown" id="dropdown-edit-form-assigned-${task.id}"></div>
-       
-    </label>
-    <div id="task-card-detail-profile-assigned">
-        ${task.profileHtml || ''}
-    </div>
+      <label for="assigned" class="label">
+          Assigned To (optional)
+          <div class="input-icon-container">
+              <input class="placeholderFontSize" id="assigned-${task.id}" type="text" autocomplete="off" placeholder="Select contacts to assign" onclick="toggleContactDropdownEditTask(event, ${task.id})"/>
+              <img onclick="toggleContactDropdownEditTask(event, ${task.id})" class="dropdown-icon" id="assigned-edit-form-dropdown-arrow-${task.id}" src="../assets/img/icons/form-add-task/arrow-dropdown-down.png"/>
+          </div>
+          <div class="custom-dropdown-assigned custom-dropdown" id="dropdown-edit-form-assigned-${task.id}">
+              ${displayContacts(task.id)}
+          </div>
+      </label>
+      <div id="task-card-detail-profile-assigned">
+          ${task.profileHtml || ''}
+      </div>
   `;
 }
 
@@ -252,7 +253,8 @@ function taskCardDetailEditFormSubtaskHtml(task) {
             <span class="task-card-detail-seperator" id="subtaskSeparator"></span>
             <img class="dropdownIconCheck" id="subtask-icon-check-${task.id}" onclick="addEditSubtaskItemToList(${task.id})" src="../assets/img/icons/form-add-task/check-blue.png"/>
         </div>
-    </div>
+    </div>    
+    
 </label>
 <div class="subtask-container subtask-edit-container" id="task-card-detail-subtask-${task.id}">
     ${taskCardDetailEditFormSubtasksItemHtml(task)}
