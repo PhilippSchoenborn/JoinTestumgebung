@@ -496,18 +496,17 @@ function updateInputContact() {
     inputContact.value = selectedContacts.length > 0 ? 'An: ' + selectedContacts.join(', ') : '';
 }
 
-function toggleContactDropdown(event) {
-    let contentContact = document.getElementById('contentContact');
-    let icon = document.getElementById('dropdownIconContact');
-
-    // Verhindern, dass das Ereignis weitergeleitet wird
+function toggleContactDropdown(event, taskId) {
     event.stopPropagation();
-
-    // Umschalten der Sichtbarkeit des Dropdowns
+    let contentContactId = taskId ? `contentContact-${taskId}` : 'contentContact';
+    let dropdownIconContactId = taskId ? `dropdownIconContact-${taskId}` : 'dropdownIconContact';
+    let contentContact = document.getElementById(contentContactId);
+    let icon = document.getElementById(dropdownIconContactId);
     contentContact.style.display = contentContact.style.display === 'block' ? 'none' : 'block';
-
-    // Bild je nach Zustand ändern
     icon.src = contentContact.style.display === 'block' ? '../assets/img/input/arrow_dropdown_up.png' : '../assets/img/input/arrow_dropdown_down.png';
+    if (!taskId) {
+        updateInputContact(); // Aktualisiere den Input-Wert nur in der addTask.html
+    }
 }
 
 function closeDropdown() {

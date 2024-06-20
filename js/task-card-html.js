@@ -19,8 +19,7 @@ function taskCardDetailAssignedHtml(task) {
     <div class="task-card-detail-column-wrapper">
       <span class="task-card-detail-label">Assigned to:</span>
       <div class="task-card-detail-assigned">
-        ${task.profileHtml || ''}
-      </div>
+        ${formAddTaskAssignedHtml(task.id)}  </div>
     </div>
   `;
 }

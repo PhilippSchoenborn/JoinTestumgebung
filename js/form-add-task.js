@@ -1,6 +1,6 @@
-function toggleAssignedDropdown() {
-    const dropdown = document.getElementById('dropdown-assigned');    
-    let icon = document.getElementById('assigned-dropdown-arrow');   
+function toggleAssignedDropdown(taskId) {
+    const dropdown = document.getElementById(`dropdown-assigned-${taskId}`);    
+    let icon = document.getElementById(`assigned-dropdown-arrow-${taskId}`);   
     
         if (dropdown.style.display === 'block') {            
             dropdown.style.display = 'none';
@@ -8,9 +8,8 @@ function toggleAssignedDropdown() {
         } else {
             dropdown.style.display = 'block';            
             icon.style.transform = 'rotate(180deg)';
-            displayDropdownAssigned();
+            displayDropdownAssigned(taskId); // Rufe die Funktion mit taskId auf
         }
-    
 }
 
 function toogleEditFromAssignedDropdown() {
@@ -134,16 +133,16 @@ function prioBtnData(priority) {
     console.log(buttonData);
 }
 
-function displayDropdownAssigned(){
-    let dropdown = document.getElementById('dropdown-assigned');
-
+function displayDropdownAssigned(taskId){
+    let dropdown = document.getElementById(`dropdown-assigned-${taskId}`);
     dropdown.innerHTML = '';
-
     for(let i = 0; i < contacts.length; i++){
         let contact = contacts[i];
-        dropdown.innerHTML += formDropdownAssignedItemHtml(contact, i);
+        // Überprüfe, ob der Kontakt bereits zugewiesen ist
+        let isSelected = getTaskById(taskId)?.assigned.some(a => a.name === contact.name) || false; 
+        dropdown.innerHTML += formDropdownAssignedItemHtml(contact, i, taskId, isSelected);
     }
-} 
+}
 
 function displayDropdownEditFormAssigned() {
     let dropdown = document.getElementById('dropdown-edit-form-assigned');
@@ -168,10 +167,10 @@ function displayDropdownEditFormAssigned() {
 }
 
 function selectAssigned(taskId) {
+    event.stopPropagation(); // Verhindert Event Bubbling
     let selectAssigned = [];
     let inputAssigned = document.getElementById(`assigned-${taskId}`);
-    let checkboxes = document.querySelectorAll(`#dropdown-edit-form-assigned-${taskId} .checkbox-assigned`);
-
+    let checkboxes = document.querySelectorAll(`#dropdown-assigned-${taskId} .checkbox-assigned`);
     checkboxes.forEach(checkbox => {
         let contactName = checkbox.parentNode.querySelector('.assigned-name').getAttribute('data-value');
         if (checkbox.checked) {
@@ -183,13 +182,11 @@ function selectAssigned(taskId) {
             }
         }
     });
-
     if (selectAssigned.length > 0) {
         inputAssigned.value = 'An: ' + selectAssigned.map(c => c.name).join(', ');
     } else {
         inputAssigned.value = '';
     }
-
     console.log('Selected contacts:', selectAssigned);
     return selectAssigned;
 }
@@ -247,11 +244,8 @@ function addTask() {
     let priority = buttonData[0]?.dataValue;
     let prioImage = buttonData[0]?.originalImgSrc;
     let prioClass = buttonData[0]?.class;
-    let assignedContacts = selectAssigned();
-    let assignedImage = collectProfileImage(assignedContacts);
     let subtasks = subtaskItemValue();
     let status = 'open';    
-
     let task = {
         id: Date.now(),
         title,
@@ -261,18 +255,27 @@ function addTask() {
         priority,
         prioImage,
         prioClass,
-        assignedContacts,
-        assignedImage,
+        assignedContacts: [], // Initialisiere assignedContacts als leeres Array
+        assignedImage: '', // Initialisiere assignedImage als leeren String
         subtasks,
         status
     };
-
+    // Erzeuge das Input-Element für "Assigned to"
+    let assignedInputHtml = formAddTaskAssignedHtml(task.id);
+    // Füge das Input-Element zum DOM hinzu (z.B. in einem temporären Container)
+    let tempContainer = document.createElement('div');
+    tempContainer.innerHTML = assignedInputHtml;
+    document.body.appendChild(tempContainer);
+    // Rufe selectAssigned() nach der Generierung der Task-ID auf
+    task.assignedContacts = selectAssigned(task.id); 
+    task.assignedImage = collectProfileImage(task.assignedContacts);
+    // Entferne das temporäre Input-Element aus dem DOM
+    document.body.removeChild(tempContainer);
     tasks.push(task);
     saveTasks();
     displaySucessMessage();
     updateBoardHtml();     
     closeAddTask(); 
-    
 }
 
 function subtaskItemValue(){   

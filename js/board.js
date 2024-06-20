@@ -69,7 +69,6 @@ function closeTaskCardDetail() {
 }
 
 
-
 // Initialisierung des Detailelements beim Laden der Seite
 document.addEventListener('DOMContentLoaded', function() {
     const taskCardDetailBackground = document.getElementById('task-card-detail-background');

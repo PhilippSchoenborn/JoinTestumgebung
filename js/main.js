@@ -269,22 +269,43 @@ function toggleContactDropdownEditTask(event, taskId) {
     event.stopPropagation();
     const contentContact = document.getElementById(`dropdown-edit-form-assigned-${taskId}`);
     const dropdownIconContact = document.getElementById(`assigned-edit-form-dropdown-arrow-${taskId}`);
-
+  
+    console.log('Task ID:', taskId);
+    console.log('contentContact:', contentContact);
+    console.log('dropdownIconContact:', dropdownIconContact);
+  
     if (!contentContact || !dropdownIconContact) {
-        console.error(`Elemente contentContact oder dropdownIconContact für Task-ID ${taskId} wurden nicht gefunden.`);
-        return;
+      console.error(`Elemente contentContact oder dropdownIconContact für Task-ID ${taskId} wurden nicht gefunden.`);
+      return;
     }
-
+  
+    // Falls das Dropdown noch nicht geladen wurde, Kontakte anzeigen
+    if (!contentContact.classList.contains('loaded')) {
+      console.log('Lade Kontakte für Task ID:', taskId);
+      editTaskSelectAssigned(taskId);
+    } else {
+      console.log('Dropdown wurde bereits geladen für Task ID:', taskId);
+    }
+  
     contentContact.classList.toggle('show');
     dropdownIconContact.classList.toggle('rotate');
 }
 
-function displayContacts(taskId) {
+function displayContacts(contentContact) {
+    // Überprüfe, ob das Dropdown-Element vorhanden ist
+    if (!contentContact) {
+        console.error('Dropdown-Element nicht gefunden.');
+        return;
+    }
+  
+    // Konstruiere HTML für die Anzeige aller Kontakte
     let contactsHtml = '';
     contacts.forEach((contact, i) => {
-        contactsHtml += formDropdownAssignedItemHtml(contact, i, taskId);
+        contactsHtml += formDropdownAssignedItemHtml(contact, i); // Verwenden Sie die formDropdownAssignedItemHtml-Funktion, um das HTML für jeden Kontakt zu generieren
     });
-    return contactsHtml;
+  
+    // Füge das HTML in das Dropdown-Element ein
+    contentContact.innerHTML = contactsHtml;
 }
 
 document.addEventListener('click', function() {

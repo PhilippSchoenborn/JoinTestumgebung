@@ -106,11 +106,11 @@ function contactProfileImageHtml(contact) {
   `;
 }
 
-function formDropdownAssignedItemHtml(contact, i, taskId) {
+function formDropdownAssignedItemHtml(contact, i, taskId, isSelected) {
   return `
       <div class="contact-item">
-          <input type="checkbox" class="checkbox-assigned" id="contact-${i}" onclick="selectAssigned(${taskId})"/>
-          <span class="assigned-name" data-value="${contact.name}">${contact.name}</span>
+          <input type="checkbox" class="checkbox-assigned" id="contact-${i}-${taskId}" onclick="selectAssigned(${taskId})" ${isSelected ? 'checked' : ''}/>
+          <button class="assigned-name" data-value="${contact.name}" onclick="selectAssigned(${taskId})">${contact.name}</button> 
       </div>
   `;
 }
@@ -164,20 +164,20 @@ function formAddTaskPriorityHtml() {
     </label>`;
 }
 
-function formAddTaskAssignedHtml() {
+function formAddTaskAssignedHtml(taskId) {
   return `
-      <label for="assigned" class="label">
+      <label for="assigned-${taskId}" class="label">
         Assigned To (optional)
         <div class="input-icon-container">
-        <input id="assigned" type="text"
+        <input id="assigned-${taskId}" type="text"
         placeholder="Select contacts to assign"
-        onclick="toggleAssignedDropdown()"/>
-        <img onclick="toggleAssignedDropdown()"
-        class="dropdown-icon" id="assigned-dropdown-arrow"
+        onclick="toggleAssignedDropdown(${taskId})"/>
+        <img onclick="toggleAssignedDropdown(${taskId})"
+        class="dropdown-icon" id="assigned-dropdown-arrow-${taskId}"
         src="../assets/img/icons/form-add-task/arrow-dropdown-down.png"/>
         </div>
       </label>
-    <div class="custom-dropdown-assigned custom-dropdown" id="dropdown-assigned">
+    <div class="custom-dropdown-assigned custom-dropdown" id="dropdown-assigned-${taskId}">
     </div>`;
 }
 
