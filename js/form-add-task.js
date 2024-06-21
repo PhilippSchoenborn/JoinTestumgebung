@@ -9,7 +9,7 @@ function toggleAssignedDropdown(taskId) {
         dropdown.style.display = 'block';            
         icon.style.transform = 'rotate(180deg)';
         displayDropdownAssigned(taskId); 
-        selectAssigned(taskId); // Rufe selectAssigned auf, nachdem das Dropdown geöffnet wurde
+        selectAssigned(null, taskId);
     }
 }
 
@@ -142,42 +142,64 @@ function displayDropdownAssigned(taskId) {
         let isSelected = getTaskById(taskId)?.assigned.some(a => a.name === contact.name) || false;
         dropdown.innerHTML += formDropdownAssignedItemHtml(contact, i, taskId, isSelected);
     }
-    // Event-Listener für Checkboxen hinzufügen
-    let checkboxes = dropdown.querySelectorAll('.checkbox-assigned');
+    // Event-Listener für Checkboxen und Namen hinzufügen
+    let checkboxes = dropdown.querySelectorAll('.checkboxAssigned');
+    let names = dropdown.querySelectorAll('.assigned-name');
     checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('click', () => {
-            selectAssigned(taskId); // Rufe selectAssigned mit der Task-ID auf
+        checkbox.addEventListener('click', (event) => {
+            selectAssigned(event, taskId); // Rufe selectAssigned mit Event und Task-ID auf
+        });
+    });
+    names.forEach(name => {
+        name.addEventListener('click', (event) => {
+            // Finde die zugehörige Checkbox und ändere ihren Zustand
+            let checkbox = name.parentNode.querySelector('.checkboxAssigned');
+            checkbox.checked = !checkbox.checked;
+            selectAssigned(event, taskId); // Rufe selectAssigned mit Event und Task-ID auf
         });
     });
 }
 
-function displayDropdownEditFormAssigned() {
+function displayDropdownEditFormAssigned(taskId) { // Füge taskId als Parameter hinzu
     let dropdown = document.getElementById('dropdown-edit-form-assigned');
     
     let assignedContactsString = document.getElementById('assigned').value;
     
     let assignedContacts = assignedContactsString.split(', ');
-
     dropdown.innerHTML = '';
-
     for(let i = 0; i < contacts.length; i++){
         let contact = contacts[i];
-        let contactHtml = formDropdownAssignedItemHtml(contact, i);
-
-        
-        if (assignedContacts.includes(contact.name)) {
-            
-            contactHtml = contactHtml.replace('<input', '<input checked');
-        }
+        let isSelected = assignedContacts.includes(contact.name); // Überprüfe, ob der Kontakt ausgewählt ist
+        let contactHtml = formDropdownAssignedItemHtml(contact, i, taskId, isSelected); // Übergebe taskId und isSelected
         dropdown.innerHTML += contactHtml;
     }
+    let checkboxes = dropdown.querySelectorAll('.checkboxAssigned');
+    let names = dropdown.querySelectorAll('.assigned-name');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('click', (event) => {
+            selectAssigned(event, taskId); 
+        });
+    });
+    names.forEach(name => {
+        name.addEventListener('click', (event) => {
+            let checkbox = name.parentNode.querySelector('.checkboxAssigned');
+            checkbox.checked = !checkbox.checked;
+            selectAssigned(event, taskId); 
+        });
+    });
 }
 
-function selectAssigned(taskId) {
-    event.stopPropagation(); // Verhindert Event Bubbling
+function selectAssigned(event, taskId) {
+    if (event && typeof event.stopPropagation === 'function') {
+        event.stopPropagation(); // Verhindert Event Bubbling
+    }
     let selectAssigned = [];
     let inputAssigned = document.getElementById(`assigned-${taskId}`);
-    let checkboxes = document.querySelectorAll(`#dropdown-assigned-${taskId} .checkbox-assigned`);
+    if (!inputAssigned) {
+        console.error(`Element with id 'assigned-${taskId}' not found.`);
+        return;
+    }
+    let checkboxes = document.querySelectorAll(`#dropdown-assigned-${taskId} .checkboxAssigned`);
     checkboxes.forEach(checkbox => {
         let contactName = checkbox.parentNode.querySelector('.assigned-name').getAttribute('data-value');
         if (checkbox.checked) {
@@ -197,6 +219,24 @@ function selectAssigned(taskId) {
     console.log('Selected contacts:', selectAssigned);
     return selectAssigned;
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('.checkboxAssigned').forEach(item => {
+        item.addEventListener('click', function(event) {
+            let taskId = item.id.split('-').pop(); // Extract taskId from the id
+            selectAssigned(event, taskId);
+        });
+    });
+
+    document.querySelectorAll('.assigned-name').forEach(item => {
+        item.addEventListener('click', function(event) {
+            let taskId = item.parentNode.querySelector('.checkboxAssigned').id.split('-').pop(); // Extract taskId from the sibling id
+            let checkbox = item.parentNode.querySelector('.checkboxAssigned');
+            checkbox.checked = !checkbox.checked; // Toggle checkbox state
+            selectAssigned(event, taskId);
+        });
+    });
+});
 
 function editTaskSelectAssigned(taskId) {
     const contentContact = document.getElementById(`dropdown-edit-form-assigned-${taskId}`);
