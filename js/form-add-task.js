@@ -13,19 +13,19 @@ function toggleAssignedDropdown(taskId) {
     }
 }
 
-function toogleEditFromAssignedDropdown() {
-    const dropdown = document.getElementById('dropdown-edit-form-assigned');    
-    let icon = document.getElementById('assigned-edit-form-dropdown-arrow');   
+// function toogleEditFromAssignedDropdown(taskId) { // Füge taskId als Parameter hinzu
+//     const dropdown = document.getElementById('dropdown-edit-form-assigned');    
+//     let icon = document.getElementById('assigned-edit-form-dropdown-arrow');   
     
-        if (dropdown.style.display === 'block') {            
-            dropdown.style.display = 'none';
-            icon.style.transform = 'rotate(0deg)';        
-        } else {
-            dropdown.style.display = 'block';            
-            icon.style.transform = 'rotate(180deg)';
-            displayDropdownEditFormAssigned();
-        }
-}
+//     if (dropdown.style.display === 'block') {            
+//         dropdown.style.display = 'none';
+//         icon.style.transform = 'rotate(0deg)';        
+//     } else {
+//         dropdown.style.display = 'block';            
+//         icon.style.transform = 'rotate(180deg)';
+//         displayDropdownEditFormAssigned(taskId); // Übergebe taskId an displayDropdownEditFormAssigned
+//     }
+// }
 
 function toggleCategoryDropdown() {
     const dropdown = document.getElementById('dropdown-category');
@@ -182,6 +182,7 @@ function displayDropdownEditFormAssigned(taskId) { // Füge taskId als Parameter
     });
     names.forEach(name => {
         name.addEventListener('click', (event) => {
+            event.preventDefault();
             let checkbox = name.parentNode.querySelector('.checkboxAssigned');
             checkbox.checked = !checkbox.checked;
             selectAssigned(event, taskId); 
@@ -212,7 +213,9 @@ function selectAssigned(event, taskId) {
         }
     });
     if (selectAssigned.length > 0) {
-        inputAssigned.value = 'An: ' + selectAssigned.map(c => c.name).join(', ');
+        setTimeout(() => { // Timeout-Funktion hinzugefügt
+            inputAssigned.value = 'An: ' + selectAssigned.map(c => c.name).join(', ');
+        }, 100); // 100 Millisekunden Verzögerung
     } else {
         inputAssigned.value = '';
     }
@@ -328,13 +331,12 @@ function addTask() {
 function subtaskItemValue(){   
     let subtasks = [];
     const subtaskElements = document.querySelectorAll(`#subtask-item-input`); 
-
     subtaskElements.forEach(subtask => {
         subtasks.push({
-            content: subtask.value  // Nehmen Sie an, dass der Wert des Inputs den Inhalt des Subtasks enthält
+            content: subtask.value 
         });
     });
-
+    console.log("Subtasks:", subtasks);
     return subtasks;
 }
 

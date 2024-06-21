@@ -96,7 +96,7 @@ function taskCardDetailDueDateHtml(task) {
   return `
     <div class="task-card-detail-wrapper">
       <span class="task-card-detail-label">Due Date:</span>
-      <span class="task-card-detail-value">${task.dueDate}</span>
+      <span class="task-card-detail-value">${task.date}</span>
     </div>
   `;
 }
@@ -191,7 +191,7 @@ function taskCardDetailEditFormDescriptionHtml(task) {
 
 function taskCardDetailEditFormDueDateHtml(task) {
   return `<label for="due-date-${task.id}" class="label-due-date label">
-            <input type="date" placeholder="Due date" id="due-date-${task.id}" value="${task.dueDate}">
+            <input type="date" placeholder="Due date" id="due-date-${task.id}" value="${task.date}">
           </label>`;
 }
 

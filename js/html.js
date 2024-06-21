@@ -109,13 +109,13 @@ function contactProfileImageHtml(contact) {
 function formDropdownAssignedItemHtml(contact, i, taskId, isSelected) {
   let profileHtml = generateProfileHtml([contact]);
   return `
-      <label class="contact-item">
+      <div class="contact-item">
           ${profileHtml}
           <div class="name-checkbox-wrapper">
               <span class="assigned-name" data-value="${contact.name}">${contact.name}</span> 
               <input type="checkbox" class="checkboxAssigned" id="contact-${i}-${taskId}" ${isSelected ? 'checked' : ''}/>
           </div>
-      </label>
+      </div>
   `;
 }
 

@@ -355,7 +355,8 @@ function getActivePrio(){
     return activePriority;
 }
 
-async function saveTask() {
+async function saveTask(event) {
+    event.preventDefault();
     let title = document.getElementById('addTaskInputTitle');
     let date = document.getElementById('formDate');
     let description = document.getElementById('description');
@@ -390,6 +391,7 @@ async function saveTask() {
         
     };
 
+    console.log("Datum:", date.value);
     // Füge den Task dem globalen Array hinzu
     tasks.push(task);
 

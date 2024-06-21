@@ -343,6 +343,7 @@ function getAssignedContacts() {
             initialien: contact.dataset.initialien 
         });
     });
+    console.log("Ausgewählte Kontakte:", assigned); // Füge diese Zeile hinzu
     return assigned;
 }
 
