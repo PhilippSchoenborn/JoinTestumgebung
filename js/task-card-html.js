@@ -96,7 +96,7 @@ function taskCardDetailDueDateHtml(task) {
   return `
     <div class="task-card-detail-wrapper">
       <span class="task-card-detail-label">Due Date:</span>
-      <span class="task-card-detail-value">${task.dueDate}</span>
+      <span class="task-card-detail-value">${task.date}</span>
     </div>
   `;
 }
@@ -191,7 +191,7 @@ function taskCardDetailEditFormDescriptionHtml(task) {
 
 function taskCardDetailEditFormDueDateHtml(task) {
   return `<label for="due-date-${task.id}" class="label-due-date label">
-            <input type="date" placeholder="Due date" id="due-date-${task.id}" value="${task.dueDate}">
+            <input type="date" placeholder="Due date" id="due-date-${task.id}" value="${task.date}">
           </label>`;
 }
 
@@ -223,18 +223,19 @@ function taskCardDetailEditFormPrioHtml(task) {
 
 function taskCardDetailEditFormAssignedHtml(task) {
   return `
-    <label for="assigned" class="label">
-        Assigned To (optional)
-       <div class="input-icon-container">
-          <input class="placeholderFontSize" id="assigned-${task.id}" type="text" autocomplete="off" placeholder="Select contacts to assign" onclick="toggleContactDropdown(event, ${task.id})"/>
-          <img onclick="toggleContactDropdown(event, ${task.id})" class="dropdown-icon" id="assigned-edit-form-dropdown-arrow-${task.id}" src="../assets/img/icons/form-add-task/arrow-dropdown-down.png"/>
-       </div>
-       <div class="custom-dropdown-assigned custom-dropdown" id="dropdown-edit-form-assigned-${task.id}"></div>
-       
-    </label>
-    <div id="task-card-detail-profile-assigned">
-        ${task.profileHtml || ''}
-    </div>
+      <label for="assigned-${task.id}" class="label">
+          Assigned To (optional)
+          <div class="input-icon-container">
+              <input id="assigned-${task.id}" type="text" 
+                     placeholder="Select contacts to assign" 
+                     onclick="toggleAssignedDropdown(${task.id})"/>
+              <img onclick="toggleAssignedDropdown(${task.id})" 
+                   class="dropdown-icon" id="assigned-dropdown-arrow-${task.id}" 
+                   src="../assets/img/icons/form-add-task/arrow-dropdown-down.png"/>
+          </div>
+      </label>
+      <div class="custom-dropdown-assigned custom-dropdown" id="dropdown-assigned-${task.id}">
+          </div> 
   `;
 }
 
@@ -252,7 +253,8 @@ function taskCardDetailEditFormSubtaskHtml(task) {
             <span class="task-card-detail-seperator" id="subtaskSeparator"></span>
             <img class="dropdownIconCheck" id="subtask-icon-check-${task.id}" onclick="addEditSubtaskItemToList(${task.id})" src="../assets/img/icons/form-add-task/check-blue.png"/>
         </div>
-    </div>
+    </div>    
+    
 </label>
 <div class="subtask-container subtask-edit-container" id="task-card-detail-subtask-${task.id}">
     ${taskCardDetailEditFormSubtasksItemHtml(task)}

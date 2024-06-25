@@ -106,18 +106,29 @@ function contactProfileImageHtml(contact) {
   `;
 }
 
-function formDropdownAssignedItemHtml(contact, i) {
+function formDropdownAssignedItemHtml(contact, i, taskId, isSelected) {
+  let profileHtml = generateProfileHtml([contact]);
   return `
-  <div class="assigned-item-wrap">
-      <input id="assigned-checkbox-${i}" type="checkbox" class="checkbox-assigned" onchange="selectAssigned()" />
-      <label for="assigned-checkbox-${i}" class="dropdown-item-assigned">
-          <div class="profile-name-container">
-              ${contactProfileImageHtml(contact)}
-              <span class="assigned-name" data-value="${contact.name}">${contact.name}</span>
+      <div class="contact-item">
+          ${profileHtml}
+          <div class="name-checkbox-wrapper">
+              <span class="assigned-name" data-value="${contact.name}">${contact.name}</span> 
+              <input type="checkbox" class="checkboxAssigned" id="contact-${i}-${taskId}" ${isSelected ? 'checked' : ''}/>
           </div>
-      </label>
-  </div>
+      </div>
   `;
+}
+
+function generateProfileHtml(selectedContacts) {
+  let profilesHtml = '';
+  selectedContacts.forEach(contact => {
+      profilesHtml += `<div class="profileIconNameWrap">
+          <div class="profileCircle" style="background-color: ${contact.profileColor};">
+              <span class="initialsText">${contact.initialien}</span>
+          </div>
+      </div>`;
+  });
+  return profilesHtml;
 }
 
 function formAddTask() {
@@ -169,20 +180,20 @@ function formAddTaskPriorityHtml() {
     </label>`;
 }
 
-function formAddTaskAssignedHtml() {
+function formAddTaskAssignedHtml(taskId) {
   return `
-      <label for="assigned" class="label">
+      <label for="assigned-${taskId}" class="label">
         Assigned To (optional)
         <div class="input-icon-container">
-        <input id="assigned" type="text"
+        <input id="assigned-${taskId}" type="text"
         placeholder="Select contacts to assign"
-        onclick="toggleAssignedDropdown()"/>
-        <img onclick="toggleAssignedDropdown()"
-        class="dropdown-icon" id="assigned-dropdown-arrow"
+        onclick="toggleAssignedDropdown(${taskId})"/>
+        <img onclick="toggleAssignedDropdown(${taskId})"
+        class="dropdown-icon" id="assigned-dropdown-arrow-${taskId}"
         src="../assets/img/icons/form-add-task/arrow-dropdown-down.png"/>
         </div>
       </label>
-    <div class="custom-dropdown-assigned custom-dropdown" id="dropdown-assigned">
+    <div class="custom-dropdown-assigned custom-dropdown" id="dropdown-assigned-${taskId}">
     </div>`;
 }
 

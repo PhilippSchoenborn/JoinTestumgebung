@@ -310,12 +310,6 @@ body {
   transform: rotate(180deg);
 }
 
-.taskCardDetailSeperator {
-  height: 24px;
-  width: 1px;
-  background-color: #d1d1d1;
-}
-
 .subtaskIconContainer {
   display: flex;
   flex-direction: row;
@@ -324,6 +318,50 @@ body {
   right: 16px;
   bottom: 6px;
   justify-content: space-between;
+}
+
+.contact-item {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 5px;
+
+}
+
+.assigned-name{
+  margin: 0;
+  position: relative;
+}
+
+.checkboxAssigned {
+  appearance: none;
+  background-image: url(../assets/img/checkbox/checkbox-border-blue.png);
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  cursor: pointer !important;
+  border-radius: 10px;
+  position: relative;
+  margin-top: 10px;
+}
+
+.assigned-item-wrap {
+  position: relative;
+  margin-bottom: 2px;
+}
+
+.checkboxAssigned:checked + .dropdown-item-assigned {
+  background-color: #005dff;
+  color: #fff;
+}
+
+.checkboxAssigned:checked {
+  background-image: url(../assets/img/checkbox/checkbox-checked-white.png);
+}
+
+.profileCircle{
+  margin-right: 15px !important;
+  margin-top: 2px;
 }
 
 .profileIconWrap {
