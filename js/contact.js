@@ -78,62 +78,6 @@ function createContactList() {
 }
 
 
-// // Funktion zum Erstellen der Kontaktliste
-// function createContactList() {
-//   const contactList = document.getElementById('contact-list');
-//   contactList.innerHTML = '';
-//   let currentLetter = null;
-//   for (let j = 0; j < alphabet.length; j++) {
-//     const letter = alphabet[j];
-
-//     for (let i = 0; i < contacts.length; i++) {
-//       const contact = contacts[i];
-//       const initials = contact.initialien;
-//       const firstLetter = initials.charAt(0).toUpperCase();
-
-//       if (firstLetter === letter) {
-//         if (firstLetter !== currentLetter) {
-//           currentLetter = firstLetter;
-//           const letterHeading = document.createElement('div');
-//           letterHeading.textContent = currentLetter;
-//           letterHeading.classList.add('letter-heading');
-//           contactList.appendChild(letterHeading);
-//         }
-//         const contactItem = document.createElement('div');
-//         contactItem.classList.add('contact');
-//         const profileColor = contact['profileColor'];
-//         const profilePicture = document.createElement('div');
-//         profilePicture.classList.add('profile-picture');
-//         profilePicture.style.backgroundColor = profileColor;
-//         profilePicture.textContent = initials;
-//         contactItem.appendChild(profilePicture);
-
-//         const contactDetails = document.createElement('div');
-//         contactDetails.classList.add('oneContact');
-//         contactDetails.innerHTML = `
-//                     <h2>${contact.name}</h2>
-//                     <p class="blueColor">${contact.email}</p>
-//                 `;
-//         contactItem.appendChild(contactDetails);
-//         contactList.appendChild(contactItem);
-
-//         // Füge dem Kontakt und den Kontaktinformationen einen Click-Event-Listener hinzu
-//         contactItem.addEventListener('click', handleClick);
-//         function handleClick(event) {
-//           // Stelle sicher, dass nur das geklickte Element behandelt wird
-//           if (event.target === contactItem || event.target.parentElement === contactDetails) {
-//             // Rufe die Kontaktinformationen mit dem aktuellen Kontakt ab
-//             contactClickHandler(contact, i);
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-
-
-
-
 // Funktion, die beim Klicken auf den Kontakt oder Kontaktinformationen aufgerufen wird
 function contactClickHandler(contact, i) {
   if (window.innerWidth < 1000) {
@@ -337,39 +281,6 @@ function showeditContact(i) {
   closeEditResponsive();
 }
 
-// // Öffnet die Box 'Edit Contact'
-// function showeditContact(i) {
-//   const contact = contacts[i];
-//   let name = contact.name;
-//   if (name.includes('(You)')) {
-//     let newName = contact.name.substr(0, contact.name.length - 12);
-//     const color = contact['profileColor'];
-//     isItYou = true;
-//     document.getElementById('editSecondSectione').innerHTML = '';
-//     document.getElementById('editContact').classList.add('editContactActive');
-//     document.getElementById('blurBackground').classList.remove('d-none');
-//     document.getElementById('editSecondSectione').innerHTML = editContactHTML(i);
-//     document.getElementById('editName').value = `${newName}`;
-//     document.getElementById('editEmail').value = `${contact.email}`;
-//     document.getElementById('editPhone').value = `${contact.phone}`;
-//     document.getElementById('initialsEditContact').style = `background-color: ${color};`;
-//     document.getElementById('initialsText').innerHTML = `${contact.initialien}`;
-//     closeEditResponsive();
-//   } else {
-//     const color = contact['profileColor'];
-//     document.getElementById('editSecondSectione').innerHTML = '';
-//     document.getElementById('editContact').classList.add('editContactActive');
-//     document.getElementById('blurBackground').classList.remove('d-none');
-//     document.getElementById('editSecondSectione').innerHTML = editContactHTML(i);
-//     document.getElementById('editName').value = `${contact.name}`;
-//     document.getElementById('editEmail').value = `${contact.email}`;
-//     document.getElementById('editPhone').value = `${contact.phone}`;
-//     document.getElementById('initialsEditContact').style = `background-color: ${color};`;
-//     document.getElementById('initialsText').innerHTML = `${contact.initialien}`;
-//     closeEditResponsive();
-//   }
-// }
-
 function editContactHTML(i) {
   return `<div id="contactInput" class="contactInput">
     <div id="profilepicture">
@@ -417,46 +328,6 @@ function editContactToArray(i) {
   cancelEditContact();
   createContactList();
 }
-
-// function editContactToArray(i) {
-//   let contact = contacts[i];
-//   let name = document.getElementById('editName');
-//   let email = document.getElementById('editEmail');
-//   let phone = document.getElementById('editPhone');
-//   const initial = extractInitials(name.value);
-//   if (isItYou = true) {
-//     let myName = name.value + '&nbsp; (You)';
-//     const newContact = {
-//       "name": myName,
-//       "email": email.value,
-//       "phone": phone.value,
-//       "profileColor": contact.profileColor,
-//       "initialien": initial
-//     };
-//     isItYou = false;
-//     contacts.splice(i, 1, newContact);
-//     save();
-//     loadContacts();
-//     contactClickHandler(newContact, contacts.length);
-//     cancelEditContact();
-//     createContactList();
-//   } else {
-//     const newContact = {
-//       "name": name.value,
-//       "email": email.value,
-//       "phone": phone.value,
-//       "profileColor": contact.profileColor,
-//       "initialien": initial
-//     };
-//     contacts.splice(i, 1, newContact);
-//     save();
-//     loadContacts();
-//     contactClickHandler(newContact, contacts.length);
-//     cancelEditContact();
-//     createContactList();
-//   }
-
-// }
 
 
 // Öffnet die Box 'Add new Contact'
